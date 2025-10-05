@@ -17,7 +17,6 @@ nav {
   align-items: center;
 }
 
-/* Logo + brand */
 .navbar__logo {
   display: flex;
   align-items: center;
@@ -31,7 +30,7 @@ nav {
 }
 
 .navbar__brand {
-  font-weight: 600;
+  font-weight: bold;
   font-size: 20px;
   background: linear-gradient(90deg, #6a5acd, #8a5cf4);
   -webkit-background-clip: text;
