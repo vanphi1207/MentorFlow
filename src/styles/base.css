@@ -1,3 +1,13 @@
+:root{
+  --primary-background:linear-gradient(90deg, #6a5acd, #8a5cf4);
+  --primary-text:#667eea;
+  --text-color:#333;
+  --black-color:black;
+  --background:#eeeeee;
+  --primary-link:#6a4ce8;
+  --backgorund-box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,3 +20,4 @@ body {
   color: #333;
   overflow-x: hidden;
 }
+
