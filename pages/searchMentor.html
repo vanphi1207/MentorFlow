@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/searchMentor.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <title>Đội ngũ Mentor</title>
+  </head>
+<body>
+    <header>
+      <!-- navbar -->
+        <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="community-hero">
+  <div class="community-hero__overlay">
+    <div class="community-hero__content">
+      <h1 class="community-hero__title">CỘNG ĐỒNG MENTOR</h1>
+      <p class="community-hero__subtitle">
+        Tiến nhanh và xa hơn trong hành trình sự nghiệp cùng Mentori Việt Nam
+      </p>
+
+      <form class="community-search" action="#" method="get">
+        <input
+          type="text"
+          class="community-search__input"
+          placeholder="Nhập từ khóa để tìm kiếm, ví dụ Tên, Công ty, Vị trí của Cố vấn hoặc Chủ đề..."
+        />
+        <button type="submit" class="community-search__button">
+          <i class="fas fa-search"></i> TÌM KIẾM
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="mentor-list">
+  <div class="mentor-list__header">
+    <p>
+      Tìm thấy <strong>644</strong> Mentor cho bạn! 
+      <a href="#" class="mentor-list__filter-link">Lọc kết quả <i class="fas fa-chevron-down"></i></a>
+    </p>
+  </div>
+
+  <!-- Bộ lọc -->
+  <form class="mentor-filter" action="#" method="get">
+    <select class="mentor-filter__select">
+      <option selected>Chọn Chủ đề</option>
+      <option>Data Analysis</option>
+      <option>Marketing</option>
+      <option>Leadership</option>
+    </select>
+
+    <input
+      type="text"
+      class="mentor-filter__input"
+      placeholder="Tên công ty"
+    />
+    <input
+      type="text"
+      class="mentor-filter__input"
+      placeholder="Vị trí"
+    />
+    <select class="mentor-filter__select">
+      <option selected>Lịch rảnh</option>
+      <option>Hôm nay</option>
+      <option>Cuối tuần</option>
+      <option>Tuần sau</option>
+    </select>
+
+    <button type="submit" class="mentor-filter__button">ÁP DỤNG</button>
+  </form>
+
+  <!-- Danh sách Mentor -->
+  <div class="mentor-grid">
+    <!-- Mentor Card -->
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+    <a href="/pages/profileMentor.html" class="mentor-card">
+      <img src="/public/assets/images/download.jpg" alt="Hoang Thi Thu Thuy" class="mentor-card__image" />
+      <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
+      <p class="mentor-card__position">
+        Head of Trade Marketing tại Reckitt Hong Kong
+      </p>
+      <div class="mentor-card__info">
+        <p><i class="fas fa-calendar-alt"></i> Lịch rảnh: <strong>17:00, 10/10/2025</strong></p>
+        <p><i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp; <i class="fas fa-heart"></i> 5</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+    <!-- Pagination -->
+<nav class="pagination">
+  <ul class="pagination__list">
+    <li class="pagination__item pagination__item--active">
+      <a href="#" class="pagination__link">1</a>
+    </li>
+    <li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
+    <li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
+    <li class="pagination__item"><a href="#" class="pagination__link">4</a></li>
+    <li class="pagination__item"><a href="#" class="pagination__link">5</a></li>
+    <li class="pagination__item">
+      <a href="#" class="pagination__link">
+        <i class="fas fa-angle-right"></i>
+      </a>
+    </li>
+    <li class="pagination__item">
+      <a href="#" class="pagination__link">
+        <i class="fas fa-angle-double-right"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+</body>
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Cột 1: Liên hệ -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin liên hệ</h3>
+      <ul class="footer__list">
+        <li>Điện thoại: <strong>03636363636</strong></li>
+        <li>Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a></li>
+        <li>
+          CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI
+        </li>
+        <li>
+          Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM
+        </li>
+      </ul>
+
+      <div class="footer__socials">
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-messenger"></i></a>
+      </div>
+    </div>
+
+    <!-- Cột 2: Thông tin -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin</h3>
+      <ul class="footer__list">
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="#">Trung tâm hỗ trợ</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Khoá học -->
+    <div class="footer__column">
+      <h3 class="footer__title">Khoá học</h3>
+      <ul class="footer__list">
+        <li><a href="#">Khoá học của tôi</a></li>
+        <li><a href="#">Dành cho bạn</a></li>
+        <li><a href="#">Chính sách hoàn tiền</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 4: Chương trình cố vấn -->
+    <div class="footer__column">
+      <h3 class="footer__title">Chương trình cố vấn</h3>
+      <ul class="footer__list">
+        <li><a href="#">Danh sách mentor</a></li>
+        <li><a href="#">Lĩnh vực</a></li>
+        <li><a href="#">Chủ đề</a></li>
+        <li><a href="#">Mentor Blog</a></li>
+        <li><a href="#">Đăng ký làm mentor</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+  </div>
+</footer>
+</html>

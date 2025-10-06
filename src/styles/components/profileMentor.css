@@ -1,0 +1,348 @@
+/* Tổng thể */
+.mentor-profile {
+  width: 100%;
+  background-color: var(--background, #f5f5f5);
+  display: flex;
+  justify-content: center;
+  padding: 130px 0;
+}
+
+/* Container hiển thị 1 khối duy nhất */
+.mentor-profile__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Card mentor */
+.mentor-profile__card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ảnh nền trên cùng */
+.mentor-profile__banner {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
+.mentor-profile__banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.2);
+}
+
+/* Thông tin overlay */
+.mentor-profile__info {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.mentor-profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mentor-profile__text {
+  color: #fff;
+  text-align: left;
+}
+
+.mentor-profile__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.mentor-profile__position {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+}
+
+.mentor-profile__status {
+  position: absolute;
+      right: 359px;
+    bottom: 93px;
+    width: 17px;
+    height: 17px;
+  background: #10b981;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Nội dung dưới banner */
+.mentor-profile__details {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mentor-profile__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  color: var(--primary-text, #065f46);
+  font-weight: 500;
+  justify-content: center;
+}
+
+.mentor-profile__stats i {
+  margin-right: 5px;
+  color: var(--primary-link, #2563eb);
+}
+
+/* Các nút hành động */
+.mentor-profile__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.mentor-profile__btn {
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mentor-profile__btn--primary {
+  background-color: var(--primary-text, #065f46);
+  color: #fff;
+}
+
+.mentor-profile__btn--primary:hover {
+  background-color: var(--primary-link, #047857);
+  transform: translateY(-2px);
+}
+
+.mentor-profile__btn--secondary {
+  background: transparent;
+  border: 2px solid var(--primary-text, #065f46);
+  color: var(--primary-text, #065f46);
+}
+
+.mentor-profile__btn--secondary:hover {
+  background-color: var(--primary-link, #047857);
+  color: #fff;
+}
+
+/* Ẩn hoàn toàn phần quảng cáo nếu còn */
+.mentor-profile__banner-right,
+.mentor-profile__ad-img {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mentor-profile {
+    padding: 20px 0;
+  }
+
+  .mentor-profile__avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .mentor-profile__name {
+    font-size: 1.3rem;
+  }
+
+  .mentor-profile__details {
+    padding: 1rem;
+  }
+
+  .mentor-profile__stats {
+    gap: 1rem;
+  }
+}
+
+
+.mentor-detail {
+  background-color: #f9fafb;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.mentor-detail__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+  border-left: 4px solid var(--primary-text);
+  padding-left: 10px;
+}
+
+.mentor-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.work-item,
+.edu-item,
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.work-logo,
+.edu-logo,
+.activity-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.skills-grid div {
+  background: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Cột phải */
+.mentor-detail__right {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.mentor-detail__right h3 {
+  color: var(--primary-text);
+  margin-bottom: 1.2rem;
+  border-left: 4px solid var(--primary-text);
+  padding-left: 10px;
+}
+
+.mentor-suggest__profile{
+    padding: 6px 0;
+}
+
+.mentor-suggest {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mentor-suggest li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.mentor-suggest img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mentor-suggest h4 {
+  margin: 0;
+  color: #222;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mentor-suggest p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .mentor-detail__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mentor-tabs {
+  display: flex;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-tab {
+  background: none;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.mentor-tab.active {
+  color: var(--primary-text);
+  border-bottom: 3px solid var(--primary-text);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Giữ lại phần style cũ */
+.section-title {
+  font-size: 1.3rem;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+  border-left: 4px solid var(--primary-text);
+  padding-left: 10px;
+}
+

@@ -460,7 +460,7 @@
   }
 }
 
-.courses, .course__vip {
+.courses {
   background-color: var(--background);
   padding: 60px 0;
   text-align: center;

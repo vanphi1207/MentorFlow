@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/profileMentor.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <title>Nguyễn Văn Huy</title>
+</head>
+<body>
+    <header>
+      <!-- navbar -->
+        <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="mentor-profile">
+  <div class="mentor-profile__container">
+    <!-- Khung trái: Thông tin mentor -->
+    <div class="mentor-profile__card">
+      <div class="mentor-profile__banner">
+        <img
+          src="/public/assets/images/hero.jpg"
+          alt="Mentor background"
+          class="mentor-profile__banner-img"
+        />
+        <div class="mentor-profile__info">
+          <img
+            src="/public/assets/images/download.jpg"
+            alt="Huỳnh Thiện Nhân"
+            class="mentor-profile__avatar"
+          />
+          <div class="mentor-profile__text">
+            <h2 class="mentor-profile__name">HUỲNH THIỆN NHÂN</h2>
+            <p class="mentor-profile__position">
+              Demand Planning Supervisor tại Masan Consumer
+            </p>
+          </div>
+          <span class="mentor-profile__status"></span>
+        </div>
+      </div>
+
+      <div class="mentor-profile__details">
+        <div class="mentor-profile__stats">
+          <p><i class="fas fa-user"></i> 1 mentee</p>
+          <p><i class="fas fa-clock"></i> 1 h</p>
+          <p><i class="fas fa-star"></i> 5.0/5</p>
+          <p><i class="fas fa-heart"></i> 2</p>
+        </div>
+
+        <div class="mentor-profile__actions">
+          <button class="mentor-profile__btn mentor-profile__btn--primary">
+            Đặt lịch ngay
+          </button>
+          <button class="mentor-profile__btn mentor-profile__btn--secondary">
+            Theo dõi
+          </button>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="mentor-detail">
+  <div class="mentor-detail__container">
+
+    <!-- CỘT TRÁI -->
+    <div class="mentor-detail__left">
+
+      <!-- Tabs -->
+      <div class="mentor-tabs">
+        <button class="mentor-tab active" data-tab="profile">Hồ sơ</button>
+        <button class="mentor-tab" data-tab="reviews">Đánh giá (2)</button>
+      </div>
+
+      <!-- Hồ sơ -->
+      <div id="profile" class="tab-content active">
+        <div class="mentor-section">
+          <h2 class="section-title">Giới thiệu bản thân</h2>
+          <p>Short-term: I am seeking a Demand Planning position in the FMCG or manufacturing industry and become a Team Leader within a year...</p>
+        </div>
+
+        <div class="mentor-section">
+          <h2 class="section-title">Kinh nghiệm làm việc</h2>
+          <div class="work-item">
+            <img src="/public/assets/images/hero.jpg" alt="Masan logo" class="work-logo" />
+            <div>
+              <h3>Demand Planning Supervisor</h3>
+              <p>Masan Consumer</p>
+              <small>05/2024 - Hiện tại</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="mentor-section">
+          <h2 class="section-title">Quá trình học tập</h2>
+          <div class="edu-item">
+            <img src="/public/assets/images/hero.jpg" alt="VNU logo" class="edu-logo" />
+            <div>
+              <h3>International University, VNU HCMC</h3>
+              <p>Bachelor of Engineering in Logistics and Supply Chain Management</p>
+              <small>08/2019 - 08/2023</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="mentor-section">
+          <h2 class="section-title">Hoạt động ngoại khóa</h2>
+          <div class="activity-item">
+            <img src="/public/assets/images/hero.jpg" alt="Volunteer" class="activity-logo" />
+            <div>
+              <h3>Basketball for Hearing Impaired Kids</h3>
+              <p>Teaching Volunteer </p>
+              <small>10/2021 - 03/2022</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="mentor-section">
+          <h2 class="section-title">Giải thưởng</h2>
+          <ul>
+            <li>Top 12 Team of LOGin Contest 2022</li>
+            <li>Top 25 in SCMission Contest 2022</li>
+          </ul>
+        </div>
+
+        <div class="mentor-section">
+          <h2 class="section-title">Kỹ năng & Chứng chỉ</h2>
+          <div class="skills-grid">
+            <div>Python</div>
+            <div>IELTS 6.0</div>
+            <div>Google Data Analytics</div>
+            <div>Six Sigma Yellow Belt</div>
+            <div>Machine Learning for Production (MLOps)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Đánh giá -->
+      <div id="reviews" class="tab-content">
+        <div class="mentor-section">
+          <h2 class="section-title">Đánh giá từ mentee</h2>
+          <div class="review">
+            <p><strong>Nguyễn Minh Anh:</strong> Mentor rất nhiệt tình và thân thiện. Giúp mình định hướng được rõ ràng con đường sự nghiệp 💚</p>
+          </div>
+          <div class="review">
+            <p><strong>Trần Hữu Duy:</strong> Kiến thức chuyên môn tốt, chia sẻ dễ hiểu, cảm ơn mentor rất nhiều!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CỘT PHẢI -->
+    <aside class="mentor-detail__right">
+      <h3>Có thể bạn quan tâm</h3>
+      <ul class="mentor-suggest">
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Trung Phạm</h4><p>Program Manager tại Coffee Platform</p> </div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Nguyễn Quỳnh Chi</h4><p>Trưởng ban nhân sự tại iSteps</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Hồng Vân Nguyễn</h4><p>Head of Business Dev tại ByteNext</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Trần Việt Dũng</h4><p>Planning Specialist tại VAD</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Vũ Khánh Linh</h4><p>Mentor & Lecturer tại Mentori</p></div></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
