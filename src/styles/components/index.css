@@ -726,6 +726,10 @@
   font-size: 0.95rem;
   margin-bottom: 1rem;
   line-height: 1.6;
+  text-decoration: none;
+}
+.blog-card__desc:hover{
+  color: var(--primary-link);
 }
 
 .blog-card__stats {

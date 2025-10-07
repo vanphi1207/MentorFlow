@@ -54,7 +54,7 @@
 
   <!-- Ô tạo bài viết -->
   <div class="create-post">
-    <img src="/public/assets/images/download.jpg" alt="Avatar" class="avatar" />
+    <a href="/pages/profileMentor.html"><img src="/public/assets/images/download.jpg" alt="Avatar" class="avatar" /></a>  
     <input
       placeholder="Huy ơi, bạn đang nghĩ gì thế?"
       class="post-input"
@@ -75,7 +75,7 @@
 
     <div class="popup-body">
       <div class="user-info user-info__popup">
-        <img src="/public/assets/images/download.jpg" alt="Avatar">
+         <a href="/pages/profileMentor.html"><img src="/public/assets/images/download.jpg" alt="Avatar"></a>
         <div>
           <p class="user-name">Huy Lâm</p>
         </div>
@@ -105,9 +105,9 @@
   <section class="feed-container">
     <div class="post">
       <div class="post-header">
-        <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
+        <a href="/pages/profileMentor.html"><div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div></a> 
         <div class="user-info">
-          <div class="username">Nguyễn Văn A</div>
+          <a href="/pages/profileMentor.html" class="username">Nguyễn Văn A</a>
           <div class="timestamp">2 giờ trước</div>
         </div>
       </div>
@@ -116,14 +116,28 @@
         <img class="post-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU">
       </div>
       <div class="post-actions">
-        <button>👍 Thích</button><button>💬 Bình luận</button><button>↗️ Chia sẻ</button>
-      </div>
+            <button class="action-btn like-btn" >
+                <span class="icon">♡</span>
+                <span>Thích</span>
+            </button>
+            <button class="action-btn comment-btn">
+                <span class="icon">💬</span>
+                <span>Bình luận</span>
+            </button>
+        </div>
+        <div class="likes">35 lượt thích</div>
+      <div class="comment-section">
+            <div class="comment-input">
+                <input type="text" placeholder="Thêm bình luận...">
+                <button class="post-btn__cmt">Đăng</button>
+            </div>
+        </div>
     </div>
     <div class="post">
       <div class="post-header">
-        <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
+        <a href="/pages/profileMentor.html"><div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div></a> 
         <div class="user-info">
-          <div class="username">Nguyễn Văn A</div>
+          <a href="/pages/profileMentor.html" class="username">Nguyễn Văn A</a>
           <div class="timestamp">2 giờ trước</div>
         </div>
       </div>
@@ -132,8 +146,22 @@
         <img class="post-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU">
       </div>
       <div class="post-actions">
-        <button>👍 Thích</button><button>💬 Bình luận</button><button>↗️ Chia sẻ</button>
-      </div>
+            <button class="action-btn like-btn" >
+                <span class="icon">♡</span>
+                <span>Thích</span>
+            </button>
+            <button class="action-btn comment-btn">
+                <span class="icon">💬</span>
+                <span>Bình luận</span>
+            </button>
+        </div>
+        <div class="likes">35 lượt thích</div>
+      <div class="comment-section">
+            <div class="comment-input">
+                <input type="text" placeholder="Thêm bình luận...">
+                <button class="post-btn__cmt">Đăng</button>
+            </div>
+        </div>
     </div>
     
     <div class="notification">

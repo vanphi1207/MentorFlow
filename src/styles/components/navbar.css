@@ -62,16 +62,17 @@ nav {
 .btn-login, .btn-register {
   background: var(--primary-background);
   color: white;
-  padding: 12px 30px;
+  padding: 4px 20px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;
   transition: transform 0.3s, box-shadow 0.3s;
+  align-content: center;
 }
 .btn-register {
   background: var(--primary-background);
   color: white;
-  padding: 12px 40px;
+    padding: 4px 35px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;

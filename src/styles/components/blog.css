@@ -249,6 +249,12 @@ textarea {
 
     .user-info .username {
       font-weight: 600;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    .user-info .username:hover{
+      text-decoration:underline;
+      cursor: pointer;
     }
 
     .user-info .timestamp {
@@ -269,7 +275,8 @@ textarea {
       display: flex;
       justify-content: space-between;
       border-top: 1px solid #eee;
-      padding-top: 10px;
+      padding: 10px 0px 0px 10px;
+      width: 300px;
     }
 
     .post-actions button {
@@ -288,3 +295,73 @@ textarea {
     .notification{
         text-align: center;
     }
+
+
+
+    .comment-section {
+             /* border-top: 1px solid #efefef; */
+                padding: 16px 4px 4px 4px;
+        }
+        
+        .comment-input {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .comment-input input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            padding: 10px;
+            background: var(--background);
+            border-radius: 15px;
+        }
+        
+        .comment-input input::placeholder {
+            color: #8e8e8e;
+        }
+        
+        .post-btn__cmt {
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 70px;}
+        
+        .post-btn__cmt:hover {
+            color: #00376b;
+        }
+
+        
+.action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #262626;
+            transition: transform 0.2s;
+        }
+        
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .action-btn.active {
+            color: #ed4956;
+        }
+        
+        .action-btn.active.comment-btn {
+            color: #0095f6;
+        }
+
+
+.likes{
+  padding: 6px 0 0 10px;
+}
