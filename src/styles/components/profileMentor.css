@@ -83,10 +83,10 @@
 
 .mentor-profile__status {
   position: absolute;
-      right: 359px;
-    bottom: 93px;
-    width: 17px;
-    height: 17px;
+  right: 359px;
+  bottom: 93px;
+  width: 17px;
+  height: 17px;
   background: #10b981;
   border-radius: 50%;
   border: 2px solid white;
@@ -183,7 +183,6 @@
   }
 }
 
-
 .mentor-detail {
   background-color: #f9fafb;
   padding: 40px 0;
@@ -220,17 +219,48 @@
 .edu-item,
 .activity-item {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 15px;
 }
 
 .work-logo,
 .edu-logo,
 .activity-logo {
-  width: 45px;
-  height: 45px;
-  border-radius: 6px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.work-item > div,
+.edu-item > div,
+.activity-item > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.work-item h3,
+.edu-item h3,
+.activity-item h3 {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.work-item p,
+.edu-item p,
+.activity-item p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.work-item small,
+.edu-item small,
+.activity-item small {
+  margin: 0;
+  line-height: 1.4;
 }
 
 .skills-grid {
@@ -262,8 +292,8 @@
   padding-left: 10px;
 }
 
-.mentor-suggest__profile{
-    padding: 6px 0;
+.mentor-suggest__profile {
+  padding: 6px 0;
 }
 
 .mentor-suggest {
@@ -345,4 +375,3 @@
   border-left: 4px solid var(--primary-text);
   padding-left: 10px;
 }
-
