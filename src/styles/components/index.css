@@ -728,7 +728,7 @@
   line-height: 1.6;
   text-decoration: none;
 }
-.blog-card__desc:hover{
+.blog-card__desc:hover {
   color: var(--primary-link);
 }
 

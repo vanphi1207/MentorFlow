@@ -1,5 +1,3 @@
-
-
 .community-hero {
   position: relative;
   width: 100%;
@@ -63,7 +61,7 @@
 }
 
 .community-search__button {
-  background-color: var( --primary-text);
+  background-color: var(--primary-text);
   color: #fff;
   padding: 12px 24px;
   border: none;
@@ -95,9 +93,6 @@
     min-width: 100%;
   }
 }
-
-
-
 
 .mentor-list {
   background: var(--background);
@@ -224,20 +219,16 @@
   }
 }
 
-
-
-
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--background);
   padding: 1rem 0 4.5rem; /* chỉ giữ khoảng cách nhỏ */
-  margin: 0;       /* xoá khoảng trống */
+  margin: 0; /* xoá khoảng trống */
   box-shadow: none;
   position: static; /* không cần relative hoặc bottom */
 }
-
 
 .pagination__list {
   list-style: none;
