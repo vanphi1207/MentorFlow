@@ -146,6 +146,11 @@
   height: 40px;
   border-radius: 50%;
 }
+.user-info__popup{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 
 /* Ô nhập bài */
 textarea {
