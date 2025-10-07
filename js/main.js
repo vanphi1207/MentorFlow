@@ -12,3 +12,48 @@
     });
   });
 
+
+
+// tha cam xuc cmt  
+        let liked = false;
+        let likeCount = 125;
+        
+        function toggleLike() {
+            const likeIcon = document.getElementById('likeIcon');
+            const likeText = document.getElementById('likeText');
+            const likesCount = document.getElementById('likesCount');
+            const likeBtn = document.querySelector('.like-btn');
+            
+            liked = !liked;
+            
+            if (liked) {
+                likeIcon.textContent = '❤️';
+                likeText.textContent = 'Đã thích';
+                likeBtn.classList.add('active');
+                likeCount++;
+            } else {
+                likeIcon.textContent = '♡';
+                likeText.textContent = 'Thích';
+                likeBtn.classList.remove('active');
+                likeCount--;
+            }
+            
+            likesCount.textContent = likeCount + ' lượt thích';
+        }
+        
+        function postComment() {
+            const input = document.getElementById('commentInput');
+            if (input.value.trim()) {
+                alert('Đã đăng bình luận: ' + input.value);
+                input.value = '';
+            }
+        }
+        
+        document.getElementById('commentInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                postComment();
+            }
+        });
+
+
+

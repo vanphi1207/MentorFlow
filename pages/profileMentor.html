@@ -24,7 +24,7 @@
           </a>
           <ul class="navbar__links">
             <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
             <li><a href="#">Khóa học</a></li>
             <li><a href="#">Cách hoạt động</a></li>
           </ul>
@@ -92,6 +92,8 @@
       <div class="mentor-tabs">
         <button class="mentor-tab active" data-tab="profile">Hồ sơ</button>
         <button class="mentor-tab" data-tab="reviews">Đánh giá (2)</button>
+        <button class="mentor-tab" data-tab="post">Bài đăng (1)</button>
+        <button class="mentor-tab" data-tab="course">Khóa học (3)</button>
       </div>
 
       <!-- Hồ sơ -->
@@ -169,17 +171,96 @@
           </div>
         </div>
       </div>
+
+
+      <div id="post" class="tab-content post-container">
+        <div class="post-header">
+            <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
+            <div class="user-info">
+                <div class="username">Nguyễn Văn Huy</div>
+                <div class="timestamp">2 giờ trước</div>
+            </div>
+        </div>
+        
+        <!-- ✅ Ảnh bài đăng -->
+        <div class="post-image">
+            <img src="https://m.yodycdn.com/blog/anh-nen-naruto-yody-vn-5.jpg" alt="Ảnh bài đăng">
+        </div>
+        
+        <div class="post-actions">
+            <button class="action-btn like-btn" onclick="toggleLike()">
+                <span class="icon" id="likeIcon">♡</span>
+                <span id="likeText">Thích</span>
+            </button>
+            <button class="action-btn comment-btn">
+                <span class="icon">💬</span>
+                <span>Bình luận</span>
+            </button>
+        </div>
+        
+        <div class="post-content">
+            <div class="likes" id="likesCount">125 lượt thích</div>
+            <div class="caption">
+                <span class="username">Nguyễn Văn A</span>
+                Chuyến du lịch tuyệt vời! Cảnh đẹp quá mọi người ơi 🌟✨
+            </div>
+        </div>
+        
+        <div class="comment-section">
+            <div class="comment-input">
+                <input type="text" placeholder="Thêm bình luận..." id="commentInput">
+                <button class="post-btn" onclick="postComment()">Đăng</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="course" class="tab-content course-list">
+  <h2>Danh sách khóa học</h2>
+
+  <div class="course-item">
+    <img src="/public/assets/images/download.jpg" alt="Khóa học 1">
+    <div class="course-info">
+      <a href="#">Khóa học Lập trình Web Fullstack</a>
+      <p>Học HTML, CSS, JavaScript, React, Node.js và cơ sở dữ liệu từ cơ bản đến nâng cao.</p>
+      <span class="duration">⏱ 6 tháng</span>
+      <span class="price">2.500.000đ</span>
+    </div>
+  </div>
+
+  <div class="course-item">
+    <img src="/public/assets/images/download.jpg" alt="Khóa học 2">
+    <div class="course-info">
+      <a href="#">Khóa học Thiết kế UI/UX</a>
+      <p>Học tư duy thiết kế, màu sắc, bố cục và sử dụng Figma để tạo giao diện chuyên nghiệp.</p>
+      <span class="duration">⏱ 3 tháng</span>
+      <span class="price">1.800.000đ</span>
+    </div>
+  </div>
+
+  <div class="course-item">
+    <img src="/public/assets/images/download.jpg" alt="Khóa học 3">
+    <div class="course-info">
+      <a href="#">Khóa học Python cơ bản</a>
+      <p>Hiểu ngôn ngữ lập trình Python qua bài tập, dự án và ứng dụng thực tế.</p>
+      <span class="duration">⏱ 2 tháng</span>
+      <span class="price">1.200.000đ</span>
+    </div>
+  </div>
+</div>
+
+
     </div>
 
     <!-- CỘT PHẢI -->
     <aside class="mentor-detail__right">
       <h3>Có thể bạn quan tâm</h3>
       <ul class="mentor-suggest">
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Trung Phạm</h4><p>Program Manager tại Coffee Platform</p> </div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Nguyễn Quỳnh Chi</h4><p>Trưởng ban nhân sự tại iSteps</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Hồng Vân Nguyễn</h4><p>Head of Business Dev tại ByteNext</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Trần Việt Dũng</h4><p>Planning Specialist tại VAD</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><h4>Vũ Khánh Linh</h4><p>Mentor & Lecturer tại Mentori</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Trung Phạm</a><p>Program Manager tại Coffee Platform</p> </div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Nguyễn Quỳnh Chi</a><p>Trưởng ban nhân sự tại iSteps</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Hồng Vân Nguyễn</a><p>Head of Business Dev tại ByteNext</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Trần Việt Dũng</a><p>Planning Specialist tại VAD</p></div></li>
+        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#"> Vũ Khánh Linh</a><p>Mentor & Lecturer tại Mentori</p></div></li>
       </ul>
     </aside>
   </div>
@@ -187,4 +268,64 @@
 
   <script src="/js/main.js"></script>
 </body>
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Cột 1: Liên hệ -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin liên hệ</h3>
+      <ul class="footer__list">
+        <li>Điện thoại: <strong>03636363636</strong></li>
+        <li>Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a></li>
+        <li>
+          CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI
+        </li>
+        <li>
+          Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM
+        </li>
+      </ul>
+
+      <div class="footer__socials">
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-messenger"></i></a>
+      </div>
+    </div>
+
+    <!-- Cột 2: Thông tin -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin</h3>
+      <ul class="footer__list">
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="#">Trung tâm hỗ trợ</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Khoá học -->
+    <div class="footer__column">
+      <h3 class="footer__title">Khoá học</h3>
+      <ul class="footer__list">
+        <li><a href="#">Khoá học của tôi</a></li>
+        <li><a href="#">Dành cho bạn</a></li>
+        <li><a href="#">Chính sách hoàn tiền</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 4: Chương trình cố vấn -->
+    <div class="footer__column">
+      <h3 class="footer__title">Chương trình cố vấn</h3>
+      <ul class="footer__list">
+        <li><a href="#">Danh sách mentor</a></li>
+        <li><a href="#">Lĩnh vực</a></li>
+        <li><a href="#">Chủ đề</a></li>
+        <li><a href="#">Mentor Blog</a></li>
+        <li><a href="#">Đăng ký làm mentor</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+  </div>
+</footer>
 </html>

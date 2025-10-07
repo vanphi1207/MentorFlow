@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/blog.css" />
+    <script src="/js/blog.js"></script>
+
+
+
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <title>Blog</title>
+
+</head>
+<body>
+  <header>
+      <!-- navbar -->
+        <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="#">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <section class="community-hero">
+    <div class="community-hero__overlay">
+      <div class="community-hero__content">
+        <h1 class="community-hero__title">CỘNG ĐỒNG MENTOR</h1>
+        <p class="community-hero__subtitle">
+          Trang chia sẻ các kiến thức và giải đáp các vấn đề về lập trình.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ô tạo bài viết -->
+  <div class="create-post">
+    <img src="/public/assets/images/download.jpg" alt="Avatar" class="avatar" />
+    <input
+      placeholder="Huy ơi, bạn đang nghĩ gì thế?"
+      class="post-input"
+      readonly
+      onclick="openPopup()"
+    />
+  </div>
+
+<!-- popup đăng bài viết -->
+<button class="open-btn" onclick="openPopup()">Tạo bài viết</button>
+
+<div class="post-popup" id="postPopup">
+  <div class="post-popup-content">
+    <div class="popup-header">
+      <h2>Tạo bài viết</h2>
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+    </div>
+
+    <div class="popup-body">
+      <div class="user-info">
+        <img src="/public/assets/images/download.jpg" alt="Avatar">
+        <div>
+          <p class="user-name">Huy Lâm</p>
+        </div>
+      </div>
+
+      <textarea id="postText" placeholder="Huy ơi, bạn đang nghĩ gì thế?"></textarea>
+
+      <!-- Khu vực chọn ảnh -->
+      <div class="image-upload">
+        <label for="imageInput" class="upload-label">
+          🖼️ Thêm ảnh/video
+        </label>
+        <input type="file" id="imageInput" accept="image/*" multiple hidden>
+      </div>
+
+      <!-- Hiển thị ảnh xem trước -->
+      <div class="image-preview" id="imagePreview"></div>
+    </div>
+
+    <button id="postBtn" class="post-btn" disabled>Đăng</button>
+  </div>
+</div>
+
+
+
+  <!-- Danh sách bài viết -->
+  <section class="feed-container">
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
+        <div class="user-info">
+          <div class="username">Nguyễn Văn A</div>
+          <div class="timestamp">2 giờ trước</div>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>Mọi người ơi, mình vừa học xong ReactJS căn bản 😄</p>
+        <img class="post-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU">
+      </div>
+      <div class="post-actions">
+        <button>👍 Thích</button><button>💬 Bình luận</button><button>↗️ Chia sẻ</button>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
+        <div class="user-info">
+          <div class="username">Nguyễn Văn A</div>
+          <div class="timestamp">2 giờ trước</div>
+        </div>
+      </div>
+      <div class="post-content">
+        <p>Mọi người ơi, mình vừa học xong ReactJS căn bản 😄</p>
+        <img class="post-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU">
+      </div>
+      <div class="post-actions">
+        <button>👍 Thích</button><button>💬 Bình luận</button><button>↗️ Chia sẻ</button>
+      </div>
+    </div>
+    
+    <div class="notification">
+        <span>Không còn bài đăng nào khác</span>
+    </div>
+  </section>
+</body>
+
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Cột 1: Liên hệ -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin liên hệ</h3>
+      <ul class="footer__list">
+        <li>Điện thoại: <strong>03636363636</strong></li>
+        <li>Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a></li>
+        <li>
+          CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI
+        </li>
+        <li>
+          Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM
+        </li>
+      </ul>
+
+      <div class="footer__socials">
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-messenger"></i></a>
+      </div>
+    </div>
+
+    <!-- Cột 2: Thông tin -->
+    <div class="footer__column">
+      <h3 class="footer__title">Thông tin</h3>
+      <ul class="footer__list">
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Cộng đồng</a></li>
+        <li><a href="#">Trung tâm hỗ trợ</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Khoá học -->
+    <div class="footer__column">
+      <h3 class="footer__title">Khoá học</h3>
+      <ul class="footer__list">
+        <li><a href="#">Khoá học của tôi</a></li>
+        <li><a href="#">Dành cho bạn</a></li>
+        <li><a href="#">Chính sách hoàn tiền</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 4: Chương trình cố vấn -->
+    <div class="footer__column">
+      <h3 class="footer__title">Chương trình cố vấn</h3>
+      <ul class="footer__list">
+        <li><a href="#">Danh sách mentor</a></li>
+        <li><a href="#">Lĩnh vực</a></li>
+        <li><a href="#">Chủ đề</a></li>
+        <li><a href="#">Mentor Blog</a></li>
+        <li><a href="#">Đăng ký làm mentor</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+  </div>
+</footer>
+</html>
