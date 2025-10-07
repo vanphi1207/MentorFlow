@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Kích hoạt nút đăng khi có nội dung hoặc ảnh
-  postText.addEventListener('input', checkPostValid);
+  postText.addEventListener('input', checkPostValid);   
 
   function checkPostValid() {
     const hasText = postText.value.trim() !== '';
