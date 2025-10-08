@@ -59,3 +59,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // hien thi pop up mo bai viet
+
+document.addEventListener("DOMContentLoaded", () => {
+  const popupOverlay = document.getElementById("popupOverlay");
+  const popupContainer = document.getElementById("popupContainer");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // 👉 Hàm mở popup bài viết
+  window.openArticlePopup = function () {
+    popupOverlay.style.display = "flex";
+    popupContainer.classList.add("show"); // thêm hiệu ứng nếu muốn
+  };
+
+  // 👉 Hàm đóng popup bài viết
+  window.closeArticlePopup = function () {
+    popupOverlay.style.display = "none";
+    popupContainer.classList.remove("show");
+  };
+
+  // 👉 Khi click nút đóng
+  closeBtn.addEventListener("click", closeArticlePopup);
+
+  // 👉 Khi click ra ngoài popup
+  window.addEventListener("click", function (event) {
+    if (event.target === popupOverlay) {
+      closeArticlePopup();
+    }
+  });
+});
