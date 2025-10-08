@@ -153,7 +153,7 @@ body {
 }
 
 /* Ô nhập bài */
-textarea {
+.popup-body textarea {
   width: 100%;
   height: 100px;
   margin-top: 10px;
@@ -363,13 +363,399 @@ textarea {
   color: #0095f6;
 }
 
-
-.react__happy{
+.react__happy {
   display: flex;
 }
 .likes {
   padding: 6px 0 0 10px;
 }
-.comments{
+.comments {
   padding: 6px 0px 0px 120px;
+}
+
+/* pop up mở bài viết */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.popup-container {
+  background: #242526;
+  border-radius: 8px;
+  width: 680px;
+  max-width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.popup-header__article {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid #3e4042;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background: #242526;
+  z-index: 10;
+}
+
+.popup-title {
+  color: #e4e6eb;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.close-btn__article {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: #3a3b3c;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b0b3b8;
+  font-size: 24px;
+}
+
+.close-btn__article:hover {
+  background: #4e4f50;
+}
+
+.post-header__article {
+  padding: 16px;
+}
+
+.user-info__article {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.user-details h3 {
+  color: #e4e6eb;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.user-details h3 span {
+  font-weight: 400;
+  color: #1877f2;
+}
+
+.user-details p {
+  color: #b0b3b8;
+  font-size: 13px;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.post-content__article {
+  padding: 0 16px 16px;
+  color: #e4e6eb;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.post-image__article {
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-image__article img {
+  width: 100%;
+  display: block;
+}
+
+.post-stats {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #b0b3b8;
+  font-size: 15px;
+  border-bottom: 1px solid #3e4042;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reaction-icons {
+  display: flex;
+  margin-right: 6px;
+}
+
+.reaction-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-left: -4px;
+  border: 2px solid #242526;
+}
+
+.reaction-icon:first-child {
+  margin-left: 0;
+}
+
+.comments-count {
+  cursor: pointer;
+}
+
+.comments-count:hover {
+  text-decoration: underline;
+}
+
+.post-actions__article {
+  padding: 8px 16px;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid #3e4042;
+}
+
+.action-btn__article {
+  flex: 1;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: #b0b3b8;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.action-btn__article:hover {
+  background: #3a3b3c;
+}
+
+.comments-section {
+  padding: 16px;
+}
+
+.sort-comments {
+  margin-bottom: 16px;
+}
+
+.sort-btn {
+  background: transparent;
+  border: none;
+  color: #b0b3b8;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.sort-btn:hover {
+  background: #3a3b3c;
+}
+
+.comment-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-bubble {
+  background: #3a3b3c;
+  border-radius: 18px;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+.comment-author {
+  color: #e4e6eb;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.comment-text {
+  color: #e4e6eb;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+  padding-left: 12px;
+}
+
+.comment-action {
+  color: #b0b3b8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.comment-action:hover {
+  text-decoration: underline;
+}
+
+.comment-action.liked {
+  color: #1877f2;
+}
+
+.comment-action .like-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.comment-input-section {
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-top: 1px solid #3e4042;
+  position: sticky;
+  bottom: 0;
+  background: #242526;
+}
+
+.input-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  flex-shrink: 0;
+}
+
+.comment-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-input__article {
+  flex: 1;
+  padding: 8px 12px;
+  background: #3a3b3c;
+  border: none;
+  border-radius: 18px;
+  color: #e4e6eb;
+  font-size: 15px;
+  outline: none;
+  resize: none;
+  min-height: 36px;
+  max-height: 100px;
+  font-family: inherit;
+}
+
+.comment-input::placeholder {
+  color: #b0b3b8;
+}
+
+.icon-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: #b0b3b8;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background: #3a3b3c;
+}
+
+.send-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: #1877f2;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover {
+  opacity: 0.8;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #242526;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4e4f50;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5e5f60;
+}
+
+@media (max-width: 768px) {
+  .popup-container {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
 }

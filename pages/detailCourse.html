@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/detailCourse.css" />
+    <script src="/js/detailCourse.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Detail Course</title>
+</head>
+<body>
+        <header>
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <h1> Khóa Học Trực Tuyến</h1>
+            <p>Học tập mọi lúc, mọi nơi với các khóa học chất lượng cao</p>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Phần bên trái - Thông tin khóa học -->
+            <div class="left-section">
+                <div class="course-info">
+                    <h2>Lập Trình Web Full-Stack với React & Node.js</h2>
+                    
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span>4.8</span>
+                            <span style="color: #666;">(15,420 học viên)</span>
+                        </div>
+                        <div class="meta-item">
+                            ⏱️ <span>42 giờ</span>
+                        </div>
+                        <div class="meta-item">
+                            📚 <span>156 bài học</span>
+                        </div>
+                        <div class="meta-item">
+                            📊 <span>Trung cấp</span>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">📝 Mô Tả Khóa Học</h3>
+                    <p class="description">
+                        Khóa học toàn diện về phát triển web từ frontend đến backend. Bạn sẽ học cách xây dựng ứng dụng web hoàn chỉnh với React, Node.js, Express và MongoDB. Khóa học bao gồm các dự án thực tế giúp bạn áp dụng kiến thức vào thực tiễn và phát triển portfolio chuyên nghiệp để tìm kiếm cơ hội việc làm.
+                    </p>
+
+                    <h3 class="section-title">✨ Điểm Nổi Bật</h3>
+                    <ul class="highlights">
+                        <li>Xây dựng 5+ dự án thực tế hoàn chỉnh từ đầu đến cuối</li>
+                        <li>Học từ cơ bản đến nâng cao, phù hợp với mọi trình độ</li>
+                        <li>Hỗ trợ tìm việc và chuẩn bị phỏng vấn sau khóa học</li>
+                        <li>Cấp chứng chỉ hoàn thành có giá trị được công nhận</li>
+                        <li>Truy cập trọn đời, học lại không giới hạn số lần</li>
+                        <li>Cập nhật nội dung mới miễn phí khi có thay đổi công nghệ</li>
+                    </ul>
+
+                    <h3 class="section-title">📚 Nội Dung Khóa Học</h3>
+                    <div class="curriculum">
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 1:</strong> HTML, CSS, JavaScript cơ bản - Nền tảng phát triển web
+                                    <span class="lesson-count">12 bài học • 4.5 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 Giới thiệu về HTML5 và cấu trúc trang web (15:30)</div>
+                                <div class="lesson-item">📹 CSS Fundamentals và Box Model (18:45)</div>
+                                <div class="lesson-item">📹 CSS Flexbox Layout (22:10)</div>
+                                <div class="lesson-item">📹 CSS Grid System (20:35)</div>
+                                <div class="lesson-item">📹 JavaScript Variables và Data Types (16:20)</div>
+                                <div class="lesson-item">📹 Functions và Scope (19:40)</div>
+                                <div class="lesson-item">📹 Arrays và Objects (21:15)</div>
+                                <div class="lesson-item">📹 DOM Manipulation (25:30)</div>
+                                <div class="lesson-item">📹 Event Handling (17:50)</div>
+                                <div class="lesson-item">📹 ES6+ Features (23:20)</div>
+                                <div class="lesson-item">📄 Quiz: HTML, CSS, JavaScript Basics</div>
+                                <div class="lesson-item">💻 Project: Xây dựng Landing Page</div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 2:</strong> React Hooks & Components - Xây dựng giao diện động
+                                    <span class="lesson-count">15 bài học • 5.2 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 Giới thiệu React và JSX (18:30)</div>
+                                <div class="lesson-item">📹 Components và Props (20:45)</div>
+                                <div class="lesson-item">📹 State và useState Hook (24:10)</div>
+                                <div class="lesson-item">📹 useEffect Hook và Side Effects (26:35)</div>
+                                <div class="lesson-item">📹 Conditional Rendering (15:20)</div>
+                                <div class="lesson-item">📹 Lists và Keys (17:40)</div>
+                                <div class="lesson-item">📹 Forms và Controlled Components (22:15)</div>
+                                <div class="lesson-item">📹 useContext Hook (21:30)</div>
+                                <div class="lesson-item">📹 useReducer Hook (23:50)</div>
+                                <div class="lesson-item">📹 Custom Hooks (19:20)</div>
+                                <div class="lesson-item">📹 React Router (25:45)</div>
+                                <div class="lesson-item">📹 Styling in React (16:30)</div>
+                                <div class="lesson-item">📄 Quiz: React Fundamentals</div>
+                                <div class="lesson-item">💻 Project: Todo App với React</div>
+                                <div class="lesson-item">💻 Project: Weather App với API</div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 3:</strong> Node.js & Express Framework - Phát triển Backend
+                                    <span class="lesson-count">14 bài học • 6.0 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 Giới thiệu Node.js và NPM (17:30)</div>
+                                <div class="lesson-item">📹 Modules và File System (19:45)</div>
+                                <div class="lesson-item">📹 Asynchronous JavaScript (24:10)</div>
+                                <div class="lesson-item">📹 Express.js Basics (22:35)</div>
+                                <div class="lesson-item">📹 Routing và Middleware (26:20)</div>
+                                <div class="lesson-item">📹 Request và Response Objects (18:40)</div>
+                                <div class="lesson-item">📹 Template Engines (20:15)</div>
+                                <div class="lesson-item">📹 Error Handling (21:30)</div>
+                                <div class="lesson-item">📹 File Upload (23:50)</div>
+                                <div class="lesson-item">📹 Environment Variables (15:20)</div>
+                                <div class="lesson-item">📹 Validation và Sanitization (19:45)</div>
+                                <div class="lesson-item">📄 Quiz: Node.js & Express</div>
+                                <div class="lesson-item">💻 Project: Blog API</div>
+                                <div class="lesson-item">💻 Project: File Upload Service</div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 4:</strong> MongoDB & Database Design - Quản lý dữ liệu
+                                    <span class="lesson-count">11 bài học • 4.8 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 Giới thiệu MongoDB và NoSQL (20:30)</div>
+                                <div class="lesson-item">📹 CRUD Operations (25:45)</div>
+                                <div class="lesson-item">📹 Mongoose ODM (24:10)</div>
+                                <div class="lesson-item">📹 Schema Design (22:35)</div>
+                                <div class="lesson-item">📹 Data Validation (18:20)</div>
+                                <div class="lesson-item">📹 Relationships và Populate (26:40)</div>
+                                <div class="lesson-item">📹 Indexes và Performance (21:15)</div>
+                                <div class="lesson-item">📹 Aggregation Pipeline (28:30)</div>
+                                <div class="lesson-item">📹 Transactions (19:50)</div>
+                                <div class="lesson-item">📄 Quiz: MongoDB</div>
+                                <div class="lesson-item">💻 Project: E-commerce Database</div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 5:</strong> RESTful API Development - Kết nối Frontend & Backend
+                                    <span class="lesson-count">13 bài học • 5.5 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 RESTful API Principles (18:30)</div>
+                                <div class="lesson-item">📹 HTTP Methods và Status Codes (22:45)</div>
+                                <div class="lesson-item">📹 API Design Best Practices (24:10)</div>
+                                <div class="lesson-item">📹 Building REST APIs với Express (26:35)</div>
+                                <div class="lesson-item">📹 API Versioning (17:20)</div>
+                                <div class="lesson-item">📹 Pagination và Filtering (21:40)</div>
+                                <div class="lesson-item">📹 CORS và API Security (23:15)</div>
+                                <div class="lesson-item">📹 Rate Limiting (18:30)</div>
+                                <div class="lesson-item">📹 API Documentation với Swagger (25:50)</div>
+                                <div class="lesson-item">📹 Testing APIs với Postman (20:20)</div>
+                                <div class="lesson-item">📹 Consuming APIs in React (27:45)</div>
+                                <div class="lesson-item">📄 Quiz: RESTful API</div>
+                                <div class="lesson-item">💻 Project: Social Media API</div>
+                            </div>
+                        </div>
+
+                        <div class="curriculum-item module-item">
+                            <div class="module-header" onclick="toggleModule(this)">
+                                <div>
+                                    <strong>Module 6:</strong> Authentication & Security - Bảo mật ứng dụng
+                                    <span class="lesson-count">10 bài học • 4.2 giờ</span>
+                                </div>
+                                <span class="toggle-icon">▼</span>
+                            </div>
+                            <div class="lesson-list">
+                                <div class="lesson-item">📹 Authentication vs Authorization (16:30)</div>
+                                <div class="lesson-item">📹 Password Hashing với bcrypt (20:45)</div>
+                                <div class="lesson-item">📹 JSON Web Tokens (JWT) (26:10)</div>
+                                <div class="lesson-item">📹 Session-based Authentication (22:35)</div>
+                                <div class="lesson-item">📹 OAuth 2.0 và Social Login (28:20)</div>
+                                <div class="lesson-item">📹 Role-based Access Control (24:40)</div>
+                                <div class="lesson-item">📹 Security Best Practices (21:15)</div>
+                                <div class="lesson-item">📹 HTTPS và SSL/TLS (18:30)</div>
+                                <div class="lesson-item">📄 Quiz: Authentication & Security</div>
+                                <div class="lesson-item">💻 Final Project: Full-Stack App với Authentication</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Giảng Viên</h3>
+                    <div class="instructor-card">
+                        <div class="instructor-header">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Nguyễn Văn An" class="instructor-avatar">
+                            <div>
+                                <h3>Nguyễn Văn An</h3>
+                                <p>Senior Full-Stack Developer</p>
+                            </div>
+                        </div>
+                        <p>10+ năm kinh nghiệm phát triển web, từng làm việc tại các công ty công nghệ hàng đầu như FPT Software, VNG, và Shopee. Đam mê chia sẻ kiến thức và giúp học viên thành công trong sự nghiệp lập trình viên.</p>
+                        <div class="instructor-stats">
+                            <div>45,000+ học viên</div>
+                            <div>12 khóa học</div>
+                            <div>⭐ 4.9 đánh giá trung bình</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danh sách các khóa học khác -->
+                <div class="course-list">
+                    <h3 class="section-title">📖 Các Khóa Học Liên Quan</h3>
+                    
+                    <div class="course-card">
+                        <h3>Python cho Data Science & Machine Learning</h3>
+                        <div style="display: flex; gap: 15px; margin: 10px 0; font-size: 14px; color: #666;">
+                            <span>⭐ 4.9</span>
+                            <span> 23,150 học viên</span>
+                            <span> 38 giờ</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span class="price-tag">2,199,000₫</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>UI/UX Design - Từ Ý Tưởng Đến Sản Phẩm</h3>
+                        <div style="display: flex; gap: 15px; margin: 10px 0; font-size: 14px; color: #666;">
+                            <span>⭐ 4.7</span>
+                            <span>18,760 học viên</span>
+                            <span>35 giờ</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span class="price-tag">1,899,000₫</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>Mobile App Development với Flutter</h3>
+                        <div style="display: flex; gap: 15px; margin: 10px 0; font-size: 14px; color: #666;">
+                            <span>⭐ 4.8</span>
+                            <span>12,340 học viên</span>
+                            <span>40 giờ</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span class="price-tag">2,299,000₫</span>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <h3>DevOps & Cloud Computing với AWS</h3>
+                        <div style="display: flex; gap: 15px; margin: 10px 0; font-size: 14px; color: #666;">
+                            <span>⭐ 4.6</span>
+                            <span>9,850 học viên</span>
+                            <span>45 giờ</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <span class="price-tag">2,699,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phần bên phải - Video và nút mua hàng -->
+            <div class="right-section">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+
+                <div class="quick-info">
+                    <div class="price-section">
+                        <div>
+                            <span class="current-price">2,499,000₫</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-stats">
+                        <div class="stat-box">
+                            <div class="stat-value">42h</div>
+                            <div class="stat-label">Video học</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Bài học</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">Trung cấp</div>
+                            <div class="stat-label">Trình độ</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">∞</div>
+                            <div class="stat-label">Truy cập trọn đời</div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">
+                            Mua Ngay
+                        </button>
+                        <button class="btn btn-secondary">
+                            Thêm Vào Giỏ Hàng
+                        </button>
+                    </div>
+
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
+                        <p style="font-size: 14px; color: #666; text-align: center; line-height: 1.6;">
+                            ✅ Hoàn tiền 100% trong 30 ngày<br>
+                            ✅ Chứng chỉ hoàn thành<br>
+                            ✅ Hỗ trợ học viên 24/7
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
