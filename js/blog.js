@@ -55,3 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closePopup();
   });
 });
+
+
+
+// hien thi pop up mo bai viet
