@@ -115,281 +115,324 @@
       </div>
     </div>
 
-    <!-- Danh sách bài viết -->
-    <section class="feed-container">
+    <!-- bai viet -->
+
+    <div class="container">
       <div class="post">
+        <!-- Header -->
         <div class="post-header">
-          <a href="/pages/profileMentor.html"
-            ><div class="avatar">
-              <img src="/public/assets/images/download.jpg" alt="" /></div
-          ></a>
-          <div class="user-info">
-            <a href="/pages/profileMentor.html" class="username"
-              >Nguyễn Văn A</a
-            >
-            <div class="timestamp">2 giờ trước</div>
+          <div class="post-header-left">
+            <div class="avatar">HN</div>
+            <div class="post-info">
+              <h3>Hội người nghèo Việt Nam</h3>
+              <p class="post-time">10 giờ</p>
+            </div>
           </div>
         </div>
+
+        <!-- Nội dung -->
         <div class="post-content">
-          <p>Mọi người ơi, mình vừa học xong ReactJS căn bản 😄</p>
+          Cảm giác khi là người duy nhất trong công ty không thể update iOS 26:
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="post-image">
           <img
-            class="post-image"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU"
+            src="https://images.unsplash.com/photo-1544568100-847a948585b9?w=800&h=800&fit=crop"
+            alt="Husky meme"
           />
         </div>
+
+        <!-- Thống kê -->
+        <div class="post-stats_1">
+          <div class="reactions">
+            <span class="reaction-count">1,6K</span>
+          </div>
+          <div class="comment-count">30 bình luận</div>
+        </div>
+
+        <!-- Nút hành động -->
         <div class="post-actions">
-          <button class="action-btn like-btn">
-            <span class="icon">♡</span>
-            <span>Thích</span>
+          <button class="action-button">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M7.493 18.75c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V3a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777zM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507c.26.85 1.084 1.368 1.973 1.368H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227z"
+              />
+            </svg>
+            Thích
           </button>
-          <button class="action-btn comment-btn">
-            <span class="icon">💬</span>
-            <span>Bình luận</span>
+          <button class="action-button" onclick="openArticlePopup()">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.546 20.2A1 1 0 0 0 3.8 21.454l3.032-.892A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm1 13h-2v-2h2v2zm0-4h-2V7h2v4z"
+              />
+            </svg>
+            Bình luận
           </button>
-        </div>
-        <div class="react__happy">
-          <div class="likes">35 lượt thích</div>
-          <div class="comments">2 bình luận</div>
-        </div>
-        <div class="comment-section">
-          <div class="comment-input">
-            <input type="text" placeholder="Thêm bình luận..." />
-            <button class="post-btn__cmt">Đăng</button>
-          </div>
-        </div>
-      </div>
-      <div class="post">
-        <div class="post-header">
-          <a href="/pages/profileMentor.html"
-            ><div class="avatar">
-              <img src="/public/assets/images/download.jpg" alt="" /></div
-          ></a>
-          <div class="user-info">
-            <a href="/pages/profileMentor.html" class="username"
-              >Nguyễn Văn A</a
-            >
-            <div class="timestamp">2 giờ trước</div>
-          </div>
-        </div>
-        <div class="post-content">
-          <p>Mọi người ơi, mình vừa học xong ReactJS căn bản 😄</p>
-          <img
-            class="post-image"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFFSoVn5hGCJwT9RhooklzWW2jwmDQVUQstcSQbfT7Anx9uUcYFHmA5cBetxVPBjZpRw&usqp=CAU"
-          />
-        </div>
-        <div class="post-actions">
-          <button class="action-btn like-btn">
-            <span class="icon">♡</span>
-            <span>Thích</span>
-          </button>
-          <button class="action-btn comment-btn">
-            <span class="icon">💬</span>
-            <span>Bình luận</span>
-          </button>
-        </div>
-        <div class="react__happy">
-          <div class="likes">35 lượt thích</div>
-          <div class="comments">2 bình luận</div>
-        </div>
-        <div class="comment-section">
-          <div class="comment-input">
-            <input type="text" placeholder="Thêm bình luận..." />
-            <button class="post-btn__cmt">Đăng</button>
-          </div>
         </div>
       </div>
 
-      <!-- pop up mở bài viết và bình luận -->
-
-      <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-container" id="popupContainer">
-            <div class="popup-header__article">
-                <h2 class="popup-title">Bài viết của Hội người nghèo Việt Nam</h2>
-                <button class="close-btn__article" id="closeBtn">×</button>
+      <div class="post">
+        <!-- Header -->
+        <div class="post-header">
+          <div class="post-header-left">
+            <div class="avatar">HN</div>
+            <div class="post-info">
+              <h3>Hội người nghèo Việt Nam</h3>
+              <p class="post-time">10 giờ</p>
             </div>
-
-            <div class="post-header__article">
-                <div class="user-info__article">
-                    <div class="user-avatar"></div>
-                    <div class="user-details">
-                        <h3>Hội người nghèo Việt Nam · <span>Theo dõi</span></h3>
-                        <p>1 ngày · 🌐</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post-content__article">
-                <p>Không có MacBook, can't relate 😂<br>Cre: bonn_1u</p>
-            </div>
-
-            <div class="post-image">
-                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800" alt="Post Image">
-            </div>
-
-            <div class="post-stats">
-                <div class="likes">
-                    <div class="reaction-icons">
-                        <div class="reaction-icon" style="background: #1877f2;">😂</div>
-                        <div class="reaction-icon" style="background: #f7b125;">👍</div>
-                        <div class="reaction-icon" style="background: #f33e58;">❤️</div>
-                    </div>
-                    <span>12K</span>
-                </div>
-                <div class="comments-count">121 bình luận 258 lượt chia sẻ</div>
-            </div>
-
-            <div class="post-actions__article">
-                <button class="action-btn__article">
-                    👍 Thích
-                </button>
-                <button class="action-btn__article">
-                    💬 Bình luận
-                </button>
-            </div>
-
-            <div class="comments-section">
-
-                <div class="comment-item">
-                    <div class="comment-avatar"></div>
-                    <div class="comment-content">
-                        <div class="comment-bubble">
-                            <div class="comment-author">Sayaka Aei</div>
-                            <div class="comment-text">Không sao mình vẫn có thể Ctrl+Z để uống cốc Cafe đó trong sự tỉnh táo.😂👍</div>
-                        </div>
-                        <div class="comment-actions">
-                            <span class="comment-action liked">
-                                <span class="like-count">👍 67</span>
-                            </span>
-                            <span class="comment-action">Thích</span>
-                            <span class="comment-action">Trả lời</span>
-                            <span class="comment-action" style="color: #b0b3b8;">1 ngày</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="comment-item">
-                    <div class="comment-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                    <div class="comment-content">
-                        <div class="comment-bubble">
-                            <div class="comment-author">Triệu Ngân</div>
-                            <div class="comment-text">biết để bát máy quay thì khả năng là có tình r😂</div>
-                        </div>
-                        <div class="comment-actions">
-                            <span class="comment-action">
-                                <span class="like-count">👍😂 7</span>
-                            </span>
-                            <span class="comment-action">Thích</span>
-                            <span class="comment-action">Trả lời</span>
-                            <span class="comment-action" style="color: #b0b3b8;">5 giờ</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="comment-item">
-                    <div class="comment-avatar" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-                    <div class="comment-content">
-                        <div class="comment-bubble">
-                            <div class="comment-author">Đoàn Năng Đức</div>
-                            <div class="comment-text">
-                                <img src="https://via.placeholder.com/200x150/3a3b3c/ffffff?text=DM+Meme" alt="Comment Image" style="width: 100%; border-radius: 8px; margin-top: 4px;">
-                            </div>
-                        </div>
-                        <div class="comment-actions">
-                            <span class="comment-action">Thích</span>
-                            <span class="comment-action">Trả lời</span>
-                            <span class="comment-action" style="color: #b0b3b8;">3 giờ</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="comment-input-section">
-                <div class="input-avatar"></div>
-                <div class="comment-input-wrapper">
-                    <textarea class="comment-input__article" placeholder="Viết bình luận..." rows="1"></textarea>
-                </div>
-                <button class="send-btn">➤</button>
-            </div>
+          </div>
         </div>
+
+        <!-- Nội dung -->
+        <div class="post-content">
+          Cảm giác khi là người duy nhất trong công ty không thể update iOS 26:
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="post-image">
+          <img
+            src="https://images.unsplash.com/photo-1544568100-847a948585b9?w=800&h=800&fit=crop"
+            alt="Husky meme"
+          />
+        </div>
+
+        <!-- Thống kê -->
+        <div class="post-stats_1">
+          <div class="reactions">
+            <span class="reaction-count">1,6K</span>
+          </div>
+          <div class="comment-count">30 bình luận</div>
+        </div>
+
+        <!-- Nút hành động -->
+        <div class="post-actions">
+          <button class="action-button">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M7.493 18.75c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V3a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777zM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507c.26.85 1.084 1.368 1.973 1.368H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227z"
+              />
+            </svg>
+            Thích
+          </button>
+          <button class="action-button" onclick="openArticlePopup()">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.546 20.2A1 1 0 0 0 3.8 21.454l3.032-.892A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm1 13h-2v-2h2v2zm0-4h-2V7h2v4z"
+              />
+            </svg>
+            Bình luận
+          </button>
+        </div>
+      </div>
     </div>
 
+    <!-- pop up mở bài viết và bình luận -->
 
-      <div class="notification">
-        <span>Không còn bài đăng nào khác</span>
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-container" id="popupContainer">
+        <div class="popup-header__article">
+          <h2 class="popup-title">Bài viết của Hội người nghèo Việt Nam</h2>
+          <button class="close-btn__article" id="closeBtn">×</button>
+        </div>
+
+        <div class="post-header__article">
+          <div class="user-info__article">
+            <div class="user-avatar"></div>
+            <div class="user-details">
+              <h3>Hội người nghèo Việt Nam</h3>
+              <p>1 ngày</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-content__article">
+          <p>Không có MacBook, can't relate 😂<br />Cre: bonn_1u</p>
+        </div>
+
+        <div class="post-image">
+          <img
+            src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800"
+            alt="Post Image"
+          />
+        </div>
+
+        <div class="post-stats">
+          <div class="likes">
+            
+            <span>12K</span>
+          </div>
+          <div class="comments-count">121 bình luận</div>
+        </div>
+
+        <div class="post-actions__article">
+          <button class="action-btn__article">👍 Thích</button>
+          <button class="action-btn__article">💬 Bình luận</button>
+        </div>
+
+        <div class="comments-section">
+          <div class="comment-item">
+            <div class="comment-avatar"></div>
+            <div class="comment-content">
+              <div class="comment-bubble">
+                <div class="comment-author">Sayaka Aei</div>
+                <div class="comment-text">
+                  Không sao mình vẫn có thể Ctrl+Z để uống cốc Cafe đó trong sự
+                  tỉnh táo.😂👍
+                </div>
+              </div>
+              <div class="comment-actions">
+                <span class="comment-action liked">
+                  <span class="like-count">👍 67</span>
+                </span>
+                <span class="comment-action">Thích</span>
+                <span class="comment-action">Trả lời</span>
+                <span class="comment-action" style="color: #b0b3b8"
+                  >1 ngày</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <div
+              class="comment-avatar"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            ></div>
+            <div class="comment-content">
+              <div class="comment-bubble">
+                <div class="comment-author">Triệu Ngân</div>
+                <div class="comment-text">
+                  biết để bát máy quay thì khả năng là có tình r😂
+                </div>
+              </div>
+              <div class="comment-actions">
+                <span class="comment-action">
+                  <span class="like-count">👍😂 7</span>
+                </span>
+                <span class="comment-action">Thích</span>
+                <span class="comment-action">Trả lời</span>
+                <span class="comment-action" style="color: #b0b3b8">5 giờ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <div
+              class="comment-avatar"
+              style="
+                background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+              "
+            ></div>
+            <div class="comment-content">
+              <div class="comment-bubble">
+                <div class="comment-author">Đoàn Năng Đức</div>
+                <div class="comment-text">
+                  <img
+                    src="https://via.placeholder.com/200x150/3a3b3c/ffffff?text=DM+Meme"
+                    alt="Comment Image"
+                    style="width: 100%; border-radius: 8px; margin-top: 4px"
+                  />
+                </div>
+              </div>
+              <div class="comment-actions">
+                <span class="comment-action">Thích</span>
+                <span class="comment-action">Trả lời</span>
+                <span class="comment-action" style="color: #b0b3b8">3 giờ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-input-section">
+          <div class="input-avatar"></div>
+          <div class="comment-input-wrapper">
+            <textarea
+              class="comment-input__article"
+              placeholder="Viết bình luận..."
+              rows="1"
+            ></textarea>
+          </div>
+          <button class="send-btn">➤</button>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <div class="notification">
+      <span>Không còn bài đăng nào khác</span>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <!-- Cột 1: Liên hệ -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin liên hệ</h3>
+          <ul class="footer__list">
+            <li>Điện thoại: <strong>03636363636</strong></li>
+            <li>
+              Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a>
+            </li>
+            <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
+            <li>Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
+          </ul>
+
+          <div class="footer__socials">
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-messenger"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Thông tin -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin</h3>
+          <ul class="footer__list">
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Cộng đồng</a></li>
+            <li><a href="#">Trung tâm hỗ trợ</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Khoá học -->
+        <div class="footer__column">
+          <h3 class="footer__title">Khoá học</h3>
+          <ul class="footer__list">
+            <li><a href="#">Khoá học của tôi</a></li>
+            <li><a href="#">Dành cho bạn</a></li>
+            <li><a href="#">Chính sách hoàn tiền</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Chương trình cố vấn -->
+        <div class="footer__column">
+          <h3 class="footer__title">Chương trình cố vấn</h3>
+          <ul class="footer__list">
+            <li><a href="#">Danh sách mentor</a></li>
+            <li><a href="#">Lĩnh vực</a></li>
+            <li><a href="#">Chủ đề</a></li>
+            <li><a href="#">Mentor Blog</a></li>
+            <li><a href="#">Đăng ký làm mentor</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+      </div>
+    </footer>
   </body>
-
-  <footer class="footer">
-    <div class="footer__container">
-      <!-- Cột 1: Liên hệ -->
-      <div class="footer__column">
-        <h3 class="footer__title">Thông tin liên hệ</h3>
-        <ul class="footer__list">
-          <li>Điện thoại: <strong>03636363636</strong></li>
-          <li>
-            Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a>
-          </li>
-          <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
-          <li>Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
-        </ul>
-
-        <div class="footer__socials">
-          <a
-            href="https://www.facebook.com/HuyHocGioii/"
-            class="footer__social-link"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/HuyHocGioii/"
-            class="footer__social-link"
-            ><i class="fab fa-youtube"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/HuyHocGioii/"
-            class="footer__social-link"
-            ><i class="fab fa-facebook-messenger"></i
-          ></a>
-        </div>
-      </div>
-
-      <!-- Cột 2: Thông tin -->
-      <div class="footer__column">
-        <h3 class="footer__title">Thông tin</h3>
-        <ul class="footer__list">
-          <li><a href="#">Về chúng tôi</a></li>
-          <li><a href="#">Cộng đồng</a></li>
-          <li><a href="#">Trung tâm hỗ trợ</a></li>
-        </ul>
-      </div>
-
-      <!-- Cột 3: Khoá học -->
-      <div class="footer__column">
-        <h3 class="footer__title">Khoá học</h3>
-        <ul class="footer__list">
-          <li><a href="#">Khoá học của tôi</a></li>
-          <li><a href="#">Dành cho bạn</a></li>
-          <li><a href="#">Chính sách hoàn tiền</a></li>
-        </ul>
-      </div>
-
-      <!-- Cột 4: Chương trình cố vấn -->
-      <div class="footer__column">
-        <h3 class="footer__title">Chương trình cố vấn</h3>
-        <ul class="footer__list">
-          <li><a href="#">Danh sách mentor</a></li>
-          <li><a href="#">Lĩnh vực</a></li>
-          <li><a href="#">Chủ đề</a></li>
-          <li><a href="#">Mentor Blog</a></li>
-          <li><a href="#">Đăng ký làm mentor</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__bottom">
-      <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
-    </div>
-  </footer>
 </html>
