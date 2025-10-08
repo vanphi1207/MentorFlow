@@ -363,6 +363,13 @@ textarea {
   color: #0095f6;
 }
 
+
+.react__happy{
+  display: flex;
+}
 .likes {
   padding: 6px 0 0 10px;
+}
+.comments{
+  padding: 6px 0px 0px 120px;
 }

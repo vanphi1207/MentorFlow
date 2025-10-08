@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/courses.css" />
+    <script src="/js/courses.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Course</title>
+  </head>
+  <body>
+    <header>
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__content">
+        <div class="hero__text-wrapper">
+          <h1 class="hero__title">Mentor School</h1>
+          <h1 class="hero__title">Học cùng chuyên gia</h1>
+          <p class="hero__description">
+            Học hỏi từ các chuyên gia dày dặn kinh nghiệm. Đồng thời được cố vấn
+            1-1 cùng đội ngũ Mentor đến từ các tập đoàn lớn.
+          </p>
+        </div>
+        <div class="hero__image">
+          <img
+            src="/public/assets/images/hero-course.webp"
+            alt="Team collaboration"
+            class="hero__image-img"
+          />
+        </div>
+      </div>
+    </section>
+    <div class="text__tittle">
+      <h1>Khám phá các khóa học</h1>
+      <h5>
+        Các khóa học thực chiến, lộ trình bài bản cung cấp kiến thức và kĩ năng
+        đáp ứng nhu cầu của thị trường.
+      </h5>
+    </div>
+    <div class="main-content">
+      <aside class="sidebar">
+        <div class="filter-section">
+          <h2>Bộ Lọc Khóa Học</h2>
+
+          <div class="filter-group">
+            <h3>Ngôn Ngữ Lập Trình</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="javascript" />
+              <label for="javascript">JavaScript</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="python" />
+              <label for="python">Python</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="java" />
+              <label for="java">Java</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="csharp" />
+              <label for="csharp">C#</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="php" />
+              <label for="php">PHP</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Web Development</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="frontend" />
+              <label for="frontend">Frontend</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="backend" />
+              <label for="backend">Backend</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="fullstack" />
+              <label for="fullstack">Full Stack</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Mobile Development</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="react-native" />
+              <label for="react-native">React Native</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="flutter" />
+              <label for="flutter">Flutter</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="android" />
+              <label for="android">Android</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="ios" />
+              <label for="ios">iOS</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Data & AI</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="data-science" />
+              <label for="data-science">Data Science</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="machine-learning" />
+              <label for="machine-learning">Machine Learning</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="ai" />
+              <label for="ai">AI & Deep Learning</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Cloud & DevOps</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="aws" />
+              <label for="aws">AWS</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="docker" />
+              <label for="docker">Docker & Kubernetes</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="devops" />
+              <label for="devops">DevOps</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content-area">
+        <div class="search-section">
+          <input
+            type="text"
+            class="search-box"
+            placeholder="Tìm kiếm khóa học..."
+          />
+          <button class="search-btn">Tìm kiếm</button>
+        </div>
+
+        <div class="courses-grid">
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">JavaScript</span>
+               <a href="#" ><h3 class="course-title">JavaScript từ Cơ Bản đến Nâng Cao</h3></a> 
+              <p class="course-description">
+                Học JavaScript toàn diện với các dự án thực tế, từ cơ bản đến
+                ES6+ và beyond.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.8 (2,345)</span>
+                <span class="course-students">12,450 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">899,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Python</span>
+              <a href="#"><h3 class="course-title">Python Cho Người Mới Bắt Đầu</h3></a>  
+              <p class="course-description">
+                Khóa học Python hoàn chỉnh dành cho người mới, bao gồm cả ứng
+                dụng thực tế.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.9 (3,890)</span>
+                <span class="course-students">18,230 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">799,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Frontend</span>
+              <a href="#"> <h3 class="course-title">
+                React.js - Xây Dựng Ứng Dụng Web Hiện Đại
+              </h3></a>  
+              <p class="course-description">
+                Thành thạo React.js với Redux, Hooks và các best practices mới
+                nhất.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.7 (1,567)</span>
+                <span class="course-students">8,920 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">999,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Mobile</span>
+              <a href="#"><h3 class="course-title">
+                React Native - Lập Trình Mobile Cross-platform
+              </h3></a> 
+              <p class="course-description">
+                Xây dựng ứng dụng mobile cho iOS và Android với React Native.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.6 (987)</span>
+                <span class="course-students">5,430 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,199,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">AI & ML</span>
+              <a href="#"><h3 class="course-title">Machine Learning với Python</h3></a> 
+              <p class="course-description">
+                Khóa học Machine Learning thực chiến với Python, TensorFlow và
+                Scikit-learn.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.9 (2,156)</span>
+                <span class="course-students">9,870 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,499,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Cloud</span>
+              <a href="#"><h3 class="course-title">AWS Cloud Computing Toàn Diện</h3></a> 
+              <p class="course-description">
+                Làm chủ AWS với EC2, S3, Lambda và các dịch vụ cloud phổ biến
+                nhất.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.8 (1,234)</span>
+                <span class="course-students">6,540 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,299,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Full Stack</span>
+              <a href="#"><h3 class="course-title">
+                Full Stack Web Development - MERN Stack
+              </h3></a> 
+              <p class="course-description">
+                Trở thành Full Stack Developer với MongoDB, Express, React và
+                Node.js.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.9 (3,421)</span>
+                <span class="course-students">15,670 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,599,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">DevOps</span>
+              <a href=""><h3 class="course-title">Docker & Kubernetes Từ Đầu</h3></a> 
+              <p class="course-description">
+                Học containerization và orchestration với Docker và Kubernetes.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.7 (876)</span>
+                <span class="course-students">4,320 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,099,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-image">
+                <img src="/public/assets/images/hero.jpg" alt="Khóa học JavaScript" />
+            </div>
+            <div class="course-info">
+              <span class="course-category">Data Science</span>
+              <a href="#"><h3 class="course-title">Data Science & Data Analysis</h3></a> 
+              <p class="course-description">
+                Phân tích dữ liệu chuyên nghiệp với Python, Pandas và
+                Visualization.
+              </p>
+              <div class="course-meta">
+                <span class="course-rating">⭐ 4.8 (1,945)</span>
+                <span class="course-students">7,890 học viên</span>
+              </div>
+              <div class="course-footer">
+                <div class="course-price">1,399,000₫</div>
+                <button class="buy-btn">Mua ngay</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination">
+      <ul class="pagination__list">
+        <li class="pagination__item pagination__item--active">
+          <a href="#" class="pagination__link">1</a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">2</a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">3</a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">4</a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">5</a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">
+            <i class="fas fa-angle-right"></i>
+          </a>
+        </li>
+        <li class="pagination__item">
+          <a href="#" class="pagination__link">
+            <i class="fas fa-angle-double-right"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+    <footer class="footer">
+    <div class="footer__container">
+      <!-- Cột 1: Liên hệ -->
+      <div class="footer__column">
+        <h3 class="footer__title">Thông tin liên hệ</h3>
+        <ul class="footer__list">
+          <li>Điện thoại: <strong>03636363636</strong></li>
+          <li>
+            Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a>
+          </li>
+          <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
+          <li>Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
+        </ul>
+
+        <div class="footer__socials">
+          <a
+            href="https://www.facebook.com/HuyHocGioii/"
+            class="footer__social-link"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/HuyHocGioii/"
+            class="footer__social-link"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/HuyHocGioii/"
+            class="footer__social-link"
+            ><i class="fab fa-facebook-messenger"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Cột 2: Thông tin -->
+      <div class="footer__column">
+        <h3 class="footer__title">Thông tin</h3>
+        <ul class="footer__list">
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Cộng đồng</a></li>
+          <li><a href="#">Trung tâm hỗ trợ</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Khoá học -->
+      <div class="footer__column">
+        <h3 class="footer__title">Khoá học</h3>
+        <ul class="footer__list">
+          <li><a href="#">Khoá học của tôi</a></li>
+          <li><a href="#">Dành cho bạn</a></li>
+          <li><a href="#">Chính sách hoàn tiền</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 4: Chương trình cố vấn -->
+      <div class="footer__column">
+        <h3 class="footer__title">Chương trình cố vấn</h3>
+        <ul class="footer__list">
+          <li><a href="#">Danh sách mentor</a></li>
+          <li><a href="#">Lĩnh vực</a></li>
+          <li><a href="#">Chủ đề</a></li>
+          <li><a href="#">Mentor Blog</a></li>
+          <li><a href="#">Đăng ký làm mentor</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+    </div>
+  </footer>
+  </body>
+</html>
