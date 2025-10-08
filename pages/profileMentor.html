@@ -1,332 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+
+    <!-- ======= STYLES ======= -->
     <link rel="stylesheet" href="/src/styles/base.css" />
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
     <link rel="stylesheet" href="/src/styles/components/footer.css" />
     <link rel="stylesheet" href="/src/styles/components/profileMentor.css" />
     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <title>Nguyễn Văn Huy</title>
-</head>
-<body>
+  </head>
+
+  <body>
+    <!-- ======= HEADER / NAVBAR ======= -->
     <header>
-      <!-- navbar -->
-        <nav class="navbar">
+      <nav class="navbar">
         <div class="navbar__container">
           <a href="/public/index.html" class="navbar__logo">
             <img src="/public/assets/images/icon.png" alt="logo" />
             <span class="navbar__brand">Mentor Flow</span>
           </a>
+
           <ul class="navbar__links">
             <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
             <li><a href="/pages/blog.html">Blog</a></li>
             <li><a href="/pages/courses.html">Khóa học</a></li>
             <li><a href="#">Cách hoạt động</a></li>
           </ul>
+
           <div class="navbar__btn">
             <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
-            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
           </div>
         </div>
       </nav>
     </header>
 
+    <!-- ======= MENTOR PROFILE ======= -->
     <section class="mentor-profile">
-  <div class="mentor-profile__container">
-    <!-- Khung trái: Thông tin mentor -->
-    <div class="mentor-profile__card">
-      <div class="mentor-profile__banner">
-        <img
-          src="/public/assets/images/hero.jpg"
-          alt="Mentor background"
-          class="mentor-profile__banner-img"
-        />
-        <div class="mentor-profile__info">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Huỳnh Thiện Nhân"
-            class="mentor-profile__avatar"
-          />
-          <div class="mentor-profile__text">
-            <h2 class="mentor-profile__name">HUỲNH THIỆN NHÂN</h2>
-            <p class="mentor-profile__position">
-              Demand Planning Supervisor tại Masan Consumer
-            </p>
+      <div class="mentor-profile__container">
+        <div class="mentor-profile__card">
+          <div class="mentor-profile__banner">
+            <img
+              src="/public/assets/images/hero.jpg"
+              alt="Mentor background"
+              class="mentor-profile__banner-img"
+            />
+
+            <div class="mentor-profile__info">
+              <img
+                src="/public/assets/images/download.jpg"
+                alt="Huỳnh Thiện Nhân"
+                class="mentor-profile__avatar"
+              />
+              <div class="mentor-profile__text">
+                <h2 class="mentor-profile__name">HUỲNH THIỆN NHÂN</h2>
+                <p class="mentor-profile__position">
+                  Demand Planning Supervisor tại Masan Consumer
+                </p>
+              </div>
+              <span class="mentor-profile__status"></span>
+            </div>
           </div>
-          <span class="mentor-profile__status"></span>
+
+          <div class="mentor-profile__details">
+            <div class="mentor-profile__stats">
+              <p><i class="fas fa-user"></i> 1 mentee</p>
+              <p><i class="fas fa-clock"></i> 1 h</p>
+              <p><i class="fas fa-star"></i> 5.0/5</p>
+              <p><i class="fas fa-heart"></i> 2</p>
+            </div>
+
+            <div class="mentor-profile__actions">
+              <button
+                class="mentor-profile__btn mentor-profile__btn--primary"
+                onclick="openBookingModal()"
+              >
+                Đặt lịch ngay
+              </button>
+
+              <button
+                class="mentor-profile__btn mentor-profile__btn--secondary"
+              >
+                Theo dõi
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="mentor-profile__details">
-        <div class="mentor-profile__stats">
-          <p><i class="fas fa-user"></i> 1 mentee</p>
-          <p><i class="fas fa-clock"></i> 1 h</p>
-          <p><i class="fas fa-star"></i> 5.0/5</p>
-          <p><i class="fas fa-heart"></i> 2</p>
-        </div>
+    <!-- ======= MENTOR DETAIL ======= -->
+    <section class="mentor-detail">
+      <div class="mentor-detail__container">
+        <!-- CỘT TRÁI -->
+        <div class="mentor-detail__left">
+          <!-- Tabs -->
+          <div class="mentor-tabs">
+            <button class="mentor-tab active" data-tab="profile">Hồ sơ</button>
+            <button class="mentor-tab" data-tab="reviews">Đánh giá (2)</button>
+            <button class="mentor-tab" data-tab="post">Bài đăng (1)</button>
+            <button class="mentor-tab" data-tab="course">Khóa học (3)</button>
+          </div>
 
-        <div class="mentor-profile__actions">
-          <button class="mentor-profile__btn mentor-profile__btn--primary">
-            Đặt lịch ngay
-          </button>
-          <button class="mentor-profile__btn mentor-profile__btn--secondary">
-            Theo dõi
-          </button>
-        </div>
-      </div>
-    </div>
+          <!-- Hồ sơ -->
+          <div id="profile" class="tab-content active">
+            <div class="mentor-section">
+              <h2 class="section-title">Giới thiệu bản thân</h2>
+              <p>
+                Short-term: I am seeking a Demand Planning position in the FMCG
+                or manufacturing industry and become a Team Leader within a
+                year...
+              </p>
+            </div>
 
-<section class="mentor-detail">
-  <div class="mentor-detail__container">
+            <div class="mentor-section">
+              <h2 class="section-title">Kinh nghiệm làm việc</h2>
+              <div class="work-item">
+                <img
+                  src="/public/assets/images/hero.jpg"
+                  alt="Masan logo"
+                  class="work-logo"
+                />
+                <div>
+                  <h3>Demand Planning Supervisor</h3>
+                  <p>Masan Consumer</p>
+                  <small>05/2024 - Hiện tại</small>
+                </div>
+              </div>
+            </div>
 
-    <!-- CỘT TRÁI -->
-    <div class="mentor-detail__left">
+            <div class="mentor-section">
+              <h2 class="section-title">Quá trình học tập</h2>
+              <div class="edu-item">
+                <img
+                  src="/public/assets/images/hero.jpg"
+                  alt="VNU logo"
+                  class="edu-logo"
+                />
+                <div>
+                  <h3>International University, VNU HCMC</h3>
+                  <p>
+                    Bachelor of Engineering in Logistics and Supply Chain
+                    Management
+                  </p>
+                  <small>08/2019 - 08/2023</small>
+                </div>
+              </div>
+            </div>
 
-      <!-- Tabs -->
-      <div class="mentor-tabs">
-        <button class="mentor-tab active" data-tab="profile">Hồ sơ</button>
-        <button class="mentor-tab" data-tab="reviews">Đánh giá (2)</button>
-        <button class="mentor-tab" data-tab="post">Bài đăng (1)</button>
-        <button class="mentor-tab" data-tab="course">Khóa học (3)</button>
-      </div>
+            <div class="mentor-section">
+              <h2 class="section-title">Hoạt động ngoại khóa</h2>
+              <div class="activity-item">
+                <img
+                  src="/public/assets/images/hero.jpg"
+                  alt="Volunteer"
+                  class="activity-logo"
+                />
+                <div>
+                  <h3>Basketball for Hearing Impaired Kids</h3>
+                  <p>Teaching Volunteer</p>
+                  <small>10/2021 - 03/2022</small>
+                </div>
+              </div>
+            </div>
 
-      <!-- Hồ sơ -->
-      <div id="profile" class="tab-content active">
-        <div class="mentor-section">
-          <h2 class="section-title">Giới thiệu bản thân</h2>
-          <p>Short-term: I am seeking a Demand Planning position in the FMCG or manufacturing industry and become a Team Leader within a year...</p>
-        </div>
+            <div class="mentor-section">
+              <h2 class="section-title">Giải thưởng</h2>
+              <ul>
+                <li>Top 12 Team of LOGin Contest 2022</li>
+                <li>Top 25 in SCMission Contest 2022</li>
+              </ul>
+            </div>
 
-        <div class="mentor-section">
-          <h2 class="section-title">Kinh nghiệm làm việc</h2>
-          <div class="work-item">
-            <img src="/public/assets/images/hero.jpg" alt="Masan logo" class="work-logo" />
-            <div>
-              <h3>Demand Planning Supervisor</h3>
-              <p>Masan Consumer</p>
-              <small>05/2024 - Hiện tại</small>
+            <div class="mentor-section">
+              <h2 class="section-title">Kỹ năng & Chứng chỉ</h2>
+              <div class="skills-grid">
+                <div>Python</div>
+                <div>IELTS 6.0</div>
+                <div>Google Data Analytics</div>
+                <div>Six Sigma Yellow Belt</div>
+                <div>Machine Learning for Production (MLOps)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Đánh giá -->
+          <div id="reviews" class="tab-content">
+            <div class="mentor-section">
+              <h2 class="section-title">Đánh giá từ mentee</h2>
+
+              <div class="review">
+                <p>
+                  <strong>Nguyễn Minh Anh:</strong> Mentor rất nhiệt tình và
+                  thân thiện. Giúp mình định hướng được rõ ràng con đường sự
+                  nghiệp 💚
+                </p>
+              </div>
+
+              <div class="review">
+                <p>
+                  <strong>Trần Hữu Duy:</strong> Kiến thức chuyên môn tốt, chia
+                  sẻ dễ hiểu, cảm ơn mentor rất nhiều!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bài đăng -->
+          <div id="post" class="tab-content post-container">
+            <div class="post-header">
+              <div class="avatar">
+                <img src="/public/assets/images/download.jpg" alt="" />
+              </div>
+              <div class="user-info">
+                <div class="username">Nguyễn Văn Huy</div>
+                <div class="timestamp">2 giờ trước</div>
+              </div>
+            </div>
+
+            <div class="post-image">
+              <img
+                src="https://m.yodycdn.com/blog/anh-nen-naruto-yody-vn-5.jpg"
+                alt="Ảnh bài đăng"
+              />
+            </div>
+
+            <div class="post-actions">
+              <button class="action-btn like-btn" onclick="toggleLike()">
+                <span class="icon" id="likeIcon">♡</span>
+                <span id="likeText">Thích</span>
+              </button>
+              <button class="action-btn comment-btn">
+                <span class="icon">💬</span>
+                <span>Bình luận</span>
+              </button>
+            </div>
+
+            <div class="post-content">
+              <div class="likes" id="likesCount">125 lượt thích</div>
+              <div class="caption">
+                <span class="username">Nguyễn Văn A</span>
+                Chuyến du lịch tuyệt vời! Cảnh đẹp quá mọi người ơi 🌟✨
+              </div>
+            </div>
+
+            <div class="comment-section">
+              <div class="comment-input">
+                <input
+                  type="text"
+                  placeholder="Thêm bình luận..."
+                  id="commentInput"
+                />
+                <button class="post-btn" onclick="postComment()">Đăng</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khóa học -->
+          <div id="course" class="tab-content course-list">
+            <h2>Danh sách khóa học</h2>
+
+            <div class="course-item">
+              <img src="/public/assets/images/download.jpg" alt="Khóa học 1" />
+              <div class="course-info">
+                <a href="#">Khóa học Lập trình Web Fullstack</a>
+                <p>
+                  Học HTML, CSS, JavaScript, React, Node.js và cơ sở dữ liệu từ
+                  cơ bản đến nâng cao.
+                </p>
+                <span class="duration">⏱ 6 tháng</span>
+                <span class="price">2.500.000đ</span>
+              </div>
+            </div>
+
+            <div class="course-item">
+              <img src="/public/assets/images/download.jpg" alt="Khóa học 2" />
+              <div class="course-info">
+                <a href="#">Khóa học Thiết kế UI/UX</a>
+                <p>
+                  Học tư duy thiết kế, màu sắc, bố cục và sử dụng Figma để tạo
+                  giao diện chuyên nghiệp.
+                </p>
+                <span class="duration">⏱ 3 tháng</span>
+                <span class="price">1.800.000đ</span>
+              </div>
+            </div>
+
+            <div class="course-item">
+              <img src="/public/assets/images/download.jpg" alt="Khóa học 3" />
+              <div class="course-info">
+                <a href="#">Khóa học Python cơ bản</a>
+                <p>
+                  Hiểu ngôn ngữ lập trình Python qua bài tập, dự án và ứng dụng
+                  thực tế.
+                </p>
+                <span class="duration">⏱ 2 tháng</span>
+                <span class="price">1.200.000đ</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="mentor-section">
-          <h2 class="section-title">Quá trình học tập</h2>
-          <div class="edu-item">
-            <img src="/public/assets/images/hero.jpg" alt="VNU logo" class="edu-logo" />
-            <div>
-              <h3>International University, VNU HCMC</h3>
-              <p>Bachelor of Engineering in Logistics and Supply Chain Management</p>
-              <small>08/2019 - 08/2023</small>
-            </div>
+        <!-- CỘT PHẢI -->
+        <aside class="mentor-detail__right">
+          <h3>Có thể bạn quan tâm</h3>
+          <ul class="mentor-suggest">
+            <li class="mentor-suggest__profile">
+              <img src="/public/assets/images/download.jpg" alt="" />
+              <div>
+                <a href="#">Trung Phạm</a>
+                <p>Program Manager tại Coffee Platform</p>
+              </div>
+            </li>
+            <li class="mentor-suggest__profile">
+              <img src="/public/assets/images/download.jpg" alt="" />
+              <div>
+                <a href="#">Nguyễn Quỳnh Chi</a>
+                <p>Trưởng ban nhân sự tại iSteps</p>
+              </div>
+            </li>
+            <li class="mentor-suggest__profile">
+              <img src="/public/assets/images/download.jpg" alt="" />
+              <div>
+                <a href="#">Hồng Vân Nguyễn</a>
+                <p>Head of Business Dev tại ByteNext</p>
+              </div>
+            </li>
+            <li class="mentor-suggest__profile">
+              <img src="/public/assets/images/download.jpg" alt="" />
+              <div>
+                <a href="#">Trần Việt Dũng</a>
+                <p>Planning Specialist tại VAD</p>
+              </div>
+            </li>
+            <li class="mentor-suggest__profile">
+              <img src="/public/assets/images/download.jpg" alt="" />
+              <div>
+                <a href="#">Vũ Khánh Linh</a>
+                <p>Mentor & Lecturer tại Mentori</p>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="footer">
+      <div class="footer__container">
+        <!-- Cột 1 -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin liên hệ</h3>
+          <ul class="footer__list">
+            <li>Điện thoại: <strong>03636363636</strong></li>
+            <li>
+              Email: <a href="mailto:contact@mentor.vn">contact@mentor.vn</a>
+            </li>
+            <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
+            <li>Địa chỉ: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
+          </ul>
+
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="footer__social-link"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="#" class="footer__social-link"
+              ><i class="fab fa-facebook-messenger"></i
+            ></a>
           </div>
         </div>
 
-        <div class="mentor-section">
-          <h2 class="section-title">Hoạt động ngoại khóa</h2>
-          <div class="activity-item">
-            <img src="/public/assets/images/hero.jpg" alt="Volunteer" class="activity-logo" />
-            <div>
-              <h3>Basketball for Hearing Impaired Kids</h3>
-              <p>Teaching Volunteer </p>
-              <small>10/2021 - 03/2022</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="mentor-section">
-          <h2 class="section-title">Giải thưởng</h2>
-          <ul>
-            <li>Top 12 Team of LOGin Contest 2022</li>
-            <li>Top 25 in SCMission Contest 2022</li>
+        <!-- Cột 2 -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin</h3>
+          <ul class="footer__list">
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Cộng đồng</a></li>
+            <li><a href="#">Trung tâm hỗ trợ</a></li>
           </ul>
         </div>
 
-        <div class="mentor-section">
-          <h2 class="section-title">Kỹ năng & Chứng chỉ</h2>
-          <div class="skills-grid">
-            <div>Python</div>
-            <div>IELTS 6.0</div>
-            <div>Google Data Analytics</div>
-            <div>Six Sigma Yellow Belt</div>
-            <div>Machine Learning for Production (MLOps)</div>
-          </div>
+        <!-- Cột 3 -->
+        <div class="footer__column">
+          <h3 class="footer__title">Khoá học</h3>
+          <ul class="footer__list">
+            <li><a href="#">Khoá học của tôi</a></li>
+            <li><a href="#">Dành cho bạn</a></li>
+            <li><a href="#">Chính sách hoàn tiền</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4 -->
+        <div class="footer__column">
+          <h3 class="footer__title">Chương trình cố vấn</h3>
+          <ul class="footer__list">
+            <li><a href="#">Danh sách mentor</a></li>
+            <li><a href="#">Lĩnh vực</a></li>
+            <li><a href="#">Chủ đề</a></li>
+            <li><a href="#">Mentor Blog</a></li>
+            <li><a href="#">Đăng ký làm mentor</a></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Đánh giá -->
-      <div id="reviews" class="tab-content">
-        <div class="mentor-section">
-          <h2 class="section-title">Đánh giá từ mentee</h2>
-          <div class="review">
-            <p><strong>Nguyễn Minh Anh:</strong> Mentor rất nhiệt tình và thân thiện. Giúp mình định hướng được rõ ràng con đường sự nghiệp 💚</p>
+      <div class="footer__bottom">
+        <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+      </div>
+    </footer>
+
+    <!-- ========== MODAL ĐẶT LỊCH MENTORING ========== -->
+    <div id="bookingModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeBookingModal()">&times;</button>
+
+        <h2 class="modal-title">
+          <i class="fa-solid fa-calendar-check"></i> Đặt lịch hẹn với Mentor
+        </h2>
+
+        <!-- Thanh tiến trình -->
+        <div class="progress-bar">
+          <div class="progress-step active" data-step="1"></div>
+          <div class="progress-step" data-step="2"></div>
+          <div class="progress-step" data-step="3"></div>
+        </div>
+
+        <!-- ======= BƯỚC 1: CHỌN CHỦ ĐỀ ======= -->
+        <div class="step step-1 active">
+          <h3 class="step-title">🧭 Chọn chủ đề mentoring</h3>
+
+          <div class="input-group">
+            <label for="topic">Chủ đề bạn quan tâm</label>
+            <select id="topic">
+              <option value="">-- Chọn chủ đề --</option>
+              <option value="career">Định hướng nghề nghiệp</option>
+              <option value="cv">Xem CV & Feedback</option>
+              <option value="interview">Phỏng vấn thử</option>
+              <option value="skill">Phát triển kỹ năng mềm</option>
+            </select>
           </div>
-          <div class="review">
-            <p><strong>Trần Hữu Duy:</strong> Kiến thức chuyên môn tốt, chia sẻ dễ hiểu, cảm ơn mentor rất nhiều!</p>
+
+          <div class="input-group">
+            <label for="otherTopic">Hoặc nhập chủ đề khác</label>
+            <input
+              type="text"
+              id="otherTopic"
+              placeholder="Ví dụ: Học kế toán kiểm toán thực tế"
+            />
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-next" onclick="nextStep()">Tiếp tục</button>
           </div>
         </div>
-      </div>
 
-<!-- bai dang cua mentor -->
-      <div id="post" class="tab-content post-container">
-        <div class="post-header">
-            <div class="avatar"><img src="/public/assets/images/download.jpg" alt=""></div>
-            <div class="user-info">
-                <div class="username">Nguyễn Văn Huy</div>
-                <div class="timestamp">2 giờ trước</div>
+        <!-- ======= BƯỚC 2: HÌNH THỨC & THỜI GIAN ======= -->
+        <div class="step step-2">
+          <h3 class="step-title">📅 Chọn hình thức kết nối & thời gian</h3>
+
+          <div class="input-group">
+            <label>Hình thức kết nối</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="connect" value="online" checked />
+                Trực tuyến (Google Meet)</label
+              >
+              <label
+                ><input type="radio" name="connect" value="offline" /> Trực tiếp
+                (Gặp mặt)</label
+              >
             </div>
+          </div>
+
+          <div class="available-slots">
+            <label>Lịch rảnh của Mentor</label>
+            <div class="slots-container">
+              <!-- Các slot sẽ được render bằng JS -->
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="date">Ngày hẹn</label>
+            <input type="date" id="date" />
+          </div>
+
+          <div class="input-group">
+            <label for="time">Giờ hẹn</label>
+            <input type="time" id="time" />
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-prev" onclick="prevStep()">Quay lại</button>
+            <button class="btn-next" onclick="nextStep()">Tiếp tục</button>
+          </div>
         </div>
-        
-        <!-- ✅ Ảnh bài đăng -->
-        <div class="post-image">
-            <img src="https://m.yodycdn.com/blog/anh-nen-naruto-yody-vn-5.jpg" alt="Ảnh bài đăng">
-        </div>
-        
-        <div class="post-actions">
-            <button class="action-btn like-btn" onclick="toggleLike()">
-                <span class="icon" id="likeIcon">♡</span>
-                <span id="likeText">Thích</span>
+
+        <!-- ======= BƯỚC 3: TIN NHẮN & XÁC NHẬN ======= -->
+        <div class="step step-3">
+          <h3 class="step-title">💬 Gửi tin nhắn đến Mentor</h3>
+
+          <div class="input-group">
+            <label for="message">Tin nhắn của bạn</label>
+            <textarea
+              id="message"
+              rows="4"
+              placeholder="Giới thiệu ngắn gọn và mong muốn buổi mentoring..."
+            ></textarea>
+          </div>
+
+          <div class="confirm-box">
+            <p>
+              <i class="fa-solid fa-info-circle"></i> Vui lòng kiểm tra lại
+              thông tin trước khi gửi.
+            </p>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-prev" onclick="prevStep()">Quay lại</button>
+            <button class="btn-submit" onclick="submitBooking()">
+              Gửi yêu cầu
             </button>
-            <button class="action-btn comment-btn">
-                <span class="icon">💬</span>
-                <span>Bình luận</span>
-            </button>
+          </div>
         </div>
-        
-        <div class="post-content">
-            <div class="likes" id="likesCount">125 lượt thích</div>
-            <div class="caption">
-                <span class="username">Nguyễn Văn A</span>
-                Chuyến du lịch tuyệt vời! Cảnh đẹp quá mọi người ơi 🌟✨
-            </div>
-        </div>
-        
-        <div class="comment-section">
-            <div class="comment-input">
-                <input type="text" placeholder="Thêm bình luận..." id="commentInput">
-                <button class="post-btn" onclick="postComment()">Đăng</button>
-            </div>
-        </div>
-    </div>
-    
-    
 
-
-    <div id="course" class="tab-content course-list">
-  <h2>Danh sách khóa học</h2>
-
-  <div class="course-item">
-    <img src="/public/assets/images/download.jpg" alt="Khóa học 1">
-    <div class="course-info">
-      <a href="#">Khóa học Lập trình Web Fullstack</a>
-      <p>Học HTML, CSS, JavaScript, React, Node.js và cơ sở dữ liệu từ cơ bản đến nâng cao.</p>
-      <span class="duration">⏱ 6 tháng</span>
-      <span class="price">2.500.000đ</span>
-    </div>
-  </div>
-
-  <div class="course-item">
-    <img src="/public/assets/images/download.jpg" alt="Khóa học 2">
-    <div class="course-info">
-      <a href="#">Khóa học Thiết kế UI/UX</a>
-      <p>Học tư duy thiết kế, màu sắc, bố cục và sử dụng Figma để tạo giao diện chuyên nghiệp.</p>
-      <span class="duration">⏱ 3 tháng</span>
-      <span class="price">1.800.000đ</span>
-    </div>
-  </div>
-
-  <div class="course-item">
-    <img src="/public/assets/images/download.jpg" alt="Khóa học 3">
-    <div class="course-info">
-      <a href="#">Khóa học Python cơ bản</a>
-      <p>Hiểu ngôn ngữ lập trình Python qua bài tập, dự án và ứng dụng thực tế.</p>
-      <span class="duration">⏱ 2 tháng</span>
-      <span class="price">1.200.000đ</span>
-    </div>
-  </div>
-</div>
-
-
-    </div>
-
-    <!-- CỘT PHẢI -->
-    <aside class="mentor-detail__right">
-      <h3>Có thể bạn quan tâm</h3>
-      <ul class="mentor-suggest">
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Trung Phạm</a><p>Program Manager tại Coffee Platform</p> </div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Nguyễn Quỳnh Chi</a><p>Trưởng ban nhân sự tại iSteps</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Hồng Vân Nguyễn</a><p>Head of Business Dev tại ByteNext</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#">Trần Việt Dũng</a><p>Planning Specialist tại VAD</p></div></li>
-        <li class="mentor-suggest__profile"><img src="/public/assets/images/download.jpg" alt=""><div><a href="#"> Vũ Khánh Linh</a><p>Mentor & Lecturer tại Mentori</p></div></li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-  <script src="/js/profileMentor.js"></script>
-</body>
-<footer class="footer">
-  <div class="footer__container">
-    <!-- Cột 1: Liên hệ -->
-    <div class="footer__column">
-      <h3 class="footer__title">Thông tin liên hệ</h3>
-      <ul class="footer__list">
-        <li>Điện thoại: <strong>03636363636</strong></li>
-        <li>Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a></li>
-        <li>
-          CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI
-        </li>
-        <li>
-          Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM
-        </li>
-      </ul>
-
-      <div class="footer__socials">
-        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.facebook.com/HuyHocGioii/" class="footer__social-link"><i class="fab fa-facebook-messenger"></i></a>
+        <p class="note">
+          <i class="fa-solid fa-headset"></i> Hỗ trợ: 036 3385579
+        </p>
       </div>
     </div>
 
-    <!-- Cột 2: Thông tin -->
-    <div class="footer__column">
-      <h3 class="footer__title">Thông tin</h3>
-      <ul class="footer__list">
-        <li><a href="#">Về chúng tôi</a></li>
-        <li><a href="#">Cộng đồng</a></li>
-        <li><a href="#">Trung tâm hỗ trợ</a></li>
-      </ul>
-    </div>
-
-    <!-- Cột 3: Khoá học -->
-    <div class="footer__column">
-      <h3 class="footer__title">Khoá học</h3>
-      <ul class="footer__list">
-        <li><a href="#">Khoá học của tôi</a></li>
-        <li><a href="#">Dành cho bạn</a></li>
-        <li><a href="#">Chính sách hoàn tiền</a></li>
-      </ul>
-    </div>
-
-    <!-- Cột 4: Chương trình cố vấn -->
-    <div class="footer__column">
-      <h3 class="footer__title">Chương trình cố vấn</h3>
-      <ul class="footer__list">
-        <li><a href="#">Danh sách mentor</a></li>
-        <li><a href="#">Lĩnh vực</a></li>
-        <li><a href="#">Chủ đề</a></li>
-        <li><a href="#">Mentor Blog</a></li>
-        <li><a href="#">Đăng ký làm mentor</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer__bottom">
-    <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
-  </div>
-</footer>
+    <script src="/js/profileMentor.js"></script>
+  </body>
 </html>
