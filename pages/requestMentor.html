@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/requestMentor.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="tabs-container">
+        <button class="tab active" data-tab="pending">Chờ xác nhận (1)</button>
+        <button class="tab" data-tab="upcoming">Sắp tới (0)</button>
+        <button class="tab" data-tab="review">Chờ đánh giá (0)</button>
+        <button class="tab" data-tab="past">Đã qua (0)</button>
+      </div>
+
+      <!-- Pending Tab -->
+      <div class="content-wrapper" data-content="pending" style="display: grid">
+        <div class="left-column">
+          <div class="request-item">
+            <div class="request-header">
+              <img
+                src="/public/assets/images/patern-img.png"
+                alt=""
+                class="mentor-avatar"
+              />
+              <div class="mentor-info">
+                <div class="mentor-name">Trần Nhật Nghi</div>
+                <div class="mentor-meta">
+                  <span>Thứ 4, 08-10-2025</span>
+                  <span class="status-badge badge-pending"
+                    >Lịch nhận cố vấn</span
+                  >
+                  <span class="status-badge badge-confirmed">Chờ xác nhận</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="add-more-link">
+            <a href="#">Xem thêm</a>
+          </div>
+        </div>
+
+        <div class="right-panel">
+          <div class="info-box">
+            Chờ xác nhận lịch hẹn từ cố vấn Trần Nhật Nghi
+          </div>
+
+          <div class="button-group">
+            <button class="btn btn-primary">Đổi lịch hẹn</button>
+            <button class="btn btn-primary">Chat với Trần Nhật Nghi</button>
+          </div>
+
+          <div class="verify-section">
+            <div class="check-icon">✓</div>
+            <img
+              src="/public/assets/images/patern-img.png"
+              alt=""
+              class="verify-avatar"
+            />
+            <span>Nhận cố vấn từ <strong>Trần Nhật Nghi</strong></span>
+          </div>
+
+          <div class="details-section">
+            <div class="detail-row">
+              <div class="detail-icon">📝</div>
+              <div class="detail-label">Chủ đề:</div>
+              <div class="detail-value">Khác</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label" style="font-weight: 600">
+                Chủ đề bắt kỳ
+              </div>
+            </div>
+          </div>
+
+          <div class="details-section">
+            <div class="detail-row">
+              <div class="detail-icon">🕐</div>
+              <div class="detail-label">Thời gian:</div>
+              <div class="detail-value">22:00, Thứ 4, ngày 08-10-2025</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-icon">⏱️</div>
+              <div class="detail-label">Thời lượng:</div>
+              <div class="detail-value">1 giờ</div>
+            </div>
+          </div>
+
+          <div class="details-section">
+            <div class="detail-row">
+              <div class="detail-icon">📹</div>
+              <div class="detail-label">Hình thức kết nối:</div>
+              <div class="detail-value">Google Meet</div>
+            </div>
+          </div>
+
+          <div class="note-section">
+            <div class="note-label">👤 Tin nhắn</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Tab -->
+      <div
+        class="content-wrapper"
+        data-content="upcoming"
+        style="display: none"
+      >
+        <div class="empty-state">
+          <div class="empty-state__icon">📅</div>
+          <div class="empty-state__title">Không có lịch hẹn sắp tới</div>
+          <div class="empty-state__description">
+            Hãy tìm kiếm mentor và đặt lịch hẹn để bắt đầu
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Tab -->
+      <div class="content-wrapper" data-content="review" style="display: none">
+        <div class="empty-state">
+          <div class="empty-state__icon">⭐</div>
+          <div class="empty-state__title">Không có lịch hẹn cần đánh giá</div>
+          <div class="empty-state__description">
+            Những lịch hẹn đã hoàn thành sẽ xuất hiện ở đây
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Tab -->
+      <div class="content-wrapper" data-content="past" style="display: none">
+        <div class="empty-state">
+          <div class="empty-state__icon">✅</div>
+          <div class="empty-state__title">Chưa có lịch hẹn đã qua</div>
+          <div class="empty-state__description">
+            Những lịch hẹn hoàn thành sẽ xuất hiện tại đây
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="/js/requestMentor.js"></script>
+</html>
