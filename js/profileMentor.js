@@ -175,3 +175,213 @@ function selectSlot(slot, element) {
   document.getElementById("date").value = slot.date;
   document.getElementById("time").value = slot.time;
 }
+
+
+
+
+// ====== MỞ POPUP chinh sua thong tin ca nhan ======
+function openProfilePopup() {
+  const overlay = document.getElementById("profileOverlay");
+  const popup = document.getElementById("profilePopup");
+  const textarea = document.getElementById("profileIntroduction");
+
+  overlay.classList.add("active");
+  popup.style.display = "block";
+
+  // Focus vào textarea khi mở
+  if (textarea) textarea.focus();
+}
+
+// ====== ĐÓNG POPUP ======
+function closeProfilePopup() {
+  const overlay = document.getElementById("profileOverlay");
+  const popup = document.getElementById("profilePopup");
+
+  overlay.classList.remove("active");
+  popup.style.display = "none";
+}
+
+// ====== LƯU THÔNG TIN ======
+function saveProfileIntroduction() {
+  const textarea = document.getElementById("profileIntroduction");
+  const content = textarea.value.trim();
+
+  if (content === "") {
+    alert("Vui lòng nhập nội dung giới thiệu trước khi lưu!");
+    return;
+  }
+
+  alert("✅ Đã lưu thông tin giới thiệu bản thân!");
+  closeProfilePopup();
+}
+
+// ====== SỰ KIỆN BỔ TRỢ ======
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("profileOverlay");
+
+  // Click ra ngoài overlay để đóng
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        closeProfilePopup();
+      }
+    });
+  }
+
+  // Nhấn ESC để đóng popup
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeProfilePopup();
+    }
+  });
+});
+
+
+
+// mở 2 button chỉnh sửa
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Hàm xử lý toggle hiển thị 2 nút (chỉnh sửa & xóa)
+  function toggleEditButtons(updateBtn, buttonContainer) {
+    const editBtn = buttonContainer.querySelector(".edit-btn");
+    const deleteBtn = buttonContainer.querySelector(".delete-btn");
+
+    const isVisible = editBtn.style.display === "flex";
+
+    if (!isVisible) {
+      // Hiện 2 nút và đổi "Cập nhật" thành "Xong"
+      editBtn.style.display = "flex";
+      deleteBtn.style.display = "flex";
+      updateBtn.textContent = "Xong";
+    } else {
+      // Ẩn 2 nút và đổi lại "Cập nhật"
+      editBtn.style.display = "none";
+      deleteBtn.style.display = "none";
+      updateBtn.textContent = "Cập nhật";
+    }
+  }
+
+  // Gắn sự kiện cho tất cả các loại update
+  const updateButtons = [
+    { update: ".update-experience", container: ".experience-buttons__edit" },
+    { update: ".update-study", container: ".study-buttons__edit" },
+    { update: ".update-prize", container: ".prize-buttons__edit" },
+    { update: ".update-skill", container: ".skill-buttons__edit" },
+  ];
+
+  updateButtons.forEach(({ update, container }) => {
+    const updateBtn = document.querySelector(update);
+    const buttonContainer = document.querySelector(container);
+
+    if (updateBtn && buttonContainer) {
+      updateBtn.addEventListener("click", () =>
+        toggleEditButtons(updateBtn, buttonContainer)
+      );
+    }
+  });
+});
+
+
+
+// Hàm xử lý popup chung
+function setupPopup(config) {
+  const {
+    editBtn,
+    overlay,
+    popup,
+    closeBtn,
+    saveBtn,
+    cancelBtn
+  } = config;
+
+  // Mở popup khi click vào nút "Chỉnh sửa"
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      overlay.classList.add('active');
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Ngăn scroll trang
+    });
+  }
+
+  // Đóng popup
+  function closePopup() {
+    overlay.classList.remove('active');
+    popup.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Cho phép scroll lại
+  }
+
+  // Click vào nút đóng (X)
+  closeBtn.addEventListener('click', closePopup);
+
+  // Click vào overlay (nền mờ)
+  overlay.addEventListener('click', closePopup);
+
+  // Click vào nút Hủy
+  cancelBtn.addEventListener('click', closePopup);
+
+  // Click vào nút Lưu
+  saveBtn.addEventListener('click', () => {
+    alert('Đã lưu thông tin thành công!');
+    closePopup();
+  });
+
+  // Ngăn popup đóng khi click vào nội dung popup
+  popup.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+}
+
+// Khởi tạo popup cho Kinh nghiệm làm việc
+const experienceConfig = {
+  editBtn: document.querySelector('.experience-buttons__edit .edit-btn'),
+  overlay: document.querySelector('.experience-overlay'),
+  popup: document.querySelector('.experience-popup'),
+  closeBtn: document.querySelector('.experience-popup .experience-btn-close'),
+  saveBtn: document.querySelector('.experience-popup .experience-btn-save'),
+  cancelBtn: document.querySelector('.experience-popup .experience-btn-cancel')
+};
+
+setupPopup(experienceConfig);
+
+// Khởi tạo popup cho Quá trình học tập
+const studyConfig = {
+  editBtn: document.querySelector('.study-buttons__edit .edit-btn'),
+  overlay: document.querySelector('.study-overlay'),
+  popup: document.querySelector('.study-popup'),
+  closeBtn: document.querySelector('.study-popup .experience-btn-close'),
+  saveBtn: document.querySelector('.study-popup .experience-btn-save'),
+  cancelBtn: document.querySelector('.study-popup .experience-btn-cancel')
+};
+
+setupPopup(studyConfig);
+
+// Xử lý hiển thị tên file khi upload
+const fileInputs = document.querySelectorAll('.experience-file-input');
+fileInputs.forEach(input => {
+  input.addEventListener('change', function() {
+    const fileName = this.files[0]?.name || 'No file chosen';
+    const fileNameSpan = this.parentElement.querySelector('.experience-file-name');
+    if (fileNameSpan) {
+      fileNameSpan.textContent = fileName;
+    }
+  });
+});
+
+// Xử lý checkbox "Hiện tại tôi vẫn làm việc ở đây"
+const checkboxes = document.querySelectorAll('.experience-checkbox');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    const popup = this.closest('.experience-popup, .study-popup');
+    const endDateInput = popup.querySelector('#experienceEndDate');
+    const currentText = popup.querySelector('.experience-date-current');
+    
+    if (this.checked) {
+      endDateInput.style.display = 'none';
+      currentText.style.display = 'inline';
+      endDateInput.value = '';
+    } else {
+      endDateInput.style.display = 'inline';
+      currentText.style.display = 'none';
+    }
+  });
+});
