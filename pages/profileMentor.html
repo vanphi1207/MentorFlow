@@ -115,17 +115,51 @@
           <!-- Hồ sơ -->
           <div id="profile" class="tab-content active">
             <div class="mentor-section">
-              <h2 class="section-title">Giới thiệu bản thân</h2>
+              <div class="mentor-section__update">
+                <h2 class="section-title">Giới thiệu bản thân</h2>
+                <div class="section-edit__update" onclick="openProfilePopup()">Cập nhật</div>
+              </div>
+              
+
               <p>
                 Short-term: I am seeking a Demand Planning position in the FMCG
                 or manufacturing industry and become a Team Leader within a
                 year...
               </p>
+
             </div>
 
+
+          <!-- Pop up chinh sua gio thieu ban than -->
+           
+            <div class="profile-overlay" id="profileOverlay"></div>
+
+    <div class="profile-popup" id="profilePopup">
+        <div class="profile-popup-header">
+            <div class="profile-popup-title">Giới thiệu bản thân</div>
+            <button class="profile-btn-close" onclick="closeProfilePopup()">&times;</button>
+        </div>
+
+        <div class="profile-popup-body">
+            <textarea class="profile-textarea" id="profileIntroduction" placeholder="Mô tả ngắn gọn giới thiệu về bản thân"></textarea>
+        </div>
+
+        <div class="profile-popup-footer">
+            <button class="profile-btn profile-btn-save" onclick="saveProfileIntroduction()">Lưu</button>
+            <button class="profile-btn profile-btn-cancel" onclick="closeProfilePopup()">Hủy</button>
+        </div>
+    </div>
+
+
             <div class="mentor-section">
-              <h2 class="section-title">Kinh nghiệm làm việc</h2>
-              <div class="work-item">
+              
+              <div class="mentor-section__update">
+                <h2 class="section-title">Kinh nghiệm làm việc</h2>
+                <div class="update-experience">Cập nhật</div>
+              </div>
+              
+              <div class="mentor-section__edit">
+                  <div class="work-item">
                 <img
                   src="/public/assets/images/hero.jpg"
                   alt="Masan logo"
@@ -137,61 +171,283 @@
                   <small>05/2024 - Hiện tại</small>
                 </div>
               </div>
-            </div>
-
-            <div class="mentor-section">
-              <h2 class="section-title">Quá trình học tập</h2>
-              <div class="edu-item">
-                <img
-                  src="/public/assets/images/hero.jpg"
-                  alt="VNU logo"
-                  class="edu-logo"
-                />
-                <div>
-                  <h3>International University, VNU HCMC</h3>
-                  <p>
-                    Bachelor of Engineering in Logistics and Supply Chain
-                    Management
-                  </p>
-                  <small>08/2019 - 08/2023</small>
-                </div>
+              <div class="experience-buttons__edit">
+                <button class="experience-button edit-btn" title="Chỉnh sửa">
+                  ✏️
+                </button>
+                <button class="experience-button delete-btn" title="Xóa">
+                  ❌
+                </button>
               </div>
-            </div>
-
-            <div class="mentor-section">
-              <h2 class="section-title">Hoạt động ngoại khóa</h2>
-              <div class="activity-item">
-                <img
-                  src="/public/assets/images/hero.jpg"
-                  alt="Volunteer"
-                  class="activity-logo"
-                />
-                <div>
-                  <h3>Basketball for Hearing Impaired Kids</h3>
-                  <p>Teaching Volunteer</p>
-                  <small>10/2021 - 03/2022</small>
-                </div>
               </div>
+              
             </div>
 
+            <!-- pop up chinh sua kinh nghiem lam viec -->
+
+            <div class="experience-overlay"></div>
+
+    <div class="experience-popup">
+        <div class="experience-popup-header">
+            <div class="experience-popup-title">Thêm kinh nghiệm làm việc</div>
+            <button class="experience-btn-close">&times;</button>
+        </div>
+
+        <div class="experience-popup-body">
+            <div class="experience-form-group">
+                <input 
+                    type="text" 
+                    class="experience-input" 
+                    id="experienceCompanyName"
+                    placeholder="Tên công ty"
+                >
+            </div>
+
+            <div class="experience-form-group">
+                <input 
+                    type="text" 
+                    class="experience-input" 
+                    id="experiencePosition"
+                    placeholder="Vị trí"
+                >
+            </div>
+
+            <div class="experience-form-group">
+                <textarea 
+                    class="experience-textarea" 
+                    id="experienceDescription"
+                    placeholder="Mô tả chi tiết (Trải nghiệm/Thành tích nổi bật)"
+                ></textarea>
+            </div>
+
+            <div class="experience-checkbox-group">
+                <input 
+                    type="checkbox" 
+                    class="experience-checkbox" 
+                    id="experienceCurrentWork"
+                >
+                <label for="experienceCurrentWork" class="experience-checkbox-label">
+                    Hiện tại tôi vẫn làm việc ở đây
+                </label>
+            </div>
+
+            <div class="experience-time-section">
+                <div class="experience-time-title">Thời gian</div>
+                <div class="experience-time-group">
+                    <input 
+                        type="text" 
+                        class="experience-date-input" 
+                        id="experienceStartDate"
+                        placeholder="dd/mm/yyyy"
+                    >
+                    <span class="experience-date-separator">đến</span>
+                    <input 
+                        type="text" 
+                        class="experience-date-input" 
+                        id="experienceEndDate"
+                        placeholder="dd/mm/yyyy"
+                    >
+                    <span class="experience-date-current">Hiện tại</span>
+                </div>
+            </div>
+
+            <div class="experience-logo-section">
+                <div class="experience-logo-title">Logo</div>
+                <div class="experience-file-input-wrapper">
+                    <input 
+                        type="file" 
+                        class="experience-file-input" 
+                        id="experienceLogo"
+                        accept="image/*"
+                    >
+                    <label for="experienceLogo" class="experience-file-label">
+                        Choose File
+                    </label>
+                    <span class="experience-file-name" id="experienceFileName">No file chosen</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-popup-footer">
+            <button class="experience-btn experience-btn-save">Lưu</button>
+            <button class="experience-btn experience-btn-cancel">Hủy</button>
+        </div>
+    </div>
+
             <div class="mentor-section">
-              <h2 class="section-title">Giải thưởng</h2>
+              <div class="mentor-section__update">
+                <h2 class="section-title">Quá trình học tập</h2>
+                <div class="update-study">Cập nhật</div>
+              </div>
+              <div class="mentor-section__edit">
+                <div class="edu-item">
+                  <img
+                    src="/public/assets/images/hero.jpg"
+                    alt="VNU logo"
+                    class="edu-logo"
+                  />
+                  <div>
+                    <h3>International University, VNU HCMC</h3>
+                    <p>
+                      Bachelor of Engineering in Logistics and Supply Chain
+                      Management
+                    </p>
+                    <small>08/2019 - 08/2023</small>
+                  </div>
+                </div>
+
+                <div class="study-buttons__edit">
+                <button class="study-button edit-btn" title="Chỉnh sửa">
+                  ✏️
+                </button>
+                <button class="study-button delete-btn" title="Xóa">
+                  ❌
+                </button>
+              </div>
+              </div>
+              
+            </div>  
+
+
+            <!-- pop up cap nhat qua trinh hoc tap -->
+
+            <div class="study-overlay"></div>
+
+    <div class="study-popup">
+        <div class="experience-popup-header">
+            <div class="experience-popup-title">Thêm quá trình học tập</div>
+            <button class="experience-btn-close">&times;</button>
+        </div>
+
+        <div class="experience-popup-body">
+            <div class="experience-form-group">
+                <input 
+                    type="text" 
+                    class="experience-input" 
+                    id="experienceCompanyName"
+                    placeholder="Tên trường học"
+                >
+            </div>
+
+            <div class="experience-form-group">
+                <input 
+                    type="text" 
+                    class="experience-input" 
+                    id="experiencePosition"
+                    placeholder="Chuyên ngành"
+                >
+            </div>
+
+            <div class="experience-form-group">
+                <textarea 
+                    class="experience-textarea" 
+                    id="experienceDescription"
+                    placeholder="Mô tả chi tiết (Điểm số hoặc thành tích)"
+                ></textarea>
+            </div>
+
+            <div class="experience-checkbox-group">
+                <input 
+                    type="checkbox" 
+                    class="experience-checkbox" 
+                    id="experienceCurrentWork"
+                >
+                <label for="experienceCurrentWork" class="experience-checkbox-label">
+                    Hiện tại tôi vẫn làm việc ở đây
+                </label>
+            </div>
+
+            <div class="experience-time-section">
+                <div class="experience-time-title">Thời gian</div>
+                <div class="experience-time-group">
+                    <input 
+                        type="text" 
+                        class="experience-date-input" 
+                        id="experienceStartDate"
+                        placeholder="dd/mm/yyyy"
+                    >
+                    <span class="experience-date-separator">đến</span>
+                    <input 
+                        type="text" 
+                        class="experience-date-input" 
+                        id="experienceEndDate"
+                        placeholder="dd/mm/yyyy"
+                    >
+                    <span class="experience-date-current">Hiện tại</span>
+                </div>
+            </div>
+
+            <div class="experience-logo-section">
+                <div class="experience-logo-title">Logo</div>
+                <div class="experience-file-input-wrapper">
+                    <input 
+                        type="file" 
+                        class="experience-file-input" 
+                        id="experienceLogo"
+                        accept="image/*"
+                    >
+                    <label for="experienceLogo" class="experience-file-label">
+                        Choose File
+                    </label>
+                    <span class="experience-file-name" id="experienceFileName">No file chosen</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-popup-footer">
+            <button class="experience-btn experience-btn-save">Lưu</button>
+            <button class="experience-btn experience-btn-cancel">Hủy</button>
+        </div>
+    </div>
+
+
+            <div class="mentor-section">
+              <div class="mentor-section__update">
+                <h2 class="section-title">Giải thưởng</h2>
+                <div class="update-prize">Cập nhật</div>
+              </div>
+              <div class="mentor-section__edit">
               <ul>
                 <li>Top 12 Team of LOGin Contest 2022</li>
                 <li>Top 25 in SCMission Contest 2022</li>
               </ul>
+              <div class="prize-buttons__edit">
+                <button class="prize-button edit-btn" title="Chỉnh sửa">
+                  ✏️
+                </button>
+                <button class="prize-button delete-btn" title="Xóa">
+                  ❌
+                </button>
+              </div>
+              </div>
+              
             </div>
 
             <div class="mentor-section">
-              <h2 class="section-title">Kỹ năng & Chứng chỉ</h2>
-              <div class="skills-grid">
+              <div class="mentor-section__update">
+                <h2 class="section-title">Kỹ năng & Chứng chỉ</h2>
+                <div class="update-skill">Cập nhật</div>
+              </div> 
+              <div class="mentor-section__edit">
+                <div class="skills-grid">
                 <div>Python</div>
                 <div>IELTS 6.0</div>
                 <div>Google Data Analytics</div>
                 <div>Six Sigma Yellow Belt</div>
                 <div>Machine Learning for Production (MLOps)</div>
               </div>
+              <div class="skill-buttons__edit">
+                <button class="skill-button edit-btn" title="Chỉnh sửa">
+                  ✏️
+                </button>
+                <button class="skill-button delete-btn" title="Xóa">
+                  ❌
+                </button>
+              </div>
             </div>
+              </div>
+              
+            
           </div>
 
           <!-- Đánh giá -->
