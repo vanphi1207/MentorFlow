@@ -176,9 +176,6 @@ function selectSlot(slot, element) {
   document.getElementById("time").value = slot.time;
 }
 
-
-
-
 // ====== MỞ POPUP chinh sua thong tin ca nhan ======
 function openProfilePopup() {
   const overlay = document.getElementById("profileOverlay");
@@ -265,7 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateButtons = [
     { update: ".update-experience", container: ".experience-buttons__edit" },
     { update: ".update-study", container: ".study-buttons__edit" },
-    { update: ".update-prize", container: ".prize-buttons__edit" },
     { update: ".update-skill", container: ".skill-buttons__edit" },
   ];
 
@@ -281,86 +277,79 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-// Hàm xử lý popup chung
+// Hàm xử lý popup chung khi click vào button chỉnh sửa
 function setupPopup(config) {
-  const {
-    editBtn,
-    overlay,
-    popup,
-    closeBtn,
-    saveBtn,
-    cancelBtn
-  } = config;
+  const { editBtn, overlay, popup, closeBtn, saveBtn, cancelBtn } = config;
 
   // Mở popup khi click vào nút "Chỉnh sửa"
   if (editBtn) {
-    editBtn.addEventListener('click', () => {
-      overlay.classList.add('active');
-      popup.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Ngăn scroll trang
+    editBtn.addEventListener("click", () => {
+      overlay.classList.add("active");
+      popup.classList.add("active");
+      document.body.style.overflow = "hidden"; // Ngăn scroll trang
     });
   }
 
   // Đóng popup
   function closePopup() {
-    overlay.classList.remove('active');
-    popup.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Cho phép scroll lại
+    overlay.classList.remove("active");
+    popup.classList.remove("active");
+    document.body.style.overflow = "auto"; // Cho phép scroll lại
   }
 
   // Click vào nút đóng (X)
-  closeBtn.addEventListener('click', closePopup);
+  closeBtn.addEventListener("click", closePopup);
 
   // Click vào overlay (nền mờ)
-  overlay.addEventListener('click', closePopup);
+  overlay.addEventListener("click", closePopup);
 
   // Click vào nút Hủy
-  cancelBtn.addEventListener('click', closePopup);
+  cancelBtn.addEventListener("click", closePopup);
 
   // Click vào nút Lưu
-  saveBtn.addEventListener('click', () => {
-    alert('Đã lưu thông tin thành công!');
+  saveBtn.addEventListener("click", () => {
+    alert("Đã lưu thông tin thành công!");
     closePopup();
   });
 
   // Ngăn popup đóng khi click vào nội dung popup
-  popup.addEventListener('click', (e) => {
+  popup.addEventListener("click", (e) => {
     e.stopPropagation();
   });
 }
 
 // Khởi tạo popup cho Kinh nghiệm làm việc
 const experienceConfig = {
-  editBtn: document.querySelector('.experience-buttons__edit .edit-btn'),
-  overlay: document.querySelector('.experience-overlay'),
-  popup: document.querySelector('.experience-popup'),
-  closeBtn: document.querySelector('.experience-popup .experience-btn-close'),
-  saveBtn: document.querySelector('.experience-popup .experience-btn-save'),
-  cancelBtn: document.querySelector('.experience-popup .experience-btn-cancel')
+  editBtn: document.querySelector(".experience-buttons__edit .edit-btn"),
+  overlay: document.querySelector(".experience-overlay"),
+  popup: document.querySelector(".experience-popup"),
+  closeBtn: document.querySelector(".experience-popup .experience-btn-close"),
+  saveBtn: document.querySelector(".experience-popup .experience-btn-save"),
+  cancelBtn: document.querySelector(".experience-popup .experience-btn-cancel"),
 };
 
 setupPopup(experienceConfig);
 
 // Khởi tạo popup cho Quá trình học tập
 const studyConfig = {
-  editBtn: document.querySelector('.study-buttons__edit .edit-btn'),
-  overlay: document.querySelector('.study-overlay'),
-  popup: document.querySelector('.study-popup'),
-  closeBtn: document.querySelector('.study-popup .experience-btn-close'),
-  saveBtn: document.querySelector('.study-popup .experience-btn-save'),
-  cancelBtn: document.querySelector('.study-popup .experience-btn-cancel')
+  editBtn: document.querySelector(".study-buttons__edit .edit-btn"),
+  overlay: document.querySelector(".study-overlay"),
+  popup: document.querySelector(".study-popup"),
+  closeBtn: document.querySelector(".study-popup .experience-btn-close"),
+  saveBtn: document.querySelector(".study-popup .experience-btn-save"),
+  cancelBtn: document.querySelector(".study-popup .experience-btn-cancel"),
 };
 
 setupPopup(studyConfig);
 
 // Xử lý hiển thị tên file khi upload
-const fileInputs = document.querySelectorAll('.experience-file-input');
-fileInputs.forEach(input => {
-  input.addEventListener('change', function() {
-    const fileName = this.files[0]?.name || 'No file chosen';
-    const fileNameSpan = this.parentElement.querySelector('.experience-file-name');
+const fileInputs = document.querySelectorAll(".experience-file-input");
+fileInputs.forEach((input) => {
+  input.addEventListener("change", function () {
+    const fileName = this.files[0]?.name || "No file chosen";
+    const fileNameSpan = this.parentElement.querySelector(
+      ".experience-file-name"
+    );
     if (fileNameSpan) {
       fileNameSpan.textContent = fileName;
     }
@@ -368,20 +357,121 @@ fileInputs.forEach(input => {
 });
 
 // Xử lý checkbox "Hiện tại tôi vẫn làm việc ở đây"
-const checkboxes = document.querySelectorAll('.experience-checkbox');
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', function() {
-    const popup = this.closest('.experience-popup, .study-popup');
-    const endDateInput = popup.querySelector('#experienceEndDate');
-    const currentText = popup.querySelector('.experience-date-current');
-    
+const checkboxes = document.querySelectorAll(".experience-checkbox");
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", function () {
+    const popup = this.closest(".experience-popup, .study-popup");
+    const endDateInput = popup.querySelector("#experienceEndDate");
+    const currentText = popup.querySelector(".experience-date-current");
+
     if (this.checked) {
-      endDateInput.style.display = 'none';
-      currentText.style.display = 'inline';
-      endDateInput.value = '';
+      endDateInput.style.display = "none";
+      currentText.style.display = "inline";
+      endDateInput.value = "";
     } else {
-      endDateInput.style.display = 'inline';
-      currentText.style.display = 'none';
+      endDateInput.style.display = "inline";
+      currentText.style.display = "none";
+    }
+  });
+});
+
+//click vào nút thêm sẽ hiển thị 2 popup của kinh nghiem lam viec va qua trình học tập
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Lấy các phần tử popup và overlay
+  const experiencePopup = document.querySelector(".experience-popup");
+  const experienceOverlay = document.querySelector(".experience-overlay");
+  const studyPopup = document.querySelector(".study-popup");
+  const studyOverlay = document.querySelector(".study-overlay");
+
+  // Lấy tất cả nút "Thêm"
+  const addButtons = document.querySelectorAll(".update-add");
+
+  addButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      if (index === 0) {
+        // Mục đầu tiên -> Kinh nghiệm làm việc
+        experiencePopup.classList.add("active");
+        experienceOverlay.style.display = "block";
+      } else if (index === 1) {
+        // Mục thứ 2 -> Quá trình học tập
+        studyPopup.classList.add("active");
+        studyOverlay.style.display = "block";
+      }
+    });
+  });
+
+  // Đóng popup kinh nghiệm
+  document
+    .querySelector(".experience-btn-close")
+    .addEventListener("click", () => {
+      experiencePopup.classList.remove("active");
+      experienceOverlay.style.display = "none";
+    });
+
+  document
+    .querySelector(".experience-btn-cancel")
+    .addEventListener("click", () => {
+      experiencePopup.classList.remove("active");
+      experienceOverlay.style.display = "none";
+    });
+
+  // Đóng popup học tập
+  document
+    .querySelector(".study-popup .experience-btn-close")
+    .addEventListener("click", () => {
+      studyPopup.classList.remove("active");
+      studyOverlay.style.display = "none";
+    });
+
+  document
+    .querySelector(".study-popup .experience-btn-cancel")
+    .addEventListener("click", () => {
+      studyPopup.classList.remove("active");
+      studyOverlay.style.display = "none";
+    });
+});
+
+// click vao button chinh sua se hien thi pop up them chung chi va ki nang
+const modalOverlay = document.querySelector(".skill-modal-overlay");
+const editBtn = document.querySelector(".skill-button.edit-btn");
+const closeBtn = document.querySelector(".skill-modal-close-btn");
+const cancelBtn = document.querySelector(".skill-btn-cancel");
+const saveBtn = document.querySelector(".skill-btn-save");
+
+// Khi click nút "Chỉnh sửa" → mở popup
+editBtn.addEventListener("click", () => {
+  modalOverlay.style.display = "flex";
+});
+
+// Khi click dấu X hoặc nút Hủy → đóng popup
+closeBtn.addEventListener("click", closeModal);
+cancelBtn.addEventListener("click", closeModal);
+
+function closeModal() {
+  modalOverlay.style.display = "none";
+}
+
+// Khi click "Lưu" → thông báo + đóng popup
+saveBtn.addEventListener("click", () => {
+  alert("Lưu thành công!");
+  modalOverlay.style.display = "none";
+});
+
+// skill_popup.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const skillOverlay = document.querySelector(".skill-modal-overlay");
+  const skillModal = document.querySelector(".skill-modal");
+
+  // Nút thêm kỹ năng (mục thứ 3)
+  const addButtons = document.querySelectorAll(".update-add");
+
+  addButtons.forEach((btn, index) => {
+    if (index === 2) {
+      btn.addEventListener("click", () => {
+        skillOverlay.style.display = "flex";
+      });
     }
   });
 });
