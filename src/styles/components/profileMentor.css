@@ -225,7 +225,6 @@
 
 .update-experience:hover,
 .update-study:hover,
-.update-prize:hover,
 .update-skill:hover {
   color: var(--primary-link);
   cursor: pointer;
@@ -239,7 +238,6 @@
 /* css cho 2 nut edit */
 .experience-buttons__edit,
 .study-buttons__edit,
-.prize-buttons__edit,
 .skill-buttons__edit {
   display: flex;
   gap: 6px;
@@ -247,7 +245,6 @@
 
 .experience-button,
 .study-button,
-.prize-button,
 .skill-button {
   width: 26px;
   height: 26px;
@@ -263,7 +260,6 @@
 
 .experience-button.edit-btn,
 .study-button.edit-btn,
-.prize-button.edit-btn,
 .skill-button.edit-btn {
   background-color: #00bcd4; /* xanh nhạt */
   color: white;
@@ -272,7 +268,6 @@
 
 .experience-button.delete-btn,
 .study-button.delete-btn,
-.prize-button.delete-btn,
 .skill-button.delete-btn {
   background-color: #f44336; /* đỏ */
   color: white;
@@ -281,9 +276,17 @@
 
 .experience-button:hover,
 .study-button:hover,
-.prize-button:hover,
 .skill-button:hover {
   opacity: 0.85;
+}
+
+.update-experience-bonus {
+  display: flex;
+  gap: 0.5rem;
+}
+.update-add:hover {
+  color: var(--primary-link);
+  cursor: pointer;
 }
 
 /* css cho phan pop up chinh sua thong tin */
@@ -438,30 +441,14 @@
 
 /* css cho pop up chinh sua kinh nghiem lam viec */
 
-.experience-overlay,
-.study-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.experience-overlay.active
-.study-overlay.active {
-  display: block;
-}
-
 .experience-popup,
 .study-popup {
   display: none;
   position: fixed;
-  top: 52%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transform-origin: center center;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -470,6 +457,7 @@
   max-height: 85vh;
   overflow-y: auto;
   z-index: 1000;
+  will-change: transform, opacity;
 }
 
 .experience-popup.active,
@@ -481,11 +469,11 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%);
+    transform: translate(-50%, -50%) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -793,6 +781,189 @@
   border-radius: 6px;
   text-align: start;
   font-size: 0.95rem;
+}
+
+/* css cho popup skill */
+
+.skill-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.skill-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.skill-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f6e56;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.skill-modal-title::before {
+  content: "📄";
+  font-size: 20px;
+}
+
+.skill-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.skill-modal-close-btn:hover {
+  color: #333;
+}
+
+.skill-modal-body {
+  padding: 24px;
+}
+
+.skill-form-group {
+  margin-bottom: 20px;
+}
+
+.skill-form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.skill-form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.skill-form-control:focus {
+  outline: none;
+  border-color: #0f6e56;
+}
+
+select.skill-form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+textarea.skill-form-control {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.skill-modal-footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.skill-btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.skill-btn-save {
+  background-color: #0f6e56;
+  color: white;
+}
+
+.skill-btn-save:hover {
+  background-color: #0d5d49;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 110, 86, 0.3);
+}
+
+.skill-btn-cancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+.skill-btn-cancel:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.skill-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .skill-modal {
+    max-width: 100%;
+    margin: 20px;
+  }
+
+  .skill-modal-footer {
+    flex-direction: column;
+  }
+
+  .skill-btn {
+    width: 100%;
+  }
 }
 
 /* Cột phải */
