@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/registerMentor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="/js/registerMentor.js"></script>
+    <title>Mentor</title>
+</head>
+<body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+        <div class="container">
+            <div class="rigister-Mentor">Đăng kí làm Mentor</div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-steps">
+                <div class="step active" id="step1"></div>
+                <div class="step" id="step2"></div>
+                <div class="step" id="step3"></div>
+                <div class="step" id="step4"></div>
+            </div>
+        </div>
+
+        <!-- Page 1: Thông tin cơ bản -->
+        <div class="page active" id="page1">
+            <h2>Vui lòng cung cấp các Thông tin cơ bản của Bạn</h2>
+
+            <div class="form-group">
+                <label class="form-label">
+                    HÌNH THỨC KẾT NỐI
+                    <span class="info-icon">i</span>
+                </label>
+                <p class="form-helper">Đây là hình thức bạn sẽ dùng liên lạc với mentee trong các buổi tư vấn</p>
+                <div class="form-row">
+                    <select class="form-select">
+                        <option>Google Meet</option>
+                        <option>Zoom</option>
+                        <option>Microsoft Teams</option>
+                    </select>
+                    <input type="text" class="form-input" placeholder="Ví dụ: https://meet.google.com/uas-bard-">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    HÌNH ẢNH CỦA BẠN
+                    <span class="info-icon">i</span>
+                </label>
+                <p class="form-helper">Bạn vui lòng để lại 1 bức ảnh cá nhân (Ảnh của bạn sẽ được sử dụng để truyền thông trong các sự kiện của Mentori như vinh danh cố vấn hàng tuần/tháng....)</p>
+                
+                <div class="photo-guidelines">
+                    <p class="guideline-title">👍 Gợi ý của Mentori</p>
+                    <ul class="guideline-list">
+                        <li>Ảnh rõ mặt</li>
+                        <li>Trang phục lịch sự</li>
+                        <li>Không xuất hiện thẻ hoặc chi tiết nhạy cảm</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p class="example-label">Ví dụ</p>
+                    <div class="photo-examples">
+                        <img src="/public/assets/images/download.jpg" alt="Example 1" class="photo-example">
+                        <img src="/public/assets/images/download.jpg" alt="Example 2" class="photo-example">
+                    </div>
+                </div>
+
+                <div class="file-input-wrapper" style="margin-top: 20px;">
+                    <input type="file" id="photoUpload" accept="image/*">
+                    <label for="photoUpload" class="file-input-label">Choose File</label>
+                    <span class="file-name" id="fileName">No file chosen</span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="nextPage(2)">Tiếp tục</button>
+            </div>
+        </div>
+
+        <!-- Page 2: Kinh nghiệm và kỹ năng -->
+        <div class="page" id="page2">
+            <h2>Hãy mô tả những kinh nghiệm, kỹ năng Bạn có thể chia sẻ cho Mentee nhé!</h2>
+
+            <div class="tabs">
+                <div class="tab active">Định hướng và chia sẻ kinh nghiệm nghề nghiệp</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">TÊN CÔNG TY</label>
+                    <input type="text" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">VỊ TRÍ</label>
+                    <input type="text" class="form-input">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">LĨNH VỰC</label>
+                <input type="text" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">MÔ TẢ NỘI DUNG BẠN CÓ THỂ CHIA SẺ:</label>
+                <p class="form-helper">Đây là gợi ý của Mentori để tham khảo!</p>
+                <textarea class="form-textarea" placeholder="Tôi sẽ giúp bạn hiểu, mời trường, vẫn hoá công ty:
+- Tổng quan về công ty, lĩnh vực, vị trí trên thị trường
+- Sứ mạng của công ty, vai trò của công ty trong chuỗi giá trị
+- Lộ trình thăng tiến, cơ hội nghề nghiệp sau này
+- Văn hóa công ty
+- Chính sách đào tạo và phát triển nhân tài
+
+Tôi sẽ chia sẻ với với bạn kinh nghiệm làm việc thực tế:
+- Ý nghĩa của công việc, công việc đóng góp như thế nào cho xã hội
+- Công việc thực tế tại công ty
+- Các stakeholder bạn sẽ làm việc cùng (đẹp, đồng nghiệp, khách hàng, đối tác, v.v.)
+- Những điều học hỏi được từ công việc: những điều cần để thiện để làm việc tốt hơn, các yếu tố cần để thành công trong công việc này
+
+Tôi sẽ chia sẻ với bạn kinh nghiệm ứng tuyển:
+- Các kỹ ứng tuyển trong năm
+- Những điều cần chuẩn bị trước khi ứng tuyển (chuyên môn, kỹ năng mềm, network, tinh thần, thái độ)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">TAG</label>
+                <input type="text" class="form-input">
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevPage(1)">Quay lại</button>
+                <button class="btn btn-primary" onclick="nextPage(3)">Tiếp tục</button>
+            </div>
+        </div>
+
+        <!-- Page 3: Kỹ năng làm CV (tab example) -->
+        <div class="page" id="page3">
+            <h2>Hãy mô tả những kinh nghiệm, kỹ năng Bạn có thể chia sẻ cho Mentee nhé!</h2>
+
+            <div class="tabs">
+                <div class="tab active">Kỹ năng mềm</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">TÊN KỸ NĂNG</label>
+                <input type="text" class="form-input" placeholder="Ví dụ: Kỹ năng làm CV">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">MÔ TẢ NỘI DUNG BẠN CÓ THỂ CHIA SẺ:</label>
+                <p class="form-helper">Đây là gợi ý của Mentori để tham khảo!</p>
+                <textarea class="form-textarea" placeholder="Giới thiệu tổng quan về kỹ năng bạn muốn chia sẻ:
+Viết CV là kỹ năng quan trọng giúp bạn thu được ấn tượng đầu tuyển với nhà tuyển dụng. Mình sẽ chia sẻ với bạn phương pháp để viết CV hiệu quả và gây ấn tượng với nhà tuyển dụng.
+
+Những điều bạn sẽ chia sẻ:
+- Tại sao CV lại quan trọng
+- Như thế nào là một layout CV chuẩn
+- Viết nội dung CV chuẩn như thế nào
+- Các tips để xây dựng một CV ấn tượng
+- Mẫu CV chuẩn"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">TAG</label>
+                <input type="text" class="form-input">
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevPage(2)">Quay lại</button>
+                <button class="btn btn-primary" onclick="nextPage(4)">Tiếp tục</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Điều khoản -->
+        <div class="page" id="page4">
+            <h2>Điều khoản</h2>
+
+            <div class="terms-box">
+                <p>Đầu tiên, chúng tôi muốn xác nhận rằng bạn sẽ làm việc cùng Mentori như một nhà thầu tự do (freelance contractor). Với tư cách là một mentor trên Mentori, bạn sẽ cung cấp dịch vụ mentoring trên tự cách của chính bạn. Mentori chỉ là <strong>trung gian kết nối giữa bạn và mentee</strong>.</p>
+
+                <p>Để cung cấp dịch vụ Mentoring trên Mentori, bạn cần đọc và đồng ý các <strong>Điều khoản dành cho Mentor</strong>. Các điều khoản này sẽ được áp dụng cho tất cả các tài khoản được phê duyệt để trở thành Mentor tại Mentori. Điều khoản sau đây sẽ bao gồm:</p>
+
+                <h3>1. Đăng ký trở thành mentor và lĩnh vực mentoring</h3>
+                <h4>1.1. Đăng ký trở thành Mentor</h4>
+                <p>Để trở thành Mentor, bạn cần hoàn thiện profile trên Mentori và gửi đầy đủ thông tin liên quan đến lĩnh vực mentoring tại phần Đăng ký làm mentor. Các thông tin này sẽ được Mentori đánh giá và phê duyệt. Một khi bạn được phê duyệt, trang thái thành viên của bạn sẽ chuyển thành mentor. Là một mentor, bạn có thể bắt đầu kết nối với mentee để cung cấp dịch vụ Mentoring.</p>
+
+                <h4>1.2. Đăng ký lĩnh vực mentoring</h4>
+                <p>Để có thể cung cấp dịch vụ mentoring, Mentor đăng ký lĩnh vực mentoring mà mentor muốn cung cấp trên Mentori. Khi bạn đăng ký lĩnh vực mentoring, bạn đồng ý với các điều khoản như sau:</p>
+                <ul>
+                    <li>Mô tả rõ ràng, chi tiết lĩnh vực mentoring với phạm vi và kết quả đầu ra cụ thể.</li>
+                    <li>Không đăng ký các dịch vụ với mục đích gian lận, hoặc cung cấp dịch vụ khác so với dịch vụ chỉ ra tại phần mô tả.</li>
+                    <li>Không quảng cáo dịch vụ, nền tảng, phần mềm hoặc app của bất kì bên thứ 3 nào.</li>
+                </ul>
+
+                <h3>2. Cung cấp dịch vụ Mentoring</h3>
+                <p>Khi bạn nhận được yêu cầu mentoring từ mentee, bạn có trách nhiệm:</p>
+                <ul>
+                    <li>Tham gia các buổi mentoring đúng hẹn và đúng thời gian đã cam kết</li>
+                    <li>Chuẩn bị nội dung mentoring chất lượng và phù hợp với mong đợi của mentee</li>
+                    <li>Duy trì thái độ chuyên nghiệp trong suốt quá trình mentoring</li>
+                    <li>Bảo mật thông tin cá nhân và nội dung trao đổi với mentee</li>
+                </ul>
+
+                <h3>3. Chính sách thanh toán</h3>
+                <p>Mentori sẽ thu phí dịch vụ từ mentee và chuyển khoản cho mentor theo chu kỳ thanh toán đã thỏa thuận. Mentor có trách nhiệm cung cấp thông tin tài khoản chính xác để nhận thanh toán.</p>
+            </div>
+
+            <div class="terms-checkbox">
+                <input type="checkbox" id="agreeTerms">
+                <label for="agreeTerms">TÔI ĐÃ ĐỌC VÀ ĐỒNG Ý VỚI CÁC ĐIỀU KHOẢN CỦA MENTORI.</label>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="prevPage(3)">Quay lại</button>
+                <button class="btn btn-primary" onclick="submitForm()">Đăng ký làm Mentor</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
