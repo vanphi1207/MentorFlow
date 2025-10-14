@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/payment.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- PAYMENT HEADER -->
+    <div class="payment-header">
+      <h1>Thanh Toán Khóa Học</h1>
+      <p>Hoàn tất đăng kí khóa học của bạn</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="success-message" id="successMessage">
+        ✓ Thanh toán thành công! Bạn sẽ nhận được email xác nhận trong vài phút.
+      </div>
+
+      <div class="payment-wrapper">
+        <!-- LEFT COLUMN: COURSE INFO -->
+        <div>
+          <div class="course-card">
+            <div class="course-image">📖</div>
+            <div class="course-content">
+              <div class="course-title">Lập Trình Web Nâng Cao</div>
+              <div class="course-mentor">Giảng viên: Trần Nhật Nghi</div>
+              <div class="course-description">
+                Học lập trình web từ cơ bản đến nâng cao với các công nghệ mới
+                nhất.
+              </div>
+
+              <div class="course-meta">
+                <div class="meta-item">
+                  <span>12</span>
+                  <span>Bài học</span>
+                </div>
+                <div class="meta-item">
+                  <span>40h</span>
+                  <span>Tổng thời gian</span>
+                </div>
+              </div>
+
+              <ul class="course-features">
+                <li>Truy cập suốt đời</li>
+                <li>Chứng chỉ hoàn thành</li>
+                <li>Tài liệu học tập</li>
+                <li>Hỗ trợ trực tuyến</li>
+              </ul>
+
+              <div class="course-price">
+                <div class="price-original">₫ 2,499,000</div>
+                <div class="price-current">₫ 1,299,000</div>
+                <div class="price-discount">Giảm 48%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: PAYMENT FORM -->
+        <div>
+          <!-- PERSONAL INFO -->
+          <div class="payment-section">
+            <div class="section-header">
+              <span>1</span>
+              Thông tin cá nhân
+            </div>
+            <div class="section-content">
+              <div class="form-group">
+                <label class="form-label">Họ và tên *</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Nhập họ và tên"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input
+                  type="email"
+                  class="form-input"
+                  placeholder="Nhập email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Số điện thoại *</label>
+                <input
+                  type="tel"
+                  class="form-input"
+                  placeholder="Nhập số điện thoại"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- PAYMENT METHOD -->
+          <div class="payment-section">
+            <div class="section-header">
+              <span>2</span>
+              Phương thức thanh toán
+            </div>
+            <div class="section-content">
+              <div class="payment-methods">
+                <label
+                  class="payment-method active"
+                  onclick="selectPayment(this)"
+                >
+                  <input type="radio" name="payment" value="card" checked />
+                  <span class="payment-method-label">💳 Thẻ tín dụng</span>
+                </label>
+                <label class="payment-method" onclick="selectPayment(this)">
+                  <input type="radio" name="payment" value="bank" />
+                  <span class="payment-method-label">🏦 Chuyển khoản</span>
+                </label>
+                <label class="payment-method" onclick="selectPayment(this)">
+                  <input type="radio" name="payment" value="wallet" />
+                  <span class="payment-method-label">💰 Ví điện tử</span>
+                </label>
+                <label class="payment-method" onclick="selectPayment(this)">
+                  <input type="radio" name="payment" value="installment" />
+                  <span class="payment-method-label">📅 Trả góp</span>
+                </label>
+              </div>
+
+              <!-- CARD INFO -->
+              <div id="cardSection">
+                <div class="form-group">
+                  <label class="form-label">Số thẻ *</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="1234 5678 9012 3456"
+                    required
+                  />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Ngày hết hạn *</label>
+                    <input
+                      type="text"
+                      class="form-input"
+                      placeholder="MM/YY"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">CVV *</label>
+                    <input
+                      type="text"
+                      class="form-input"
+                      placeholder="123"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tên chủ thẻ *</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Nhập tên chủ thẻ"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ORDER SUMMARY -->
+          <div class="payment-section">
+            <div class="section-header">
+              <span>3</span>
+              Tóm tắt đơn hàng
+            </div>
+            <div class="section-content">
+              <div class="order-summary">
+                <div class="summary-row">
+                  <span class="summary-label">Giá khóa học</span>
+                  <span class="summary-value">₫ 2,499,000</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Khuyến mãi (48%)</span>
+                  <span class="summary-value" style="color: #27ae60"
+                    >-₫ 1,200,000</span
+                  >
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row">
+                  <span class="summary-label">Tổng cộng</span>
+                  <span class="summary-value summary-total">₫ 1,299,000</span>
+                </div>
+              </div>
+
+              <div class="terms-section">
+                <div class="terms-checkbox">
+                  <input type="checkbox" id="terms" required />
+                  <label for="terms">
+                    Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và
+                    <a href="#">Chính sách riêng tư</a>
+                  </label>
+                </div>
+              </div>
+
+              <div class="button-group">
+                <button class="btn btn-secondary" onclick="goBack()">
+                  Quay lại
+                </button>
+                <button class="btn btn-primary" onclick="completePayment()">
+                  Thanh toán ngay
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/payment.js"></script>
+  </body>
+</html>
