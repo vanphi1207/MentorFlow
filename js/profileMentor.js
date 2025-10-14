@@ -181,9 +181,18 @@ function openProfilePopup() {
   const overlay = document.getElementById("profileOverlay");
   const popup = document.getElementById("profilePopup");
   const textarea = document.getElementById("profileIntroduction");
+  const navbar = document.querySelector(".navbar");
 
   overlay.classList.add("active");
   popup.style.display = "block";
+
+  // Lưu và ẩn navbar
+  if (navbar) {
+    if (!navbar.dataset.originalDisplay) {
+      navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+    }
+    navbar.style.display = "none";
+  }
 
   // Focus vào textarea khi mở
   if (textarea) textarea.focus();
@@ -193,9 +202,15 @@ function openProfilePopup() {
 function closeProfilePopup() {
   const overlay = document.getElementById("profileOverlay");
   const popup = document.getElementById("profilePopup");
+  const navbar = document.querySelector(".navbar");
 
   overlay.classList.remove("active");
   popup.style.display = "none";
+
+  // Hiện lại navbar với trạng thái ban đầu
+  if (navbar && navbar.dataset.originalDisplay) {
+    navbar.style.display = navbar.dataset.originalDisplay;
+  }
 }
 
 // ====== LƯU THÔNG TIN ======
@@ -232,8 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
 
 // mở 2 button chỉnh sửa
 
@@ -284,17 +297,34 @@ function setupPopup(config) {
   // Mở popup khi click vào nút "Chỉnh sửa"
   if (editBtn) {
     editBtn.addEventListener("click", () => {
+      const navbar = document.querySelector(".navbar");
+
       overlay.classList.add("active");
       popup.classList.add("active");
       document.body.style.overflow = "hidden"; // Ngăn scroll trang
+
+      // Lưu và ẩn navbar
+      if (navbar) {
+        if (!navbar.dataset.originalDisplay) {
+          navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+        }
+        navbar.style.display = "none";
+      }
     });
   }
 
   // Đóng popup
   function closePopup() {
+    const navbar = document.querySelector(".navbar");
+
     overlay.classList.remove("active");
     popup.classList.remove("active");
     document.body.style.overflow = "auto"; // Cho phép scroll lại
+
+    // Hiện lại navbar với trạng thái ban đầu
+    if (navbar && navbar.dataset.originalDisplay) {
+      navbar.style.display = navbar.dataset.originalDisplay;
+    }
   }
 
   // Click vào nút đóng (X)
@@ -389,47 +419,100 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addButtons.forEach((btn, index) => {
     btn.addEventListener("click", () => {
+      const navbar = document.querySelector(".navbar");
+
       if (index === 0) {
         // Mục đầu tiên -> Kinh nghiệm làm việc
         experiencePopup.classList.add("active");
-        experienceOverlay.style.display = "block";
+        experienceOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Lưu và ẩn navbar
+        if (navbar) {
+          if (!navbar.dataset.originalDisplay) {
+            navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+          }
+          navbar.style.display = "none";
+        }
       } else if (index === 1) {
         // Mục thứ 2 -> Quá trình học tập
         studyPopup.classList.add("active");
-        studyOverlay.style.display = "block";
+        studyOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        // Lưu và ẩn navbar
+        if (navbar) {
+          if (!navbar.dataset.originalDisplay) {
+            navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+          }
+          navbar.style.display = "none";
+        }
       }
     });
   });
 
-  // Đóng popup kinh nghiệm
+  // Hàm đóng popup kinh nghiệm
+  function closeExperiencePopup() {
+    const navbar = document.querySelector(".navbar");
+
+    experiencePopup.classList.remove("active");
+    experienceOverlay.classList.remove("active");
+    document.body.style.overflow = "auto";
+
+    // Hiện lại navbar với trạng thái ban đầu
+    if (navbar && navbar.dataset.originalDisplay) {
+      navbar.style.display = navbar.dataset.originalDisplay;
+    }
+  }
+
+  // Hàm đóng popup học tập
+  function closeStudyPopup() {
+    const navbar = document.querySelector(".navbar");
+
+    studyPopup.classList.remove("active");
+    studyOverlay.classList.remove("active");
+    document.body.style.overflow = "auto";
+
+    // Hiện lại navbar với trạng thái ban đầu
+    if (navbar && navbar.dataset.originalDisplay) {
+      navbar.style.display = navbar.dataset.originalDisplay;
+    }
+  }
+
+  // Đóng popup kinh nghiệm khi click vào nút đóng
   document
     .querySelector(".experience-btn-close")
-    .addEventListener("click", () => {
-      experiencePopup.classList.remove("active");
-      experienceOverlay.style.display = "none";
-    });
+    .addEventListener("click", closeExperiencePopup);
 
+  // Đóng popup kinh nghiệm khi click vào nút hủy
   document
     .querySelector(".experience-btn-cancel")
-    .addEventListener("click", () => {
-      experiencePopup.classList.remove("active");
-      experienceOverlay.style.display = "none";
-    });
+    .addEventListener("click", closeExperiencePopup);
 
-  // Đóng popup học tập
+  // Đóng popup kinh nghiệm khi click vào overlay
+  experienceOverlay.addEventListener("click", closeExperiencePopup);
+
+  // Đóng popup học tập khi click vào nút đóng
   document
     .querySelector(".study-popup .experience-btn-close")
-    .addEventListener("click", () => {
-      studyPopup.classList.remove("active");
-      studyOverlay.style.display = "none";
-    });
+    .addEventListener("click", closeStudyPopup);
 
+  // Đóng popup học tập khi click vào nút hủy
   document
     .querySelector(".study-popup .experience-btn-cancel")
-    .addEventListener("click", () => {
-      studyPopup.classList.remove("active");
-      studyOverlay.style.display = "none";
-    });
+    .addEventListener("click", closeStudyPopup);
+
+  // Đóng popup học tập khi click vào overlay
+  studyOverlay.addEventListener("click", closeStudyPopup);
+
+  // Ngăn popup đóng khi click vào nội dung popup
+  experiencePopup.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  studyPopup.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 });
 
 // click vao button chinh sua se hien thi pop up them chung chi va ki nang
@@ -441,7 +524,18 @@ const saveBtn = document.querySelector(".skill-btn-save");
 
 // Khi click nút "Chỉnh sửa" → mở popup
 editBtn.addEventListener("click", () => {
+  const navbar = document.querySelector(".navbar");
+
   modalOverlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  // Lưu và ẩn navbar
+  if (navbar) {
+    if (!navbar.dataset.originalDisplay) {
+      navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+    }
+    navbar.style.display = "none";
+  }
 });
 
 // Khi click dấu X hoặc nút Hủy → đóng popup
@@ -449,13 +543,28 @@ closeBtn.addEventListener("click", closeModal);
 cancelBtn.addEventListener("click", closeModal);
 
 function closeModal() {
+  const navbar = document.querySelector(".navbar");
+
   modalOverlay.style.display = "none";
+  document.body.style.overflow = "auto";
+
+  // Hiện lại navbar với trạng thái ban đầu
+  if (navbar && navbar.dataset.originalDisplay) {
+    navbar.style.display = navbar.dataset.originalDisplay;
+  }
 }
 
 // Khi click "Lưu" → thông báo + đóng popup
 saveBtn.addEventListener("click", () => {
   alert("Lưu thành công!");
-  modalOverlay.style.display = "none";
+  closeModal();
+});
+
+// Đóng popup khi click vào overlay
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) {
+    closeModal();
+  }
 });
 
 // skill_popup.js
@@ -470,8 +579,26 @@ document.addEventListener("DOMContentLoaded", () => {
   addButtons.forEach((btn, index) => {
     if (index === 2) {
       btn.addEventListener("click", () => {
+        const navbar = document.querySelector(".navbar");
+
         skillOverlay.style.display = "flex";
+        document.body.style.overflow = "hidden";
+
+        // Lưu và ẩn navbar
+        if (navbar) {
+          if (!navbar.dataset.originalDisplay) {
+            navbar.dataset.originalDisplay = getComputedStyle(navbar).display;
+          }
+          navbar.style.display = "none";
+        }
       });
     }
   });
+
+  // Ngăn popup đóng khi click vào nội dung popup
+  if (skillModal) {
+    skillModal.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  }
 });
