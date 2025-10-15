@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Khóa Học Mới - Mentor Flow</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/uploadcourses.css" />
+     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="/js/uploadcourses.js"></script>
+  
+
+</head>
+<body>
+  <!-- Header -->
+      <header>
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <!-- Main Content -->
+    <div class="page-header">
+        <h2>Tạo Khóa Học Mới</h2>
+        <p>Điền thông tin chi tiết về khóa học của bạn</p>
+    </div>
+  <div class="container">
+    <div class="grid">
+      <!-- Left Column -->
+      <div>
+        <!-- Thông tin cơ bản -->
+        <div class="card">
+          <h3 class="card-header">
+            <i data-lucide="book-open" width="24" height="24"></i>
+            Thông Tin Cơ Bản
+          </h3>
+
+          <div class="form-group">
+            <label>Tên khóa học *</label>
+            <input type="text" id="courseTitle" placeholder="VD: Lập Trình We Full-Stack với React & Node.js">
+          </div>
+
+          <div class="form-group">
+            <label>Mô tả khóa học *</label>
+            <textarea id="courseDescription" rows="4" placeholder="Mô tả chi tiết về nội dung, mục tiêu và đối tượng học viên..."></textarea>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Giá khóa học (VNĐ) *</label>
+              <input type="text" id="coursePrice" placeholder="2,499,000">
+            </div>
+            <div class="form-group">
+              <label>Tổng thời lượng *</label>
+<input type="text" id="courseDuration" placeholder="42h">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Trình độ</label>
+            <select id="courseLevel">
+              <option value="Cơ bản">Cơ bản</option>
+              <option value="Trung cấp" selected>Trung cấp</option>
+              <option value="Nâng cao">Nâng cao</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Video Demo *</label>
+            <div class="upload-box" onclick="document.getElementById('videoUpload').click()">
+              <input type="file" id="videoUpload" accept="video/*">
+              <i data-lucide="video" width="40" height="40" style="color: #9ca3af; margin: 0 auto 0.5rem;"></i>
+              <p id="videoStatus" style="font-size: 0.875rem; color: #6b7280;">Nhấn để chọn video demo</p>
+              <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.25rem;">MP4, MOV, AVI (Max 100MB)</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Hình Thumbnail *</label>
+            <div class="upload-box" onclick="document.getElementById('thumbnailUpload').click()">
+              <input type="file" id="thumbnailUpload" accept="image/*">
+              <div id="thumbnailPreview">
+                <div style="background: #f3f4f6; width: 5rem; height: 5rem; margin: 0 auto 0.5rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                  🖼️
+                </div>
+                <p style="font-size: 0.875rem; color: #6b7280;">Nhấn để chọn hình thumbnail</p>
+                <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.25rem;">JPG, PNG (Recommended: 1280x720)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nội dung khóa học -->
+        <div class="card" style="margin-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 class="card-header" style="margin: 0;">
+              <i data-lucide="video" width="24" height="24"></i>
+              Nội Dung Khóa Học
+            </h3>
+            <button class="btn btn-primary " onclick="openModuleModal()">
+              <i data-lucide="plus" width="18" height="18"></i>
+              Thêm Module
+            </button>
+          </div>
+
+          <div class="module-list" id="moduleList">
+            <div class="empty-state">
+              <i data-lucide="video" width="48" height="48" style="color: #d1d5db; margin: 0 auto 0.75rem;"></i>
+              <p>Chưa có module nào. Nhấn "Thêm Module" để bắt đầu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module Modal -->
+  <div id="moduleModal" class="modal">
+    <div class="modal-content">
+<div class="modal-header">
+        <h3 id="moduleModalTitle">Thêm Module Mới</h3>
+        <button class="close-btn" onclick="closeModuleModal()">
+          <i data-lucide="x" width="24" height="24"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Tên Module *</label>
+          <input type="text" id="moduleTitle" placeholder="VD: HTML, CSS, JavaScript cơ bản">
+        </div>
+
+        <div class="form-group">
+          <label>Mô tả Module</label>
+          <textarea id="moduleDescription" rows="2" placeholder="Mô tả ngắn về module này..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Thời lượng Module *</label>
+          <input type="text" id="moduleDuration" placeholder="VD: 4.5 giờ">
+        </div>
+
+        <div style="border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <h4 style="font-weight: 600;">Danh sách bài học</h4>
+            <button class="btn btn-success" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;" onclick="openLessonModal()">
+              <i data-lucide="plus" width="16" height="16"></i>
+              Thêm bài học
+            </button>
+          </div>
+
+          <div class="lesson-list" id="lessonList">
+            <p style="text-align: center; padding: 1rem; font-size: 0.875rem; color: #6b7280;">Chưa có bài học nào</p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="addModule()">
+            <span id="moduleSubmitText">Thêm Module</span>
+          </button>
+          <button class="btn btn-secondary" onclick="closeModuleModal()">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lesson Modal -->
+  <div id="lessonModal" class="modal">
+    <div class="modal-content" style="max-width: 32rem;">
+      <div class="modal-header">
+        <h3>Thêm Bài Học</h3>
+        <button class="close-btn" onclick="closeLessonModal()">
+          <i data-lucide="x" width="24" height="24"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Tên Bài Học *</label>
+          <input type="text" id="lessonTitle" placeholder="VD: Giới thiệu về HTML5">
+        </div>
+
+        <div class="form-group">
+          <label>Thời Lượng *</label>
+          <input type="text" id="lessonDuration" placeholder="VD: 15:30">
+        </div>
+
+        <div class="form-group">
+          <label>Loại</label>
+          <select id="lessonType">
+            <option value="video">Video</option>
+            <option value="quiz">Quiz</option>
+            <option value="project">Project</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+<button class="btn btn-success" onclick="addLesson()">Thêm Bài Học</button>
+          <button class="btn btn-secondary" onclick="closeLessonModal()">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+      <div class="footer__container">
+        <!-- Cột 1: Liên hệ -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin liên hệ</h3>
+          <ul class="footer__list">
+            <li>Điện thoại: <strong>03636363636</strong></li>
+            <li>
+              Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a>
+            </li>
+            <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
+            <li>Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
+          </ul>
+
+          <div class="footer__socials">
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-messenger"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Thông tin -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin</h3>
+          <ul class="footer__list">
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Cộng đồng</a></li>
+            <li><a href="#">Trung tâm hỗ trợ</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Khoá học -->
+        <div class="footer__column">
+          <h3 class="footer__title">Khoá học</h3>
+          <ul class="footer__list">
+            <li><a href="#">Khoá học của tôi</a></li>
+            <li><a href="#">Dành cho bạn</a></li>
+            <li><a href="#">Chính sách hoàn tiền</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Chương trình cố vấn -->
+        <div class="footer__column">
+          <h3 class="footer__title">Chương trình cố vấn</h3>
+          <ul class="footer__list">
+            <li><a href="#">Danh sách mentor</a></li>
+            <li><a href="#">Lĩnh vực</a></li>
+            <li><a href="#">Chủ đề</a></li>
+            <li><a href="#">Mentor Blog</a></li>
+            <li><a href="#">Đăng ký làm mentor</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+      </div>
+    </footer>
+
+  
+</body>
+</html>
