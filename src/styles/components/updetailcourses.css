@@ -1,0 +1,121 @@
+.course-detail {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+
+.video-container video {
+  width: 80%;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.course-content h2 {
+  color: #5f48f5;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.module {
+  background: #f9f9fc;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.module-header {
+  display: flex;
+  flex-direction: column; /* sắp xếp theo chiều dọc */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.module-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px; /* tạo khoảng nhỏ giữa tiêu đề và info */
+}
+
+.module-header .info {
+  font-size: 14px;
+  color: #666;
+  margin-left: 0; /* bỏ căn lề nếu có */
+}
+
+.module-header i {
+  position: absolute;
+  right: 16px;
+  top: 18px;
+  color: #888;
+}
+
+
+.lesson-list {
+  display: none;
+  padding: 10px 20px;
+  background: #f9f9fc;
+}
+
+.lesson {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.lesson:last-child {
+  border-bottom: none;
+}
+
+.lesson i {
+  margin-right: 8px;
+  color: #7b4fff;
+}
+
+/* Bình luận */
+.comment-section {
+  margin-top: 40px;
+}
+
+.comment-section h2 {
+  color: #5f48f5;
+  margin-bottom: 10px;
+}
+
+#commentInput {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#submitComment {
+  background: linear-gradient(135deg, #7b4fff, #4ee0c8);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#commentList {
+  margin-top: 15px;
+}
+
+.comment {
+  background: #f8f8ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}

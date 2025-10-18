@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khóa học của tôi - Mentor Flow</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/upcourses.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <script src="/js/upcourses.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="/public/index.html" class="navbar__logo">
+            <img src="/public/assets/images/icon.png" alt="logo" />
+            <span class="navbar__brand">Mentor Flow</span>
+          </a>
+          <ul class="navbar__links">
+            <li><a href="/pages/searchMentor.html">Tìm mentor</a></li>
+            <li><a href="/pages/blog.html">Blog</a></li>
+            <li><a href="/pages/courses.html">Khóa học</a></li>
+            <li><a href="#">Cách hoạt động</a></li>
+          </ul>
+          <div class="navbar__btn">
+            <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
+            <a href="/pages/login/register.html" class="btn-register"
+              >Đăng kí</a
+            >
+          </div>
+        </div>
+      </nav>    
+    </header>
+
+    <main class="courses-section">
+      <h1>Khóa học của tôi</h1>
+
+          <div id="courseList" class="courses-grid">
+      <!-- KHÓA HỌC 1 -->
+      <div class="course-card" data-id="1">
+        <img src="/public/assets/images/java.png" alt="Java Springboot" class="course-image">
+        <div class="course-info">
+          <a href="/pages/updetailcourses.html" class="course-title-link">
+              <h3>Viết ứng dụng bán hàng với Java Springboot/API và Angular</h3>
+            </a>
+            <p>Giảng viên: KienDangHoc</p>
+            <div class="rating">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- KHÓA HỌC 2 -->
+      <div class="course-card" data-id="2">
+        <img src="/public/assets/images/java.png" alt="Java Backend" class="course-image">
+        <div class="course-info">
+           <a href="/pages/updetailcourses.html" class="course-title-link">
+              <h3>Lập trình Java Backend Full Steps</h3>
+            </a>
+            <p>Giảng viên: HuyJava</p>
+            <div class="rating">★★★★☆</div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+<footer class="footer">
+      <div class="footer__container">
+        <!-- Cột 1: Liên hệ -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin liên hệ</h3>
+          <ul class="footer__list">
+            <li>Điện thoại: <strong>03636363636</strong></li>
+            <li>
+              Email: <a href="mailto:contact@mentori.vn">contact@mentor.vn</a>
+            </li>
+            <li>CÔNG TY CỔ PHẦN GIẢI PHÁP KẾT NỐI MENTOR HUY HOC GIOI</li>
+            <li>Địa chỉ trụ sở chính: 36 Đường 18 - Bình Thạnh - TP.HCM</li>
+          </ul>
+
+          <div class="footer__socials">
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/HuyHocGioii/"
+              class="footer__social-link"
+              ><i class="fab fa-facebook-messenger"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Thông tin -->
+        <div class="footer__column">
+          <h3 class="footer__title">Thông tin</h3>
+          <ul class="footer__list">
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Cộng đồng</a></li>
+            <li><a href="#">Trung tâm hỗ trợ</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Khoá học -->
+        <div class="footer__column">
+          <h3 class="footer__title">Khoá học</h3>
+          <ul class="footer__list">
+            <li><a href="#">Khoá học của tôi</a></li>
+            <li><a href="#">Dành cho bạn</a></li>
+            <li><a href="#">Chính sách hoàn tiền</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Chương trình cố vấn -->
+        <div class="footer__column">
+          <h3 class="footer__title">Chương trình cố vấn</h3>
+          <ul class="footer__list">
+            <li><a href="#">Danh sách mentor</a></li>
+            <li><a href="#">Lĩnh vực</a></li>
+            <li><a href="#">Chủ đề</a></li>
+            <li><a href="#">Mentor Blog</a></li>
+            <li><a href="#">Đăng ký làm mentor</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
+      </div>
+    </footer>
+
+  
+</body>
+</html>
+  </body>
+</html>
