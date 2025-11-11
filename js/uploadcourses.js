@@ -1,263 +1,3 @@
-// // ==========================
-// // Initialize Lucide Icons
-// // ==========================
-// document.addEventListener("DOMContentLoaded", () => {
-//   lucide.createIcons();
-// });
-
-// // ==========================
-// // GLOBAL STATE
-// // ==========================
-// let modules = [];
-// let currentModuleLessons = [];
-// let editingModuleIndex = null;
-
-// // ==========================
-// // VIDEO & IMAGE UPLOAD (COURSE)
-// // ==========================
-// document.getElementById("videoUpload").addEventListener("change", (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     const videoURL = URL.createObjectURL(file);
-//     const preview = document.getElementById("videoPreview");
-//     preview.innerHTML = `
-//       <video width="100%" height="auto" controls style="border-radius:8px; margin-top: 0.5rem;">
-//         <source src="${videoURL}" type="${file.type}">
-//         Trình duyệt không hỗ trợ video.
-//       </video>
-//       <p style="color:#10b981; font-weight:600; margin-top: 0.5rem;">✓ ${file.name}</p>
-//     `;
-//     preview.style.display = "block";
-//   }
-// });
-
-// document.getElementById("thumbnailUpload").addEventListener("change", (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     const reader = new FileReader();
-//     reader.onload = (event) => {
-//       const preview = document.getElementById("thumbnailPreview");
-//       preview.innerHTML = `
-//         <img src="${event.target.result}" style="width: 100%; max-height: 12rem; object-fit: cover; border-radius: 0.5rem; margin-top: 0.5rem;">
-//         <p style="font-size: 0.875rem; color: #10b981; font-weight: 600; margin-top: 0.5rem;">✓ ${file.name}</p>
-//       `;
-//       preview.style.display = "block";
-//     };
-//     reader.readAsDataURL(file);
-//   }
-// });
-
-// // ==========================
-// // MODULE MODAL
-// // ==========================
-// function openModuleModal() {
-//   document.getElementById("moduleModal").classList.add("active");
-//   lucide.createIcons();
-// }
-
-// function closeModuleModal() {
-//   document.getElementById("moduleModal").classList.remove("active");
-//   document.getElementById("moduleTitle").value = "";
-//   document.getElementById("moduleDescription").value = "";
-//   document.getElementById("moduleDuration").value = "";
-//   currentModuleLessons = [];
-//   editingModuleIndex = null;
-//   renderLessonList();
-//   document.getElementById("moduleModalTitle").textContent = "Thêm Module Mới";
-//   document.getElementById("moduleSubmitText").textContent = "Thêm Module";
-// }
-
-// // ==========================
-// // LESSON MODAL
-// // ==========================
-// function openLessonModal() {
-//   document.getElementById("lessonModal").classList.add("active");
-//   lucide.createIcons();
-// }
-
-// function closeLessonModal() {
-//   document.getElementById("lessonModal").classList.remove("active");
-//   document.getElementById("lessonTitle").value = "";
-//   document.getElementById("lessonDuration").value = "";
-//   document.getElementById("lessonVideoUpload").value = "";
-// }
-
-// // ==========================
-// // ADD LESSON
-// // ==========================
-// function addLesson() {
-//   const title = document.getElementById("lessonTitle").value.trim();
-//   const duration = document.getElementById("lessonDuration").value.trim();
-//   const videoInput = document.getElementById("lessonVideoUpload");
-//   const file = videoInput.files[0];
-
-//   if (!title || !duration) {
-//     alert("Vui lòng điền đầy đủ thông tin bài học");
-//     return;
-//   }
-
-//   const lessonData = {
-//     id: Date.now(),
-//     title,
-//     duration,
-//     videoFile: file ? file.name : "Chưa có video",
-//   };
-
-//   currentModuleLessons.push(lessonData);
-//   renderLessonList();
-//   closeLessonModal(); // ✅ ẩn popup ngay sau khi thêm
-// }
-
-// // ==========================
-// // RENDER LESSON LIST
-// // ==========================
-// function renderLessonList() {
-//   const container = document.getElementById("lessonList");
-
-//   if (currentModuleLessons.length === 0) {
-//     container.innerHTML =
-//       '<p style="text-align: center; padding: 1rem; font-size: 0.875rem; color: #6b7280;">Chưa có bài học nào</p>';
-//     return;
-//   }
-
-//   container.innerHTML = currentModuleLessons
-//     .map(
-//       (lesson) => `
-//         <div class="lesson-form-item" style="display:flex; justify-content:space-between; align-items:center; padding:0.25rem 0;">
-//           <div style="display:flex; align-items:center; gap:0.5rem;">
-//             <i data-lucide="video" width="16" height="16" style="color:#9ca3af;"></i>
-//             <span>${lesson.title}</span>
-//             <span style="font-size:0.75rem; color:#6b7280;">(${lesson.duration})</span>
-//           </div>
-//           <button onclick="removeLesson(${lesson.id})" style="background:none; border:none; color:#dc2626; cursor:pointer;">
-//             <i data-lucide="trash-2" width="16" height="16"></i>
-//           </button>
-//         </div>
-//       `
-//     )
-//     .join("");
-
-//   lucide.createIcons();
-// }
-
-// function removeLesson(id) {
-//   currentModuleLessons = currentModuleLessons.filter((l) => l.id !== id);
-//   renderLessonList();
-// }
-
-// // ==========================
-// // MODULE MANAGEMENT
-// // ==========================
-// function addModule() {
-//   const title = document.getElementById("moduleTitle").value.trim();
-//   const description = document.getElementById("moduleDescription").value.trim();
-//   const duration = document.getElementById("moduleDuration").value.trim();
-
-//   if (!title || !duration) {
-//     alert("Vui lòng điền đầy đủ thông tin module");
-//     return;
-//   }
-
-//   const moduleData = {
-//     id: Date.now(),
-//     title,
-//     description,
-//     duration,
-//     lessons: [...currentModuleLessons],
-//   };
-
-//   if (editingModuleIndex !== null) {
-//     modules[editingModuleIndex] = moduleData;
-//   } else {
-//     modules.push(moduleData);
-//   }
-
-//   renderModuleList();
-//   closeModuleModal(); // ✅ ẩn popup sau khi thêm module
-// }
-
-// // ==========================
-// // RENDER MODULE LIST
-// // ==========================
-// function renderModuleList() {
-//   const container = document.getElementById("moduleList");
-
-//   if (modules.length === 0) {
-//     container.innerHTML = `
-//       <div class="empty-state">
-//         <i data-lucide="video" width="48" height="48" style="color:#d1d5db; margin:0 auto 0.75rem;"></i>
-//         <p>Chưa có module nào. Nhấn "Thêm Module" để bắt đầu.</p>
-//       </div>
-//     `;
-//     lucide.createIcons();
-//     return;
-//   }
-
-//   container.innerHTML = modules
-//     .map(
-//       (module, index) => `
-//         <div class="module-item">
-//           <div class="module-header" onclick="toggleModule(${index})">
-//             <div style="flex:1;">
-//               <div style="display:flex; align-items:center; gap:0.5rem;">
-//                 <span style="font-weight:600;">Module ${index + 1}:</span>
-//                 <span>${module.title}</span>
-//               </div>
-//               <div style="font-size:0.875rem; color:#6b7280; margin-top:0.25rem;">
-//                 ${module.lessons.length} bài học • ${module.duration}
-//               </div>
-//             </div>
-//             <div class="module-actions">
-//               <button class="btn-edit" onclick="event.stopPropagation(); editModule(${index})">Sửa</button>
-//               <button class="btn-delete" onclick="event.stopPropagation(); removeModule(${index})">Xóa</button>
-//               <i id="module-icon-${index}" data-lucide="chevron-down" width="20" height="20"></i>
-//             </div>
-//           </div>
-//           <div id="module-content-${index}" class="module-content">
-//             ${module.lessons
-//               .map(
-//                 (lesson) => `
-//                 <div class="lesson-item">
-//                   <i data-lucide="video" width="16" height="16" style="color:#9ca3af;"></i>
-//                   <span>${lesson.title}</span>
-//                   <span style="font-size:0.875rem; color:#6b7280;">(${lesson.duration})</span>
-//                 </div>
-//               `
-//               )
-//               .join("")}
-//           </div>
-//         </div>
-//       `
-//     )
-//     .join("");
-
-//   lucide.createIcons();
-// }
-
-// // ==========================
-// // SAVE COURSE
-// // ==========================
-// function saveCourse() {
-//   const courseData = {
-//     title: document.getElementById("courseTitle").value.trim(),
-//     description: document.getElementById("courseDescription").value.trim(),
-//     price: document.getElementById("coursePrice").value.trim(),
-//     duration: document.getElementById("courseDuration").value.trim(),
-//     level: document.getElementById("courseLevel").value,
-//     modules: modules,
-//     totalLessons: modules.reduce((sum, m) => sum + m.lessons.length, 0),
-//     createdAt: new Date().toISOString(),
-//   };
-
-//   if (!courseData.title || !courseData.price || modules.length === 0) {
-//     alert("Vui lòng điền đầy đủ thông tin khóa học và thêm ít nhất 1 module");
-//     return;
-//   }
-
-//   console.log("📘 Course Data:", courseData);
-//   alert("Khóa học đã được lưu thành công! (Xem console để xem dữ liệu)");
-// }
-
 
 
 
@@ -399,44 +139,242 @@ function renderModuleList() {
 //  GỬI DỮ LIỆU LÊN BACKEND
 // =======================
 async function saveCourse() {
+  // 1. Lấy dữ liệu từ form
   const title = document.getElementById("courseTitle").value.trim();
   const description = document.getElementById("courseDescription").value.trim();
   const price = document.getElementById("coursePrice").value.trim();
   const duration = document.getElementById("courseDuration").value.trim();
   const level = document.getElementById("courseLevel").value;
+  const thumbnailFile = document.getElementById("courseThumbnail").files[0];
+  const videoFile = document.getElementById("courseVideo").files[0];
 
+  // 2. Validate thông tin cơ bản
   if (!title || !description || !price || !duration) {
-    alert("Vui lòng nhập đầy đủ thông tin khóa học!");
+    alert("❌ Vui lòng nhập đầy đủ thông tin khóa học!");
     return;
   }
 
-  const data = {
+  // 3. Validate độ dài
+  if (title.length < 10 || title.length > 200) {
+    alert("❌ Tên khóa học phải từ 10-200 ký tự!");
+    return;
+  }
+
+  if (description.length < 50 || description.length > 5000) {
+    alert("❌ Mô tả phải từ 50-5000 ký tự!");
+    return;
+  }
+
+  // 4. Validate giá
+  const priceNum = Number(price.replace(/[,.]/g, ""));
+  if (isNaN(priceNum) || priceNum < 10000) {
+    alert("❌ Giá khóa học phải từ 10,000 VNĐ trở lên!");
+    return;
+  }
+
+  // 5. Validate thời lượng (xử lý cả "42h" và "42")
+  let durationNum;
+  if (duration.toLowerCase().endsWith('h')) {
+    durationNum = parseInt(duration.slice(0, -1), 10);
+  } else {
+    durationNum = parseInt(duration, 10);
+  }
+  
+  if (isNaN(durationNum) || durationNum <= 0) {
+    alert("❌ Thời lượng khóa học không hợp lệ!");
+    return;
+  }
+
+  // 6. Validate files
+  if (!thumbnailFile) {
+    alert("❌ Vui lòng upload hình thumbnail!");
+    return;
+  }
+
+  if (!videoFile) {
+    alert("❌ Vui lòng upload video demo!");
+    return;
+  }
+
+  // 7. Validate kích thước file
+  const MAX_THUMBNAIL_SIZE = 5 * 1024 * 1024; // 5MB
+  const MAX_VIDEO_SIZE = 100 * 1024 * 1024;   // 100MB
+
+  if (thumbnailFile.size > MAX_THUMBNAIL_SIZE) {
+    alert("❌ Thumbnail không được vượt quá 5MB!");
+    return;
+  }
+
+  if (videoFile.size > MAX_VIDEO_SIZE) {
+    alert("❌ Video không được vượt quá 100MB!");
+    return;
+  }
+
+  // 7. Validate định dạng file
+  const allowedImageTypes = ["image/jpeg", "image/png", "image/jpg"];
+  const allowedVideoTypes = ["video/mp4", "video/avi", "video/mov", "video/quicktime", "video/x-msvideo"];
+
+  if (!allowedImageTypes.includes(thumbnailFile.type)) {
+    alert("❌ Thumbnail chỉ chấp nhận định dạng JPG, PNG!");
+    return;
+  }
+
+  if (!allowedVideoTypes.includes(videoFile.type)) {
+    alert("❌ Video chỉ chấp nhận định dạng MP4, AVI, MOV!");
+    return;
+  }
+
+  // 9. Kiểm tra token
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("⚠️ Bạn chưa đăng nhập!");
+    window.location.href = "/pages/login.html";
+    return;
+  }
+
+  // 10. Map level từ dropdown sang enum Java (SỬA LẠI ĐÂY)
+  let levelEnum;
+  switch (level) {
+    case "Cơ bản":
+      levelEnum = "BEGINNER";
+      break;
+    case "Trung cấp":
+      levelEnum = "INTERMEDIATE";
+      break;
+    case "Nâng cao":
+      levelEnum = "ADVANCED";
+      break;
+    default:
+      alert("❌ Level không hợp lệ!");
+      return;
+  }
+
+  // 11. Tạo FormData
+  const formData = new FormData();
+  
+  const courseData = {
     titleCourse: title,
     description: description,
-    priceCourse: parseInt(price.replace(/[,.]/g, ""), 10),
-    timeCourse: parseInt(duration, 10),
-    level: level
+    priceCourse: priceNum,
+    timeCourse: durationNum,
+    level: levelEnum,
+    enrolledCount: 0
   };
 
+  // Log để debug
+  console.log("📤 Dữ liệu gửi đi:", courseData);
+  console.log("🖼️ Thumbnail:", {
+    name: thumbnailFile.name,
+    size: `${(thumbnailFile.size / 1024 / 1024).toFixed(2)} MB`,
+    type: thumbnailFile.type
+  });
+  console.log("🎬 Video:", {
+    name: videoFile.name,
+    size: `${(videoFile.size / 1024 / 1024).toFixed(2)} MB`,
+    type: videoFile.type
+  });
+
+  // Append course data as JSON blob
+  formData.append("course", new Blob([JSON.stringify(courseData)], { 
+    type: "application/json" 
+  }));
+  
+  formData.append("thumbnail", thumbnailFile);
+  formData.append("video", videoFile);
+
+  // 12. Hiển thị loading
+  const submitBtn = document.querySelector("button[onclick='saveCourse()']");
+  const originalText = submitBtn ? submitBtn.textContent : "";
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "⏳ Đang tải lên...";
+  }
+
   try {
-    const res = await fetch("http://localhost:8080/api/v1/courses", {
+    // 13. Gửi request
+    const res = await fetch("http://localhost:8080/api/v1/courses/create-with-media", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
-      body: JSON.stringify(data),
+      body: formData
     });
 
+    // 14. Xử lý response
     if (res.ok) {
-      alert("Tạo khóa học thành công!");
+      const data = await res.json();
+      console.log("✅ Response:", data);
+      alert("🎉 Tạo khóa học và upload media thành công!");
       window.location.href = "/pages/courses.html";
     } else {
-      const text = await res.text();
-      console.error("Lỗi:", text);
-      alert("Tạo khóa học thất bại. Xem console để biết thêm chi tiết.");
+      // Debug chi tiết lỗi
+      const contentType = res.headers.get("content-type");
+      let errorData;
+      
+      if (contentType && contentType.includes("application/json")) {
+        errorData = await res.json();
+      } else {
+        const text = await res.text();
+        errorData = { message: text };
+      }
+      
+      console.error("❌ Lỗi backend:", errorData);
+      console.error("📦 FormData đã gửi:", {
+        course: courseData,
+        thumbnailName: thumbnailFile.name,
+        thumbnailSize: `${(thumbnailFile.size / 1024 / 1024).toFixed(2)} MB`,
+        thumbnailType: thumbnailFile.type,
+        videoName: videoFile.name,
+        videoSize: `${(videoFile.size / 1024 / 1024).toFixed(2)} MB`,
+        videoType: videoFile.type
+      });
+      
+      if (errorData && errorData.message) {
+        alert(`❌ Lỗi: ${errorData.message}`);
+      } else {
+        alert("❌ Tạo khóa học thất bại. Vui lòng kiểm tra console để biết chi tiết!");
+      }
     }
   } catch (err) {
-    console.error("Lỗi kết nối:", err);
-    alert("Không thể kết nối đến server!");
+    console.error("⚠️ Lỗi kết nối:", err);
+    alert("❌ Không thể kết nối đến server!\n" + err.message);
+  } finally {
+    // 15. Reset button
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   }
 }
+
+// Thêm preview cho thumbnail
+document.getElementById("courseThumbnail")?.addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  const preview = document.getElementById("thumbnailPreview");
+  
+  if (file && preview) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      preview.innerHTML = `<img src="${event.target.result}" style="max-width: 300px; margin-top: 10px; border-radius: 8px;">`;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Thêm preview cho video
+document.getElementById("courseVideo")?.addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  const preview = document.getElementById("videoPreview");
+  
+  if (file && preview) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      preview.innerHTML = `<video controls style="max-width: 400px; margin-top: 10px; border-radius: 8px;">
+        <source src="${event.target.result}" type="${file.type}">
+      </video>`;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  }
+});
