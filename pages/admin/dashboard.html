@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MentorFlow - Admin Dashboard</title>
+  <!-- ✅ DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+
+<!-- ✅ jQuery + DataTables JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="/js/admin/dashboard.js"></script>
+  <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+  <link rel="stylesheet" href="/src/styles/components/dashboard.css">
+  <script src="/js/admin/login.js"></script>
 </head>
 <body>
-    <h2>Hello admin</h2>
+  <div class="container">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>MentorFlow</h2>
+      </div>
+
+      <ul class="menu">
+        <li class="menu-item active"><i>📊</i> Dashboard</li>
+      </ul>
+
+      <div class="logout">
+        <button>⏻ Đăng xuất</button>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+      <div class="topbar">
+        <div class="search-wrapper">
+          <input type="text" placeholder="Tìm kiếm...">
+        </div>
+        <div class="icons">
+          <span>🔔</span>
+          <span class="avatar">AD</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Tổng quan hệ thống</h3>
+
+        <div class="cards">
+          <div class="card pink">
+            <span>👥 Học viên</span>
+            <p>1,250</p>
+          </div>
+          <div class="card blue">
+            <span>🧑‍🏫 Mentor</span>
+            <p>85</p>
+          </div>
+          <div class="card green">
+            <span>🎓 Khóa học</span>
+            <p>42</p>
+          </div>
+          <div class="card orange">
+            <span>💰 Doanh thu</span>
+            <p>1.23B ₫</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
