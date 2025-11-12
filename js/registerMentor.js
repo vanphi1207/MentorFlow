@@ -1,54 +1,133 @@
+// ==========================
+// Cấu hình cơ bản
+// ==========================
 let currentPage = 1;
 
-        function updateProgress(page) {
-            const progressFill = document.getElementById('progressFill');
-            const progressPercent = (page / 4) * 100;
-            progressFill.style.width = progressPercent + '%';
+// Cloudinary config (nếu bạn dùng Cloudinary để upload ảnh)
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dcpj8cfng/image/upload";
+const CLOUDINARY_UPLOAD_PRESET = "ml_default"; // thay bằng preset thật của bạn
 
-            for (let i = 1; i <= 4; i++) {
-                const step = document.getElementById('step' + i);
-                if (i <= page) {
-                    step.classList.add('active');
-                } else {
-                    step.classList.remove('active');
-                }
-            }
-        }
+// ==========================
+// Chuyển trang
+// ==========================
+function updateProgress(page) {
+  const progressFill = document.getElementById("progressFill");
+  const progressPercent = (page / 4) * 100;
+  progressFill.style.width = progressPercent + "%";
 
-        function showPage(pageNum) {
-            for (let i = 1; i <= 4; i++) {
-                const page = document.getElementById('page' + i);
-                if (i === pageNum) {
-                    page.classList.add('active');
-                } else {
-                    page.classList.remove('active');
-                }
-            }
-            currentPage = pageNum;
-            updateProgress(pageNum);
-            window.scrollTo(0, 0);
-        }
+  for (let i = 1; i <= 4; i++) {
+    const step = document.getElementById("step" + i);
+    if (i <= page) step.classList.add("active");
+    else step.classList.remove("active");
+  }
+}
 
-        function nextPage(pageNum) {
-            showPage(pageNum);
-        }
+function showPage(pageNum) {
+  for (let i = 1; i <= 4; i++) {
+    const page = document.getElementById("page" + i);
+    page.classList.toggle("active", i === pageNum);
+  }
+  currentPage = pageNum;
+  updateProgress(pageNum);
+  window.scrollTo(0, 0);
+}
 
-        function prevPage(pageNum) {
-            showPage(pageNum);
-        }
+function nextPage(pageNum) {
+  showPage(pageNum);
+}
 
-        function submitForm() {
-            const agreeTerms = document.getElementById('agreeTerms');
-            if (!agreeTerms.checked) {
-                alert('Vui lòng đồng ý với các điều khoản trước khi tiếp tục!');
-                return;
-            }
-            alert('Đăng ký thành công! Chúng tôi sẽ xem xét hồ sơ của bạn trong thời gian sớm nhất.');
-        }
+function prevPage(pageNum) {
+  showPage(pageNum);
+}
 
-        document.getElementById('photoUpload').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || 'No file chosen';
-            document.getElementById('fileName').textContent = fileName;
+// ==========================
+// Upload Ảnh + Hiển thị tên file
+// ==========================
+let uploadedAvatarUrl = "";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const photoInput = document.getElementById("photoUpload");
+  const fileNameDisplay = document.getElementById("fileName");
+
+  if (photoInput) {
+    photoInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      fileNameDisplay.textContent = file.name;
+
+      // Upload lên Cloudinary
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+      try {
+        const res = await fetch(CLOUDINARY_URL, {
+          method: "POST",
+          body: formData,
         });
+        const data = await res.json();
+        uploadedAvatarUrl = data.secure_url;
+        console.log("Ảnh đã upload:", uploadedAvatarUrl);
+      } catch (error) {
+        console.error("Lỗi upload ảnh:", error);
+        alert("Không thể tải ảnh lên. Vui lòng thử lại.");
+      }
+    });
+  }
 
-        updateProgress(1);
+  updateProgress(1);
+});
+
+// ==========================
+// Submit Form - Gọi API
+// ==========================
+function submitForm() {
+  const agreeTerms = document.getElementById("agreeTerms");
+  if (!agreeTerms.checked) {
+    alert("Vui lòng đồng ý với các điều khoản trước khi tiếp tục!");
+    return;
+  }
+
+  // Giả sử userId lấy từ localStorage (hoặc thay bằng ID thật)
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const userId = userData.userId;
+  const token = localStorage.getItem("token"); // nếu API yêu cầu JWT
+
+  // Lấy dữ liệu form
+  const requestData = {
+    linkMeet: $("#linkMeet").val(),
+    avatar: uploadedAvatarUrl || "https://example.com/avar.jpg",
+    companyName: $("#companyName").val(),
+    position: $("#position").val(),
+    field: $("#field").val(),
+    softSkills: $("#softSkills").val(),
+  };
+
+  // Validate cơ bản
+  if (!requestData.linkMeet || !requestData.companyName || !requestData.position) {
+    alert("Vui lòng điền đầy đủ thông tin trước khi gửi!");
+    return;
+  }
+
+  console.log("Dữ liệu gửi đi:", requestData);
+
+  // ==========================
+  // Gọi API bằng AJAX
+  // ==========================
+  $.ajax({
+    url: `http://localhost:8080/api/v1/mentor/request/${userId}`,
+    type: "POST",
+    data: JSON.stringify(requestData),
+    contentType: "application/json",
+    headers: token ? { Authorization: "Bearer " + token } : {},
+    success: function (response) {
+      console.log("Phản hồi từ server:", response);
+      alert("🎉 Đăng ký thành công! Chúng tôi sẽ xem xét hồ sơ của bạn sớm nhất.");
+      window.location.href = "/public/index.html";
+    },
+    error: function (xhr, status, error) {
+      console.error("Lỗi khi gửi request:", xhr.responseText);
+      alert("❌ Đăng ký thất bại. Vui lòng thử lại sau!");
+    },
+  });
+}

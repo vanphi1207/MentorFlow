@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập - Mentor Flow</title>
+    <title>Đăng ký - Mentor Flow</title>
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <link rel="stylesheet" href="/src/styles/base.css" />
     <link rel="stylesheet" href="/src/styles/components/login/auth.css" />
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
+    <script src="/js/admin/register.js"></script>
   </head>
   <body>
     <!-- Navbar -->
     <header>
-      <!-- navbar -->
       <nav class="navbar">
         <div class="navbar__container">
           <a href="/public/index.html" class="navbar__logo">
@@ -27,9 +27,7 @@
           </ul>
           <div class="navbar__btn">
             <a href="/pages/login/login.html" class="btn-login">Đăng nhập</a>
-            <a href="/pages/login/register.html" class="btn-register"
-              >Đăng kí</a
-            >
+            <a href="/pages/login/register.html" class="btn-register">Đăng kí</a>
           </div>
         </div>
       </nav>
@@ -42,14 +40,62 @@
           <h2 class="auth__title">Tạo tài khoản</h2>
 
           <form class="auth__form">
-            <!-- Họ và tên -->
+            <!-- Username -->
             <div class="auth__group">
-              <label for="name" class="auth__label">Họ và tên</label>
+              <label for="username" class="auth__label">Tên đăng nhập</label>
               <input
                 type="text"
-                id="name"
+                id="username"
                 class="auth__input"
-                placeholder="Nhập họ và tên của bạn"
+                placeholder="Nhập tên đăng nhập"
+                required
+              />
+            </div>
+
+             <!-- Mật khẩu -->
+            <div class="auth__group">
+              <label for="password" class="auth__label">Mật khẩu</label>
+              <input
+                type="password"
+                id="password"
+                class="auth__input"
+                placeholder="Tạo mật khẩu"
+                required
+              />
+            </div>
+
+            <!-- Nhập lại mật khẩu -->
+            <div class="auth__group">
+              <label for="confirm-password" class="auth__label">Nhập lại mật khẩu</label>
+              <input
+                type="password"
+                id="confirm-password"
+                class="auth__input"
+                placeholder="Nhập lại mật khẩu của bạn"
+                required
+              />
+            </div>
+
+            <!-- First Name -->
+            <div class="auth__group">
+              <label for="firstName" class="auth__label">Họ</label>
+              <input
+                type="text"
+                id="firstName"
+                class="auth__input"
+                placeholder="Nhập họ"
+                required
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div class="auth__group">
+              <label for="lastName" class="auth__label">Tên</label>
+              <input
+                type="text"
+                id="lastName"
+                class="auth__input"
+                placeholder="Nhập tên"
                 required
               />
             </div>
@@ -66,31 +112,7 @@
               />
             </div>
 
-            <!-- Mật khẩu -->
-            <div class="auth__group">
-              <label for="password" class="auth__label">Mật khẩu</label>
-              <input
-                type="password"
-                id="password"
-                class="auth__input"
-                placeholder="Tạo mật khẩu"
-                required
-              />
-            </div>
-
-            <!-- Nhập lại mật khẩu -->
-            <div class="auth__group">
-              <label for="confirm-password" class="auth__label"
-                >Nhập lại mật khẩu</label
-              >
-              <input
-                type="password"
-                id="confirm-password"
-                class="auth__input"
-                placeholder="Nhập lại mật khẩu của bạn"
-                required
-              />
-            </div>
+           
 
             <!-- Ngày sinh -->
             <div class="auth__group">
@@ -122,7 +144,7 @@
 
           <p class="auth__text">
             Đã có tài khoản?
-            <a href="/pages/login/" class="auth__link">Đăng nhập</a>
+            <a href="/pages/login/login.html" class="auth__link">Đăng nhập</a>
           </p>
         </div>
       </div>

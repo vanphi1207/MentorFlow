@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
     <link rel="stylesheet" href="/src/styles/components/footer.css" />
     <link rel="stylesheet" href="/src/styles/components/registerMentor.css" />
+    <script src="/js/main.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/registerMentor.js"></script>
     <title>Mentor</title>
 </head>
@@ -65,12 +67,12 @@
                 </label>
                 <p class="form-helper">Đây là hình thức bạn sẽ dùng liên lạc với mentee trong các buổi tư vấn</p>
                 <div class="form-row">
-                    <select class="form-select">
+                    <select id="connectionMethod" class="form-select">
                         <option>Google Meet</option>
                         <option>Zoom</option>
                         <option>Microsoft Teams</option>
                     </select>
-                    <input type="text" class="form-input" placeholder="Ví dụ: https://meet.google.com/uas-bard-">
+                    <input id="linkMeet" type="text" class="form-input" placeholder="Ví dụ: https://meet.google.com/uas-bard-">
                 </div>
             </div>
 
@@ -121,18 +123,18 @@
             <div class="form-row">
                 <div class="form-group">
                     <label class="form-label">TÊN CÔNG TY</label>
-                    <input type="text" class="form-input">
+                    <input id="companyName" type="text" class="form-input">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">VỊ TRÍ</label>
-                    <input type="text" class="form-input">
+                    <input id="position" type="text" class="form-input">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label">LĨNH VỰC</label>
-                <input type="text" class="form-input">
+                <input id="field" type="text" class="form-input">
             </div>
 
             <div class="form-group">
@@ -177,7 +179,7 @@ Tôi sẽ chia sẻ với bạn kinh nghiệm ứng tuyển:
 
             <div class="form-group">
                 <label class="form-label">TÊN KỸ NĂNG</label>
-                <input type="text" class="form-input" placeholder="Ví dụ: Kỹ năng làm CV">
+                <input id="softSkills" type="text" class="form-input" placeholder="Ví dụ: Kỹ năng làm CV">
             </div>
 
             <div class="form-group">

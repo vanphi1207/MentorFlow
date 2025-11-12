@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MentorFlow - Admin Dashboard</title>
-  <!-- ✅ DataTables CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-
-<!-- ✅ jQuery + DataTables JS -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 <script src="/js/admin/dashboard.js"></script>
   <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
   <link rel="stylesheet" href="/src/styles/components/dashboard.css">
-  <script src="/js/admin/login.js"></script>
+  <script src="/js/admin/logout.js"></script>
 </head>
 <body>
   <div class="container">
@@ -24,7 +21,8 @@
       </div>
 
       <ul class="menu">
-        <li class="menu-item active"><i>📊</i> Dashboard</li>
+        <a href="/pages/admin/dashboard.html" class="menu-item dashboard"><i>📊</i> Dashboard</a>
+        <a href="/pages/admin/managerMentor.html" class="menu-item manager_mentor"><i>🧑‍🏫</i> Mentor</a> 
       </ul>
 
       <div class="logout">
@@ -34,15 +32,6 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main class="main">
-      <div class="topbar">
-        <div class="search-wrapper">
-          <input type="text" placeholder="Tìm kiếm...">
-        </div>
-        <div class="icons">
-          <span>🔔</span>
-          <span class="avatar">AD</span>
-        </div>
-      </div>
 
       <div class="content">
         <h3>Tổng quan hệ thống</h3>

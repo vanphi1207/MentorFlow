@@ -143,6 +143,7 @@
 }
 
 .mentor-profile__btn--secondary {
+  text-decoration: none;
   background: transparent;
   border: 2px solid var(--primary-text, #065f46);
   color: var(--primary-text, #065f46);

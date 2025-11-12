@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MentorFlow - Quản lý Mentor</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+  <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
+  <link rel="stylesheet" href="/src/styles/components/admin/managerMentor.css" />
+  <script src="/js/admin/managerMentor.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="logo"><h2>MentorFlow</h2></div>
+      <ul class="menu">
+        <a href="/pages/admin/dashboard.html" class="menu-item"><i>📊</i> Dashboard</a>
+        <a href="/pages/admin/managerMentor.html" class="menu-item active"><i>🧑‍🏫</i> Mentor</a>
+      </ul>
+      <div class="logout">
+        <button id="logoutBtn">⏻ Đăng xuất</button>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+      <div class="content">
+        <h3>Quản lí Mentor</h3>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" data-status="all">Tất cả</button>
+          <button class="tab-btn" data-status="pending">🟨 Chờ duyệt</button>
+          <button class="tab-btn" data-status="approved">🟩 Được duyệt</button>
+          <button class="tab-btn" data-status="rejected">🟥 Từ chối</button>
+        </div>
+
+        <!-- Search -->
+        <div class="table-top">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm mentor..." />
+        </div>
+
+        <!-- Table -->
+        <table id="mentorTable">
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Công ty</th>
+              <th>Vị trí</th>
+              <th>Lĩnh vực</th>
+              <th>Kỹ năng mềm</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

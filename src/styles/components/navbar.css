@@ -87,3 +87,48 @@ nav {
   transform: translateY(-2px);
   box-shadow: var(--backgorund-box-shadow);
 }
+
+
+
+
+.navbar__avatar-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.navbar__avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar__avatar-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 140px;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.navbar__avatar-dropdown li {
+  padding: 8px 15px;
+}
+
+.navbar__avatar-dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.navbar__avatar-dropdown li a:hover {
+  background-color: #f0f0f0;
+}
