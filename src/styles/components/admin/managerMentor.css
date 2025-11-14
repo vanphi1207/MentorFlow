@@ -1,55 +1,41 @@
-/* Dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
+/* ========== Layout tổng ========== */
+.content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 30px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1100px;
 }
 
-.dropbtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
+.content h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-left: 5px solid #6c63ff;
+  padding-left: 10px;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Tabs */
+/* ========== Tabs ========== */
 .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .tab-btn {
   background: #eee;
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #ddd;
 }
 
 .tab-btn.active {
@@ -57,91 +43,71 @@
   color: #fff;
 }
 
-/* Trạng thái màu */
-.status {
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-  color: #fff;
-}
-
-.status-approved { background: #27ae60; }  /* xanh lá */
-.status-pending  { background: #f1c40f; color: #000; } /* vàng */
-.status-rejected { background: #e74c3c; }  /* đỏ */
-
-/* Dropdown */
-.dropdown { position: relative; display: inline-block; }
-.dropbtn { background: none; border: none; cursor: pointer; font-size: 18px; }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-.dropdown-content a {
-  display: block; padding: 8px 12px; color: black; text-decoration: none;
-}
-.dropdown-content a:hover { background-color: #f1f1f1; }
-.dropdown:hover .dropdown-content { display: block; }
-
-/* Table */
-#mentorTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-#mentorTable th, #mentorTable td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  vertical-align: middle;
-}
-#mentorTable th {
-  background-color: #f4f4f4;
-  font-weight: 600;
-}
-
-/* Pagination */
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 15px;
-}
-.page-btn {
-  background: #e8e8e8;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.page-btn.active {
-  background: #6c63ff;
-  color: #fff;
-}
-.page-btn:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-/* Search */
+/* ========== Thanh tìm kiếm ========== */
 .table-top {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 #searchInput {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  min-width: 250px;
+  border-radius: 8px;
+  min-width: 260px;
+  font-size: 15px;
+  transition: 0.2s;
 }
 
+#searchInput:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(108,99,255,0.3);
+}
 
-/* Dropdown chỉnh lại cho click */
+/* ========== Bảng Mentor/User ========== */
+#mentorTable,
+#userTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#mentorTable th, #mentorTable td,
+#userTable th, #userTable td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: middle;
+}
+
+#mentorTable th, #userTable th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+  color: #333;
+}
+
+#mentorTable tr:hover, #userTable tr:hover {
+  background: #fafafa;
+}
+
+/* ========== Trạng thái Mentor ========== */
+.status {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
+  min-width: 80px;
+}
+
+.status-approved { background: #27ae60; }   /* xanh lá */
+.status-pending  { background: #f1c40f; color: #000; } /* vàng */
+.status-rejected { background: #e74c3c; }   /* đỏ */
+
+/* ========== Dropdown ========== */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -153,6 +119,12 @@
   cursor: pointer;
   font-size: 20px;
   color: #333;
+  padding: 2px 6px;
+  transition: 0.2s;
+}
+
+.dropbtn:hover {
+  color: #6c63ff;
 }
 
 .dropdown-content {
@@ -161,19 +133,57 @@
   right: 0;
   top: 25px;
   background-color: #fff;
-  min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  min-width: 130px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
   border-radius: 8px;
   z-index: 1000;
 }
 
 .dropdown-content a {
   display: block;
-  padding: 8px 12px;
+  padding: 10px 12px;
   color: #333;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .dropdown-content a:hover {
   background-color: #f0f0f0;
+  color: #6c63ff;
+}
+
+/* Dropdown hiển thị khi click JS */
+.dropdown.show .dropdown-content {
+  display: block;
+}
+
+/* ========== Phân trang ========== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background: #eee;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+  background: #ddd;
+}
+
+.page-btn.active {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

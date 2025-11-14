@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       avatarImg.style.cursor = "pointer";
       avatarImg.style.fontSize = "14px";
       avatarImg.style.textTransform = "uppercase";
-      
-      // tao ten nguoi dung
+
+      // Tạo tên người dùng
       const userName = document.createElement("span");
       userName.className = "navbar__username";
       userName.textContent = `${userData.firstName || ""} ${userData.lastName || ""}`.trim();
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       userName.style.verticalAlign = "middle";
       avatarContainer.style.display = "flex";
       avatarContainer.style.alignItems = "center";
-      
+
       if (userData.avatar) {
         avatarImg.style.backgroundImage = `url(${userData.avatar})`;
         avatarImg.style.backgroundSize = "cover";
@@ -93,20 +93,35 @@ document.addEventListener("DOMContentLoaded", async () => {
       dropdown.style.borderRadius = "8px";
       dropdown.style.zIndex = "1000";
 
+      // Kiểm tra role là MENTOR
+      const hasMentorRole =
+        userData.roles &&
+        (Array.isArray(userData.roles)
+          ? userData.roles.some((r) => r.name === "MENTOR")
+          : userData.roles === "MENTOR");
+
+      // Nội dung dropdown
       dropdown.innerHTML = `
         <li><a href="/pages/profileMentor.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Hồ sơ</a></li>
+        ${
+          hasMentorRole
+            ? `<li><a href="/pages/mentor/MentorDashboard.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Quản lý mentor</a></li>`
+            : ""
+        }
+        <li><a href="/pages/calendarBook.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch</a></li>
         <li><a href="#" id="logoutBtn" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Đăng xuất</a></li>
       `;
 
       avatarContainer.appendChild(avatarImg);
-      avatarContainer.appendChild(userName);  
+      avatarContainer.appendChild(userName);
       avatarContainer.appendChild(dropdown);
       navbarBtn.appendChild(avatarContainer);
 
       // Click vào avatar → toggle dropdown
       avatarImg.addEventListener("click", (e) => {
-        e.stopPropagation(); // tránh click lan ra document
-        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        e.stopPropagation();
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
       });
 
       // Click ra ngoài → ẩn dropdown

@@ -17,32 +17,6 @@ html, body {
   width: 100vw;
 }
 
-/* ====== SIDEBAR ====== */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 240px;
-  height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0;
-}
-
-.logo {
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  padding-top: 30px;       /* ✅ giảm khoảng cách trên */
-  padding-bottom: 20px;   /* thêm khoảng cách dưới nhẹ */
-  letter-spacing: 0.5px;
-}
-.logo h2 {
-  margin: 0;
-}
 
 /* ===== MENU ===== */
 .menu {
@@ -72,31 +46,11 @@ html, body {
   border-radius: 6px;
 }
 
-/* ===== LOGOUT ===== */
-.logout {
-  text-align: center;
-  padding: 20px;
-}
-
-.logout button {
-  background: #ff4b5c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: opacity 0.2s;
-}
-
-.logout button:hover {
-  opacity: 0.85;
-}
 
 /* ===== MAIN CONTENT ===== */
 .main {
   flex: 1;
-  margin-left: 240px;
+  margin-left: 270px;
   background: #f9f9ff;
   display: flex;
   flex-direction: column;

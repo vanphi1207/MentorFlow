@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MentorFlow - Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
+    />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="/js/mentor/courseManager.js"></script>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
+    <link rel="stylesheet" href="/src/styles/components/mentor/slibar.css" />
+    <link rel="stylesheet" href="/src/styles/components/mentor/courseManager.css">
+    <script src="/js/mentor/slibar.js"></script>
+    <script src="/js/admin/logout.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>MentorFlow</h2>
+        </div>
+
+        <ul class="menu">
+          <a href="/pages/mentor/MentorDashboard.html" class="menu-item"
+            >Dashboard</a
+          >
+          <div class="menu-dropdown">
+            <div class="menu-item dropdown-toggle">
+              Course
+              <i class="arrow">▼</i>
+            </div>
+            <ul class="submenu">
+              <li>
+                <a href="/pages/mentor/CourseMentor.html" class="submenu-item"
+                  >All Courses</a
+                >
+              </li>
+              <li>
+                <a href="/pages/mentor/uploadCourse.html" class="submenu-item"
+                  >Upload Course</a
+                >
+              </li>
+            </ul>
+          </div>
+        </ul>
+
+        <div class="logout">
+          <button>⏻ Đăng xuất</button>
+        </div>
+      </aside>
+
+     <div class="main">
+    <div class="content">
+      <h3>Quản lí Khóa học</h3>
+      <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm khóa học..." />
+      <table id="courseTable">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên khóa học</th>
+            <th>Giá</th>
+            <th>Thời lượng</th>
+            <th>Cấp độ</th>
+            <th>Số người mua</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="pagination"></div>
+    </div>
+  </div>
+    </div>
+  </body>
+</html>

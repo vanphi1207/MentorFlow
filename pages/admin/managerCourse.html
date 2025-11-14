@@ -10,10 +10,11 @@
     />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <script src="/js/admin/dashboard.js"></script>
+    <script src="/js/admin/managerCourse.js"></script>
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
     <link rel="stylesheet" href="/src/styles/components/admin/slidebar.css">
+    <link rel="stylesheet" href="/src/styles/components/admin/managerCourse.css">
     <script src="/js/admin/logout.js"></script>
   </head>
   <body>
@@ -38,31 +39,27 @@
         </div>
       </aside>
 
-      <!-- ===== MAIN CONTENT ===== -->
-      <main class="main">
-        <div class="content">
-          <h3>Tổng quan hệ thống</h3>
-
-          <div class="cards">
-            <div class="card pink">
-              <span>👥 Học viên</span>
-              <p>1,250</p>
-            </div>
-            <div class="card blue">
-              <span>🧑‍🏫 Mentor</span>
-              <p>85</p>
-            </div>
-            <div class="card green">
-              <span>🎓 Khóa học</span>
-              <p>42</p>
-            </div>
-            <div class="card orange">
-              <span>💰 Doanh thu</span>
-              <p>1.23B ₫</p>
-            </div>
-          </div>
-        </div>
-      </main>
+     <div class="main">
+    <div class="content">
+      <h3>Quản lí Khóa học</h3>
+      <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm khóa học..." />
+      <table id="courseTable">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên khóa học</th>
+            <th>Giá</th>
+            <th>Thời lượng</th>
+            <th>Cấp độ</th>
+            <th>Số người mua</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="pagination"></div>
+    </div>
+  </div>
     </div>
   </body>
 </html>

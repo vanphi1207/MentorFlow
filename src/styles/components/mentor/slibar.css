@@ -1,0 +1,139 @@
+/* ====== SIDEBAR ====== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 30px 0 20px 0;
+}
+
+.logo h2 {
+  margin: 0;
+  color: #fff;
+}
+
+/* Menu */
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.1s ease;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(3px);
+}
+
+/* Logout button */
+.logout {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.logout button {
+  background: #ff5f5f;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 54px;
+  left: 80px;
+}
+
+.logout button:hover {
+  background: #ff2e2e;
+  transform: scale(1.05);
+}
+
+/* === BỔ SUNG PHẦN DROPDOWN === */
+
+/* icon mũi tên */
+.arrow {
+  font-size: 12px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* khi mở submenu thì xoay mũi tên */
+.menu-dropdown.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* submenu ẩn mặc định */
+.submenu {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+}
+
+/* submenu khi mở */
+.menu-dropdown.open .submenu {
+  display: flex;
+}
+
+/* style item trong submenu */
+.submenu-item {
+  display: block;
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 4px 0;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.submenu-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Icon home */
+.btn-home {
+  position: absolute;
+  bottom: 56px;
+  left: 34px;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.btn-home:hover {
+  color: #ffd700; /* vàng khi hover */
+  transform: scale(1.2);
+}

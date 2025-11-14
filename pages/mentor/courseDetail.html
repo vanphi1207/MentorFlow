@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MentorFlow - Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
+    />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="/js/admin/dashboard.js"></script>
+    <script src="/js/mentor/courseDetails.js"></script>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
+    <link rel="stylesheet" href="/src/styles/components/mentor/slibar.css" />
+    <link rel="stylesheet" href="/src/styles/components/mentor/detailCourse.css">
+    <script src="/js/mentor/slibar.js"></script>
+    <script src="/js/admin/logout.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>MentorFlow</h2>
+        </div>
+
+        <ul class="menu">
+          <a href="/pages/mentor/MentorDashboard.html" class="menu-item"
+            >Dashboard</a
+          >
+          <div class="menu-dropdown">
+            <div class="menu-item dropdown-toggle">
+              Course
+              <i class="arrow">▼</i>
+            </div>
+            <ul class="submenu">
+              <li>
+                <a href="/pages/mentor/CourseMentor.html" class="submenu-item"
+                  >All Courses</a
+                >
+              </li>
+              <li>
+                <a href="/pages/mentor/uploadCourse.html" class="submenu-item"
+                  >Upload Course</a
+                >
+              </li>
+            </ul>
+          </div>
+        </ul>
+
+        <div class="logout">
+          <button>⏻ Đăng xuất</button>
+        </div>
+      </aside>
+      <div class="main">
+        <div class="content" id="courseDetailsPage">
+          <!-- ======= COURSE HEADER ======= -->
+          <div
+            id="courseHeader"
+            style="
+              display: flex;
+              gap: 20px;
+              padding: 16px;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+              margin-bottom: 20px;
+            "
+          >
+            <!-- Image -->
+            <img
+              id="courseImg"
+              src=""
+              alt="Thumbnail"
+              style="
+                width: 180px;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 8px;
+              "
+            />
+
+            <!-- Text info -->
+            <div>
+              <h2 id="courseName" style="margin: 0; font-size: 24px"></h2>
+              <p
+                id="coursePrice"
+                style="
+                  margin: 4px 0;
+                  font-size: 18px;
+                  color: #10b981;
+                  font-weight: 600;
+                "
+              ></p>
+            </div>
+          </div>
+
+          <!-- ======= ACTIONS ======= -->
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 16px;
+            "
+          >
+            <h3>Module & Lesson</h3>
+
+            <button
+              id="btnAddModule"
+              class="btn-submit"
+              style="background: #10b981; padding: 8px 14px"
+            >
+              ➕ Thêm Module
+            </button>
+          </div>
+
+          <hr />
+
+          <!-- ======= MODULE LIST ======= -->
+          <h4>Danh sách Module</h4>
+          <div id="modulesList" style="margin-top: 12px">
+            <!-- JS render module + lesson tại đây -->
+          </div>
+        </div>
+
+        <!-- ====================== POPUP: ADD MODULE ====================== -->
+        <div id="popupAddModule" class="popup hidden">
+          <div class="popup-content">
+            <h3>➕ Thêm Module</h3>
+
+            <form id="formAddModule">
+              <label>Tên Module</label>
+              <input type="text" id="moduleName" required />
+
+              <label>Thời lượng (giờ)</label>
+              <input type="number" id="moduleTime" required />
+
+              <label>Mô tả</label>
+              <textarea id="moduleDesc"></textarea>
+
+              <button type="submit" class="btn-submit">Thêm</button>
+              <button
+                type="button"
+                class="btn-cancel"
+                onclick="closePopup('#popupAddModule')"
+              >
+                Hủy
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ====================== POPUP: ADD LESSON ====================== -->
+        <div id="popupAddLesson" class="popup hidden">
+          <div class="popup-content">
+            <h3>➕ Thêm Lesson</h3>
+
+            <form id="formAddLesson">
+              <label>Tiêu đề lesson</label>
+              <input type="text" id="lessonTitle" required />
+
+              <label>Thời lượng (giờ)</label>
+              <input type="number" id="lessonTime" required />
+
+              <label>Video</label>
+              <input type="file" id="lessonVideo" accept="video/*" />
+
+              <button type="submit" class="btn-submit">Thêm</button>
+              <button
+                type="button"
+                class="btn-cancel"
+                onclick="closePopup('#popupAddLesson')"
+              >
+                Hủy
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

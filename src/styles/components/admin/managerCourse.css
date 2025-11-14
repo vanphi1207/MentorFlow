@@ -1,0 +1,115 @@
+/* ===== MAIN ===== */
+.main {
+  flex: 1;
+  margin-left: 240px;
+  background: #f9f9ff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 30px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1100px;
+}
+
+.content h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  border-left: 5px solid #764ba2;
+  padding-left: 10px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background: #f7f7f7;
+}
+
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tr:hover {
+  background: #fafafa;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  min-width: 120px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #f0f0f0;
+}
+
+/* ===== PAGINATION ===== */
+#pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.page-btn {
+  background: white;
+  border: 1px solid #ccc;
+  margin: 0 3px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.page-btn.active {
+  background: #764ba2;
+  color: white;
+  border-color: #764ba2;
+}

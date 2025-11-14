@@ -41,7 +41,7 @@ async function loginUser(username, password) {
     // ✅ Điều hướng theo quyền
     if (scope.includes("ROLE_ADMIN")) {
       window.location.href = "/pages/admin/dashboard.html";
-    } else if (scope.includes("ROLE_USER")) {
+    } else if (scope.includes("ROLE_USER") || scope.includes("ROLE_MENTOR")) {
       window.location.href = "/public/index.html";
     } else {
       alert("Không xác định được quyền truy cập!");

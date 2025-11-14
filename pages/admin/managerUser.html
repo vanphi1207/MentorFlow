@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="/src/styles/components/admin/slidebar.css">
     <link
       rel="stylesheet"
-      href="/src/styles/components/admin/managerMentor.css"
+      href="/src/styles/components/admin/managerUser.css"
     />
-    <script src="/js/admin/managerMentor.js"></script>
+    <script src="/js/admin/managerUser.js"></script>
     <script src="/js/admin/logout.js"></script>
   </head>
 
@@ -41,37 +41,23 @@
       <!-- ===== MAIN CONTENT ===== -->
       <main class="main">
         <div class="content">
-          <h3>Quản lí Mentor</h3>
+          <h3>Quản lí User</h3>
 
-          <!-- Tabs -->
-          <div class="tabs">
-            <button class="tab-btn active" data-status="all">Tất cả</button>
-            <button class="tab-btn" data-status="pending">🟨 Chờ duyệt</button>
-            <button class="tab-btn" data-status="approved">
-              🟩 Được duyệt
-            </button>
-            <button class="tab-btn" data-status="rejected">🟥 Từ chối</button>
-          </div>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Tìm kiếm người dùng..."
+          />
 
-          <!-- Search -->
-          <div class="table-top">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Tìm kiếm mentor..."
-            />
-          </div>
-
-          <!-- Table -->
-          <table id="mentorTable">
+          <table id="userTable">
             <thead>
               <tr>
-                <th>Tên</th>
-                <th>Công ty</th>
-                <th>Vị trí</th>
-                <th>Lĩnh vực</th>
-                <th>Kỹ năng mềm</th>
-                <th>Trạng thái</th>
+                <th>STT</th>
+                <th>Username</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
                 <th>Hành động</th>
               </tr>
             </thead>
