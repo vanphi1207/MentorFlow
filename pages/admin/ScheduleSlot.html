@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MentorFlow - Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="/js/admin/ScheduleSlot.js"></script>
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
+    <link rel="stylesheet" href="/src/styles/components/admin/slidebar.css">
+    <link rel="stylesheet" href="/src/styles/components/admin/ScheduleSlot.css">
+    <script src="/js/admin/logout.js"></script>
+  </head>
+  <body>
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>MentorFlow</h2>
+        </div>
+
+        <ul class="menu">
+          <a href="/pages/admin/dashboard.html" class="menu-item">Dashboard</a>
+          <a href="/pages/admin/managerMentor.html" class="menu-item">
+            Mentor</a
+          >
+          <a href="/pages/admin/managerUser.html" class="menu-item">User</a>
+          <a href="/pages/admin/managerCourse.html" class="menu-item">Course</a>
+          <a href="/pages/admin/ScheduleSlot.html" class="menu-item">Slot Manager</a>
+        </ul>
+
+        <div class="logout">
+          <button>⏻ Đăng xuất</button>
+        </div>
+      </aside>
+
+     <div class="main">
+  <div class="content">
+    <h1>Manage Schedule Slots</h1>
+
+    <div class="schedule-grid">
+      <!-- 7 ngày (T2 → CN) -->
+      <div class="day-column" data-day="MONDAY">
+        <h2>Thứ 2</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="TUESDAY">
+        <h2>Thứ 3</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="WEDNESDAY">
+        <h2>Thứ 4</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="THURSDAY">
+        <h2>Thứ 5</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="FRIDAY">
+        <h2>Thứ 6</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="SATURDAY">
+        <h2>Thứ 7</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+      <div class="day-column" data-day="SUNDAY">
+        <h2>Chủ nhật</h2>
+        <div class="slot-list"></div>
+        <button class="add-slot-btn">+ Add Slot</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup modal -->
+<div id="popup" class="popup hidden">
+  <div class="popup-content">
+    <h3>Add Slot</h3>
+    <label>Start Time</label>
+    <input type="time" id="startTime">
+    
+    <label>End Time</label>
+    <input type="time" id="endTime">
+
+    <button id="saveSlotBtn">Save</button>
+    <button id="closePopup">Cancel</button>
+  </div>
+</div>
+
+  </body>
+</html>

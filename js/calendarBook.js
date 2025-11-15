@@ -1,251 +1,266 @@
-const timeSlots = [
-    '08:00', '09:00', '10:00', '11:00', 
-    '13:00', '14:00', '15:00', '16:00', 
-    '17:00', '18:00', '19:00', '20:00'
-];
+$(document).ready(function () {
+  let currentWeekOffset = 0;
+  const token = localStorage.getItem("token");
+  const authHeaders = token ? { Authorization: "Bearer " + token } : {};
 
-const daysOfWeek = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'];
+  let slotsData = [];
+  let myAvailabilities = []; // ⭐ ADD
 
-let currentWeekOffset = 0;
-let schedule = {};
-let bookedSlots = {};
-let selectedSlot = null;
-let selectedOption = null;
+  // =============================
+  // ⭐ 1. LOAD MY AVAILABILITIES
+  // =============================
+  function loadMyAvailabilities() {
+    $.ajax({
+      url: "http://localhost:8080/api/v1/availabilities/my-availabilities",
+      type: "GET",
+      headers: authHeaders,
+      success: function (res) {
+        if (res.code === 1000) {
+          myAvailabilities = res.result.map(a => ({
+            slotId: a.slot.slotId,
+            date: a.date,
+            bookAvailabilityId: a.bookAvailabilityId
+          }));
+          console.log("✔ MY AVAIL:", myAvailabilities);
 
-function initSchedule() {
-    // Setup 2 lịch mẫu
-    // Lịch 1: Thứ 3, 10:00 - Chưa có người đặt (lịch trống)
-    const slot1Key = `0-1-10:00`;
-    schedule[slot1Key] = {
-        day: 1,
-        time: '10:00',
-        type: 'once',
-        weekOffset: 0
-    };
+          highlightMyAvailabilities(); // ⭐ APPLY CSS
+        }
+      }
+    });
+  }
 
-    // Lịch 2: Thứ 5, 14:00 - Đã có người đặt
-    const slot2Key = `0-3-14:00`;
-    schedule[slot2Key] = {
-        day: 3,
-        time: '14:00',
-        type: 'recurring',
-        weekOffset: 0
-    };
-    
-    // Đánh dấu lịch 2 đã được đặt
-    bookedSlots[slot2Key] = {
-        userName: 'Nguyễn Văn A',
-        userEmail: 'nguyenvana@email.com',
-        bookedAt: new Date().toISOString()
-    };
+  // =============================
+  // ⭐ 2. HIGHLIGHT LỊCH RẢNH
+  // =============================
+  function highlightMyAvailabilities() {
+    $(".slot-item").each(function () {
+      const slotId = $(this).data("slot-id");
+      const dayName = $(this).data("day");
 
-    generateScheduleGrid();
-    updateWeekDates();
-}
+      const date = getDateForDay(dayName);
 
-function generateScheduleGrid() {
-    const scheduleBody = document.getElementById('scheduleBody');
-    scheduleBody.innerHTML = '';
+      const matched = myAvailabilities.some(
+        a => a.slotId === slotId && a.date === date
+      );
 
-    timeSlots.forEach(time => {
-        const row = document.createElement('div');
-        row.className = 'time-slot-row';
+      if (matched) {
+        $(this).addClass("booked-availability");
+      }
+    });
+  }
 
-        const timeLabel = document.createElement('div');
-        timeLabel.className = 'time-label';
-        timeLabel.textContent = time;
-        row.appendChild(timeLabel);
+  // =============================
+  // 3. LOAD SLOT TỪ SERVER
+  // =============================
+  function loadSlots() {
+    $.ajax({
+      url: "http://localhost:8080/api/v1/schedule-slots",
+      type: "GET",
+      headers: authHeaders,
+      success: function (res) {
+        console.log("RAW SLOT DATA:", res.result);
+        slotsData = res.result || [];
+        renderSlots();
+      },
+      error: function () {
+        console.error("Lỗi tải lịch");
+      }
+    });
+  }
 
-        for (let day = 0; day < 7; day++) {
-            const slot = document.createElement('div');
-            slot.className = 'time-slot';
-            slot.dataset.day = day;
-            slot.dataset.time = time;
-            slot.onclick = () => openModal(day, time);
-            row.appendChild(slot);
+  // =============================
+  // 4. RENDER SLOT
+  // =============================
+  function renderSlots() {
+    $(".slot-list").empty();
+
+    slotsData.forEach(slot => {
+      const slotId = slot.slotId;
+      const dayName = slot.dayOfWeek;
+      const availabilityId = slot.availabilityId || null;
+      const isAvailable = availabilityId !== null;
+
+      const dayCol = $(`.day-column[data-day='${dayName}'] .slot-list`);
+      if (dayCol.length === 0) return;
+
+      const slotDiv = $(`  
+        <div class="slot-item"
+            data-slot-id="${slotId}"
+            data-day="${dayName}"
+            data-availability-id="${availabilityId || ""}">
+          ${slot.startTime} - ${slot.endTime}
+        </div>
+      `);
+
+      if (slot.isBooked) {
+        slotDiv.addClass("booked");
+        slotDiv.append("<span class='booked-text'>Đã đặt</span>");
+        dayCol.append(slotDiv);
+        return;
+      }
+
+      if (isAvailable) {
+        slotDiv.addClass("selected");
+      }
+
+      // CLICK SLOT
+      slotDiv.on("click", function () {
+        const clickedSlotId = $(this).data("slot-id");
+        const clickedDay = $(this).data("day");
+        const currentAvailabilityId = $(this).data("availability-id");
+        const selected = $(this).hasClass("selected");
+
+        console.log("Clicked Slot ID:", clickedSlotId);
+
+        if (!selected) {
+          const date = getDateForDay(clickedDay);
+          console.log("→ POST date:", date);
+
+          $.ajax({
+            url: "http://localhost:8080/api/v1/availabilities",
+            type: "POST",
+            contentType: "application/json",
+            headers: authHeaders,
+            data: JSON.stringify({
+              slotId: clickedSlotId,
+              date: date
+            }),
+            success: (res) => {
+              const newAvailabilityId = res.result.availabilityId;
+
+              $(this).addClass("selected");
+              $(this).attr("data-availability-id", newAvailabilityId);
+              slot.availabilityId = newAvailabilityId;
+
+              // ⭐ Update myAvailabilities
+              myAvailabilities.push({
+                slotId: clickedSlotId,
+                date: date,
+                bookAvailabilityId: newAvailabilityId
+              });
+
+              highlightMyAvailabilities();
+            },
+            error: function (xhr) {
+              alert("Không thể tạo lịch rảnh!");
+              console.log(xhr.responseText);
+            }
+          });
+
+          return;
         }
 
-        scheduleBody.appendChild(row);
+        if (selected && currentAvailabilityId) {
+          $.ajax({
+            url: `http://localhost:8080/api/v1/availabilities/${currentAvailabilityId}`,
+            type: "DELETE",
+            headers: authHeaders,
+            success: () => {
+              $(this).removeClass("selected booked-availability");
+              $(this).attr("data-availability-id", "");
+              slot.availabilityId = null;
+
+              // ⭐ Remove from myAvailabilities
+              myAvailabilities = myAvailabilities.filter(
+                a => a.bookAvailabilityId !== currentAvailabilityId
+              );
+            },
+            error: function () {
+              alert("Không thể xóa lịch rảnh!");
+            }
+          });
+        }
+      });
+
+      dayCol.append(slotDiv);
     });
-}
 
-function updateWeekDates() {
+    // ⭐ AFTER RENDER: highlight booked slots
+    highlightMyAvailabilities();
+  }
+
+  // =============================
+  // 5. GET DATE THEO DAY NAME
+  // =============================
+  const dayIndex = {
+    "MONDAY": 1,
+    "TUESDAY": 2,
+    "WEDNESDAY": 3,
+    "THURSDAY": 4,
+    "FRIDAY": 5,
+    "SATURDAY": 6,
+    "SUNDAY": 7
+  };
+
+  function getDateForDay(dayName) {
     const today = new Date();
-    const firstDay = new Date(today);
-    firstDay.setDate(today.getDate() - today.getDay() + 1 + (currentWeekOffset * 7));
+    const isoDow = today.getDay() === 0 ? 7 : today.getDay();
 
-    const weekStart = new Date(firstDay);
-    const weekEnd = new Date(firstDay);
+    let monday = new Date(today);
+    monday.setDate(today.getDate() - (isoDow - 1) + currentWeekOffset * 7);
+    monday.setHours(0, 0, 0, 0);
+
+    let target = new Date(monday);
+    target.setDate(monday.getDate() + (dayIndex[dayName] - 1));
+
+    return target.toISOString().split("T")[0];
+  }
+
+  // =============================
+  // 6. UPDATE NGÀY TRÊN UI
+  // =============================
+  function updateWeekDates() {
+    const today = new Date();
+    const isoDow = today.getDay() === 0 ? 7 : today.getDay();
+
+    let monday = new Date(today);
+    monday.setDate(today.getDate() - (isoDow - 1) + currentWeekOffset * 7);
+    monday.setHours(0, 0, 0, 0);
+
+    const formatDate = d =>
+      `${String(d.getDate()).padStart(2, "0")}/${String(
+        d.getMonth() + 1
+      ).padStart(2, "0")}`;
+
+    const weekStart = new Date(monday);
+    const weekEnd = new Date(monday);
     weekEnd.setDate(weekStart.getDate() + 6);
 
-    const formatDate = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        return `${day}/${month}`;
-    };
+    $("#currentWeek").text(`${formatDate(weekStart)} - ${formatDate(weekEnd)}`);
 
-    document.getElementById('currentWeek').textContent = 
-        `${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
+    const days = [
+      "MONDAY",
+      "TUESDAY",
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ];
 
-    for (let i = 0; i < 7; i++) {
-        const currentDate = new Date(firstDay);
-        currentDate.setDate(firstDay.getDate() + i);
-        const dateElement = document.getElementById(`date-${i === 6 ? 0 : i + 1}`);
-        if (dateElement) {
-            dateElement.textContent = formatDate(currentDate);
-        }
-    }
+    days.forEach((day, idx) => {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + idx);
 
-    updateScheduleDisplay();
-}
+      const dateId = idx === 6 ? "0" : idx + 1;
+      $("#date-" + dateId).text(formatDate(date));
+    });
+  }
 
-function changeWeek(offset) {
+  // =============================
+  // 7. CHUYỂN TUẦN
+  // =============================
+  window.changeWeek = function (offset) {
     currentWeekOffset += offset;
     updateWeekDates();
-}
+    loadSlots();
+    setTimeout(loadMyAvailabilities, 200); // ⭐ RELOAD BOOKED SLOTS
+  };
 
-function openModal(day, time) {
-    const slotKey = `${currentWeekOffset}-${day}-${time}`;
-    
-    // Nếu lịch đã được đặt, không cho phép thao tác
-    if (bookedSlots[slotKey]) {
-        alert('⚠️ Lịch này đã có người đặt, không thể chỉnh sửa!');
-        return;
-    }
-    
-    // Nếu đã có lịch, xóa lịch đó
-    if (schedule[slotKey]) {
-        if (confirm('Bạn có muốn xóa lịch rảnh này?')) {
-            delete schedule[slotKey];
-            updateScheduleDisplay();
-        }
-        return;
-    }
-
-    selectedSlot = { day, time, slotKey };
-    selectedOption = null;
-    
-    const dayName = day === 6 ? 'Chủ nhật' : daysOfWeek[day];
-    document.getElementById('modalTimeInfo').textContent = 
-        `${dayName}, ${time} - ${getEndTime(time)}`;
-    
-    document.querySelectorAll('.option-card').forEach(card => {
-        card.classList.remove('selected');
-    });
-    document.getElementById('confirmBtn').disabled = true;
-    
-    document.getElementById('scheduleModal').classList.add('active');
-}
-
-function closeModal() {
-    document.getElementById('scheduleModal').classList.remove('active');
-    selectedSlot = null;
-    selectedOption = null;
-}
-
-function selectOption(type) {
-    selectedOption = type;
-    document.querySelectorAll('.option-card').forEach(card => {
-        card.classList.remove('selected');
-    });
-    document.querySelector(`[data-type="${type}"]`).classList.add('selected');
-    document.getElementById('confirmBtn').disabled = false;
-}
-
-function confirmSelection() {
-    if (!selectedSlot || !selectedOption) return;
-
-    schedule[selectedSlot.slotKey] = {
-        day: selectedSlot.day,
-        time: selectedSlot.time,
-        type: selectedOption,
-        weekOffset: currentWeekOffset
-    };
-
-    updateScheduleDisplay();
-    closeModal();
-}
-
-function updateScheduleDisplay() {
-    document.querySelectorAll('.time-slot:not(.time-label)').forEach(slot => {
-        slot.classList.remove('selected', 'recurring', 'booked');
-        slot.innerHTML = '';
-    });
-
-    Object.entries(schedule).forEach(([key, data]) => {
-        if (data.weekOffset === currentWeekOffset) {
-            const slot = document.querySelector(
-                `[data-day="${data.day}"][data-time="${data.time}"]`
-            );
-            if (slot) {
-                // Kiểm tra xem lịch này đã được đặt chưa
-                if (bookedSlots[key]) {
-                    slot.classList.add('booked');
-                    const bookingInfo = document.createElement('div');
-                    bookingInfo.className = 'booking-info';
-                    bookingInfo.innerHTML = `
-                        <div class="booking-user">${bookedSlots[key].userName}</div>
-                        <div class="booking-status">Đã đặt lịch</div>
-                    `;
-                    slot.appendChild(bookingInfo);
-                } else {
-                    // Lịch trống - chỉ hiển thị checkmark
-                    slot.classList.add(data.type === 'once' ? 'selected' : 'recurring');
-                }
-            }
-        }
-    });
-}
-
-function getEndTime(startTime) {
-    const [hours, minutes] = startTime.split(':').map(Number);
-    const endHours = String(hours + 1).padStart(2, '0');
-    return `${endHours}:${minutes.toString().padStart(2, '0')}`;
-}
-
-function clearAllSchedule() {
-    const hasBookedSlots = Object.keys(schedule).some(key => bookedSlots[key]);
-    
-    if (hasBookedSlots) {
-        alert('⚠️ Không thể xóa tất cả vì có một số lịch đã được đặt!');
-        return;
-    }
-    
-    if (confirm('Bạn có chắc chắn muốn xóa tất cả lịch rảnh?')) {
-        // Chỉ xóa các lịch chưa được đặt
-        Object.keys(schedule).forEach(key => {
-            if (!bookedSlots[key]) {
-                delete schedule[key];
-            }
-        });
-        updateScheduleDisplay();
-    }
-}
-
-function saveSchedule() {
-    const scheduleCount = Object.keys(schedule).length;
-    if (scheduleCount === 0) {
-        alert('Vui lòng chọn ít nhất một khung giờ rảnh!');
-        return;
-    }
-
-    const oneTimeSlots = Object.values(schedule).filter(s => s.type === 'once').length;
-    const recurringSlots = Object.values(schedule).filter(s => s.type === 'recurring').length;
-    const bookedCount = Object.keys(bookedSlots).length;
-
-    alert(`✅ Đã lưu lịch rảnh thành công!\n\n` +
-          `📅 Lịch một lần: ${oneTimeSlots} khung giờ\n` +
-          `🔄 Lịch lặp lại: ${recurringSlots} khung giờ\n` +
-          `👥 Đã có người đặt: ${bookedCount} khung giờ\n` +
-          `📊 Tổng: ${scheduleCount} khung giờ`);
-    
-    console.log('Schedule saved:', schedule);
-    console.log('Booked slots:', bookedSlots);
-}
-
-// Khởi tạo khi trang load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSchedule);
-} else {
-    initSchedule();
-}
+  // =============================
+  // 8. INIT
+  // =============================
+  updateWeekDates();
+  loadSlots();
+  loadMyAvailabilities(); // ⭐ LOAD NGAY TỪ ĐẦU
+});

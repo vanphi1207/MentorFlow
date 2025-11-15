@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
     <link rel="stylesheet" href="/src/styles/components/footer.css" />
     <link rel="stylesheet" href="/src/styles/components/calendarBook.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/calendarBook.js"></script>
 
@@ -43,100 +44,55 @@
       </nav>
     </header>
 
+    <div class="calendar-container">
+  <h1>Manage Calendar Slots</h1>
+  <div class="week-display">
+    Tuần: <span id="currentWeek"></span>
+    <button onclick="changeWeek(-1)">←</button>
+    <button onclick="changeWeek(1)">→</button>
+    <button onclick="clearAllSchedule()">Xóa tất cả</button>
+    <button onclick="saveSchedule()">Lưu lịch</button>
+  </div>
 
-    <div class="container">
-        <div class="header-section">
-            <h1>⏰ Thiết Lập Lịch Rảnh</h1>
-            <p>Chọn các khung giờ bạn có thể tư vấn cho mentee. Bạn có thể chọn lịch một lần hoặc lặp lại hàng tuần.</p>
-        </div>
-
-        <div class="week-selector">
-            <div class="week-nav">
-                <button onclick="changeWeek(-1)">◀</button>
-                <span class="current-week" id="currentWeek"></span>
-                <button onclick="changeWeek(1)">▶</button>
-            </div>
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-color available"></div>
-                    <span>Lịch một lần</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color recurring"></div>
-                    <span>Lịch lặp lại</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color available" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);"></div>
-                    <span>Đã có người đặt</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="schedule-grid">
-            <div class="schedule-header">
-                <div class="time-label">Giờ</div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 2</span>
-                    <span class="day-date" id="date-1"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 3</span>
-                    <span class="day-date" id="date-2"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 4</span>
-                    <span class="day-date" id="date-3"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 5</span>
-                    <span class="day-date" id="date-4"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 6</span>
-                    <span class="day-date" id="date-5"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Thứ 7</span>
-                    <span class="day-date" id="date-6"></span>
-                </div>
-                <div class="day-header">
-                    <span class="day-name">Chủ nhật</span>
-                    <span class="day-date" id="date-0"></span>
-                </div>
-            </div>
-
-            <div class="schedule-body" id="scheduleBody"></div>
-        </div>
-
-        <div class="action-buttons">
-            <button class="btn-clear" onclick="clearAllSchedule()">Xóa tất cả</button>
-            <button class="btn-save" onclick="saveSchedule()">Lưu lịch rảnh</button>
-        </div>
+  <div class="calendar-grid">
+    <!-- 7 ngày -->
+    <div class="day-column" data-day="MONDAY">
+      <h2>Thứ 2</h2>
+      <div class="date" id="date-1"></div>
+      <div class="slot-list"></div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal" id="scheduleModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>🗓️ Chọn loại lịch rảnh</h2>
-                <p id="modalTimeInfo"></p>
-            </div>
-            <div class="modal-options">
-                <div class="option-card" data-type="once" onclick="selectOption('once')">
-                    <h3><span class="option-icon">📅</span> Lịch một lần</h3>
-                    <p>Chỉ áp dụng cho khung giờ này trong tuần hiện tại</p>
-                </div>
-                <div class="option-card" data-type="recurring" onclick="selectOption('recurring')">
-                    <h3><span class="option-icon">🔄</span> Lịch lặp lại</h3>
-                    <p>Áp dụng cho khung giờ này mỗi tuần (ví dụ: mỗi Thứ 2 lúc 9:00 AM)</p>
-                </div>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn btn-cancel" onclick="closeModal()">Hủy</button>
-                <button class="btn btn-confirm" id="confirmBtn" onclick="confirmSelection()" disabled>Xác nhận</button>
-            </div>
-        </div>
+    <div class="day-column" data-day="TUESDAY">
+      <h2>Thứ 3</h2>
+      <div class="date" id="date-2"></div>
+      <div class="slot-list"></div>
     </div>
-
+    <div class="day-column" data-day="WEDNESDAY">
+      <h2>Thứ 4</h2>
+      <div class="date" id="date-3"></div>
+      <div class="slot-list"></div>
+    </div>
+    <div class="day-column" data-day="THURSDAY">
+      <h2>Thứ 5</h2>
+      <div class="date" id="date-4"></div>
+      <div class="slot-list"></div>
+    </div>
+    <div class="day-column" data-day="FRIDAY">
+      <h2>Thứ 6</h2>
+      <div class="date" id="date-5"></div>
+      <div class="slot-list"></div>
+    </div>
+    <div class="day-column" data-day="SATURDAY">
+      <h2>Thứ 7</h2>
+      <div class="date" id="date-6"></div>
+      <div class="slot-list"></div>
+    </div>
+    <div class="day-column" data-day="SUNDAY">
+      <h2>Chủ nhật</h2>
+      <div class="date" id="date-0"></div>
+      <div class="slot-list"></div>
+    </div>
+  </div>
+</div>
+    
 </body>
 </html>
