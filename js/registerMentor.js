@@ -1,118 +1,133 @@
-const daysOfWeek = ['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật'];
-const startTime = "19:00";
-const endTime = "23:00";
+// ==========================
+// Cấu hình cơ bản
+// ==========================
+let currentPage = 1;
 
-let slotsData = {}; // Map slotKey -> slot info
+// Cloudinary config (nếu bạn dùng Cloudinary để upload ảnh)
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dcpj8cfng/image/upload";
+const CLOUDINARY_UPLOAD_PRESET = "ml_default"; // thay bằng preset thật của bạn
 
-// ================= FETCH SLOTS =================
-function fetchScheduleSlots() {
-    $.ajax({
-        url: "http://localhost:8080/api/v1/schedule-slots",
-        method: "GET",
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
-        data: { startTime: startTime, endTime: endTime },
-        success: function(res) {
-            if(res && res.result){
-                slotsData = {};
-                res.result.forEach(slot => {
-                    const date = slot.date;
-                    const day = new Date(date).getDay() === 0 ? 6 : new Date(date).getDay()-1;
-                    const slotKey = `${date}-${slot.startTime}`;
-                    slotsData[slotKey] = slot;
-                });
-                renderCalendar();
-            }
-        },
-        error: function(err) { console.error("Lỗi fetch schedule slots:", err); }
-    });
+// ==========================
+// Chuyển trang
+// ==========================
+function updateProgress(page) {
+  const progressFill = document.getElementById("progressFill");
+  const progressPercent = (page / 4) * 100;
+  progressFill.style.width = progressPercent + "%";
+
+  for (let i = 1; i <= 4; i++) {
+    const step = document.getElementById("step" + i);
+    if (i <= page) step.classList.add("active");
+    else step.classList.remove("active");
+  }
 }
 
-// ================= RENDER CALENDAR =================
-function renderCalendar() {
-    const content = document.querySelector('.content');
-    content.innerHTML = '';
-    
-    for(let day=0; day<7; day++){
-        const dayColumn = document.createElement('div');
-        dayColumn.className = 'day-column';
-        
-        const header = document.createElement('div');
-        header.className = 'day-header';
-        header.textContent = daysOfWeek[day];
-        dayColumn.appendChild(header);
+function showPage(pageNum) {
+  for (let i = 1; i <= 4; i++) {
+    const page = document.getElementById("page" + i);
+    page.classList.toggle("active", i === pageNum);
+  }
+  currentPage = pageNum;
+  updateProgress(pageNum);
+  window.scrollTo(0, 0);
+}
 
-        // Hiển thị các slot
-        const daySlots = Object.values(slotsData).filter(slot => {
-            const slotDay = new Date(slot.date).getDay() === 0 ? 6 : new Date(slot.date).getDay()-1;
-            return slotDay === day;
-        }).sort((a,b)=>a.startTime.localeCompare(b.startTime));
+function nextPage(pageNum) {
+  showPage(pageNum);
+}
 
-        daySlots.forEach(slot => {
-            const slotDiv = document.createElement('div');
-            slotDiv.className = 'time-slot';
-            slotDiv.textContent = `${slot.startTime} - ${slot.endTime}`;
-            slotDiv.dataset.slotId = slot.slotId;
+function prevPage(pageNum) {
+  showPage(pageNum);
+}
 
-            // click để xóa
-            slotDiv.onclick = () => deleteSlot(slot.slotId);
+// ==========================
+// Upload Ảnh + Hiển thị tên file
+// ==========================
+let uploadedAvatarUrl = "";
 
-            dayColumn.appendChild(slotDiv);
+document.addEventListener("DOMContentLoaded", () => {
+  const photoInput = document.getElementById("photoUpload");
+  const fileNameDisplay = document.getElementById("fileName");
+
+  if (photoInput) {
+    photoInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      fileNameDisplay.textContent = file.name;
+
+      // Upload lên Cloudinary
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+      try {
+        const res = await fetch(CLOUDINARY_URL, {
+          method: "POST",
+          body: formData,
         });
-
-        // Click vào cột ngày để thêm slot mới
-        dayColumn.onclick = (e) => {
-            if(e.target.classList.contains('time-slot')) return; // tránh click vào slot hiện có
-            addSlot(day);
-        };
-
-        content.appendChild(dayColumn);
-    }
-}
-
-// ================= ADD SLOT =================
-function addSlot(day) {
-    // Tạo date từ day (Thứ 2=0,... CN=6)
-    const today = new Date();
-    const firstDay = new Date(today);
-    firstDay.setDate(today.getDate() - today.getDay() + 1 + day);
-    const dateStr = firstDay.toISOString().split('T')[0];
-
-    $.ajax({
-        url: "http://localhost:8080/api/v1/schedule-slots",
-        method: "POST",
-        contentType: "application/json",
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
-        data: JSON.stringify({ startTime: startTime, endTime: endTime, date: dateStr }),
-        success: function(res){
-            alert(`Thêm slot thành công ngày ${dateStr} ${startTime}-${endTime}`);
-            fetchScheduleSlots();
-        },
-        error: function(err){
-            console.error("Lỗi thêm slot:", err);
-            alert("Thêm slot thất bại!");
-        }
+        const data = await res.json();
+        uploadedAvatarUrl = data.secure_url;
+        console.log("Ảnh đã upload:", uploadedAvatarUrl);
+      } catch (error) {
+        console.error("Lỗi upload ảnh:", error);
+        alert("Không thể tải ảnh lên. Vui lòng thử lại.");
+      }
     });
-}
+  }
 
-// ================= DELETE SLOT =================
-function deleteSlot(slotId) {
-    if(!confirm("Bạn có chắc muốn xóa slot này?")) return;
-
-    $.ajax({
-        url: `http://localhost:8080/api/v1/schedule-slots/${slotId}`,
-        method: "DELETE",
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
-        success: function(){
-            fetchScheduleSlots();
-        },
-        error: function(err){
-            console.error("Lỗi xóa slot:", err);
-            alert("Xóa slot thất bại!");
-        }
-    });
-}
-
-// ================= INIT =================
-$(document).ready(function(){
-    fetchScheduleSlots();
+  updateProgress(1);
 });
+
+// ==========================
+// Submit Form - Gọi API
+// ==========================
+function submitForm() {
+  const agreeTerms = document.getElementById("agreeTerms");
+  if (!agreeTerms.checked) {
+    alert("Vui lòng đồng ý với các điều khoản trước khi tiếp tục!");
+    return;
+  }
+
+  // Giả sử userId lấy từ localStorage (hoặc thay bằng ID thật)
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const userId = userData.userId;
+  const token = localStorage.getItem("token"); // nếu API yêu cầu JWT
+
+  // Lấy dữ liệu form
+  const requestData = {
+    linkMeet: $("#linkMeet").val(),
+    avatar: uploadedAvatarUrl || "https://example.com/avar.jpg",
+    companyName: $("#companyName").val(),
+    position: $("#position").val(),
+    field: $("#field").val(),
+    softSkills: $("#softSkills").val(),
+  };
+
+  // Validate cơ bản
+  if (!requestData.linkMeet || !requestData.companyName || !requestData.position) {
+    alert("Vui lòng điền đầy đủ thông tin trước khi gửi!");
+    return;
+  }
+
+  console.log("Dữ liệu gửi đi:", requestData);
+
+  // ==========================
+  // Gọi API bằng AJAX
+  // ==========================
+  $.ajax({
+    url: `http://localhost:8080/api/v1/mentor/request/${userId}`,
+    type: "POST",
+    data: JSON.stringify(requestData),
+    contentType: "application/json",
+    headers: token ? { Authorization: "Bearer " + token } : {},
+    success: function (response) {
+      console.log("Phản hồi từ server:", response);
+      alert("🎉 Đăng ký thành công! Chúng tôi sẽ xem xét hồ sơ của bạn sớm nhất.");
+      window.location.href = "/public/index.html";
+    },
+    error: function (xhr, status, error) {
+      console.error("Lỗi khi gửi request:", xhr.responseText);
+      alert("❌ Đăng ký thất bại. Vui lòng thử lại sau!");
+    },
+  });
+}

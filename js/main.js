@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!userData) {
       try {
         const res = await fetch("http://localhost:8080/api/v1/users/my-info", {
-          headers: { "Authorization": `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {
           const data = await res.json();
@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Tạo tên người dùng
       const userName = document.createElement("span");
       userName.className = "navbar__username";
-      userName.textContent = `${userData.firstName || ""} ${userData.lastName || ""}`.trim();
+      userName.textContent = `${userData.firstName || ""} ${
+        userData.lastName || ""
+      }`.trim();
       userName.style.marginLeft = "10px";
       userName.style.fontWeight = "500";
       userName.style.color = "#333";
@@ -105,10 +107,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         <li><a href="/pages/profileMentor.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Hồ sơ</a></li>
         ${
           hasMentorRole
-            ? `<li><a href="/pages/mentor/MentorDashboard.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Quản lý mentor</a></li>`
+            ? `<li><a href="/pages/mentor/MentorDashboard.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Quản lý mentor</a></li>
+       <li><a href="/pages/calendarBook.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch</a></li>`
             : ""
         }
-        <li><a href="/pages/calendarBook.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch</a></li>
+        <li><a href="/pages/requestMentor.html"style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch hẹn</a></li>
         <li><a href="#" id="logoutBtn" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Đăng xuất</a></li>
       `;
 

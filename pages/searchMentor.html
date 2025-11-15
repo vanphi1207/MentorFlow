@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
     <link rel="stylesheet" href="/src/styles/components/footer.css" />
     <link rel="stylesheet" href="/src/styles/components/searchMentor.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/searchMentor.js"></script>
     <script src="/js/main.js"></script>
     <link
       rel="stylesheet"
@@ -48,16 +50,17 @@
             Nam
           </p>
 
-          <form class="community-search" action="#" method="get">
+          <div class="community-search">
             <input
               type="text"
               class="community-search__input"
-              placeholder="Nhập từ khóa để tìm kiếm, ví dụ Tên, Công ty, Vị trí của Cố vấn hoặc Chủ đề..."
+              placeholder="Tìm mentor..."
+              id="mentorSearch"
             />
             <button type="submit" class="community-search__button">
               <i class="fas fa-search"></i> TÌM KIẾM
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -100,213 +103,11 @@
       <!-- Danh sách Mentor -->
       <div class="mentor-grid">
         <!-- Mentor Card -->
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
-
-        <a href="/pages/profileMentor.html" class="mentor-card">
-          <img
-            src="/public/assets/images/download.jpg"
-            alt="Hoang Thi Thu Thuy"
-            class="mentor-card__image"
-          />
-          <h3 class="mentor-card__name">Hoang Thi Thu Thuy</h3>
-          <p class="mentor-card__position">
-            Head of Trade Marketing tại Reckitt Hong Kong
-          </p>
-          <div class="mentor-card__info">
-            <p>
-              <i class="fas fa-calendar-alt"></i> Lịch rảnh:
-              <strong>17:00, 10/10/2025</strong>
-            </p>
-            <p>
-              <i class="fas fa-user"></i> 2 mentee &nbsp;&nbsp;
-              <i class="fas fa-heart"></i> 5
-            </p>
-          </div>
-        </a>
       </div>
     </section>
 
-    <!-- Pagination -->
     <nav class="pagination">
-      <ul class="pagination__list">
-        <li class="pagination__item pagination__item--active">
-          <a href="#" class="pagination__link">1</a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">2</a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">3</a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">4</a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">5</a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">
-            <i class="fas fa-angle-right"></i>
-          </a>
-        </li>
-        <li class="pagination__item">
-          <a href="#" class="pagination__link">
-            <i class="fas fa-angle-double-right"></i>
-          </a>
-        </li>
-      </ul>
+      <ul class="pagination__list"></ul>
     </nav>
   </body>
   <footer class="footer">
