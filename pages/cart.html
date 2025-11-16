@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <link rel="stylesheet" href="/src/styles/base.css" />
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
-    <link rel="stylesheet" href="/src/styles/components/requestMentor.css" />
-    <link rel="stylesheet" href="/src/styles/components/footer.css">
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
+    <link rel="stylesheet" href="/src/styles/components/cart.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/cart.js"></script>
     <script src="/js/main.js"></script>
-    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Blog</title>
   </head>
   <body>
     <header>
+      <!-- navbar -->
       <nav class="navbar">
         <div class="navbar__container">
           <a href="/public/index.html" class="navbar__logo">
@@ -35,60 +43,23 @@
       </nav>
     </header>
 
-    <div class="schedule-header">
-      <div class="schedule-header__container">
-        <div class="schedule-header__content">
-          <h1>Lịch hẹn của tôi</h1>
-          <p>Quản lý và theo dõi các phiên tư vấn với mentor</p>
-          <div class="schedule-header__stats">
-          
-          </div>
-        </div>
-        <div class="schedule-header__actions">
-          <a href="/pages/searchMentor.html" class="header-btn header-btn-primary">
-            <span>+</span> Đặt lịch mới
-          </a>
+    <section class="community-hero">
+      <div class="community-hero__overlay">
+        <div class="community-hero__content">
+          <h1 class="community-hero__title">CỘNG ĐỒNG MENTOR</h1>
+          <p class="community-hero__subtitle">
+            Giỏ hàng
+          </p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <div class="tabs-container">
-        <button class="tab active" data-tab="pending">Chờ xác nhận</button>
-        <button class="tab" data-tab="upcoming">Sắp tới</button>
-        <button class="tab" data-tab="past">Đã qua</button>
-      </div>
+    
+    <div class="cart-container">
+    <h2>Giỏ hàng</h2>
 
-      <!-- Pending Tab -->
-      <div class="content-wrapper" data-content="pending" style="display: grid">
-        
-      </div>
+</div>
 
-      <!-- Upcoming Tab -->
-      <div
-        class="content-wrapper"
-        data-content="upcoming"
-        style="display: none"
-      >
-        <div class="empty-state">
-          <div class="empty-state__icon">📅</div>
-          <div class="empty-state__title">Không có lịch hẹn sắp tới</div>
-          <div class="empty-state__description">
-            Hãy tìm kiếm mentor và đặt lịch hẹn để bắt đầu
-          </div>
-        </div>
-      </div>
-      <!-- Past Tab -->
-      <div class="content-wrapper" data-content="past" style="display: none">
-        <div class="empty-state">
-          <div class="empty-state__icon">✅</div>
-          <div class="empty-state__title">Chưa có lịch hẹn đã qua</div>
-          <div class="empty-state__description">
-            Những lịch hẹn hoàn thành sẽ xuất hiện tại đây
-          </div>
-        </div>
-      </div>
-    </div>
 
 
     <footer class="footer">
@@ -161,8 +132,5 @@
         <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
       </div>
     </footer>
-
   </body>
-
-  <script src="/js/requestMentor.js"></script>
 </html>

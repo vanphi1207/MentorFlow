@@ -62,7 +62,7 @@ function renderPage(page) {
       <a href="#" class="mentor-card">
         <img src="${mentor.avatar}" alt="${mentor.name}" class="mentor-card__image" />
         <h3 class="mentor-card__name">${mentor.name}</h3>
-        <p class="mentor-card__position">${mentor.companyName}</p>
+        <p class="mentor-card__position">${mentor.position} tại ${mentor.companyName}</p>
         <div class="mentor-card__info">
           <p><strong>Giá booking:</strong> ${mentor.priceBooking || "Chưa cập nhật"}</p>
         </div>

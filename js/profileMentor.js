@@ -659,3 +659,6 @@ function selectSlot(slotData, element) {
 
   selectedBookAvailabilityId = slotData.bookAvailabilityId; // Lưu để gửi booking
 }
+
+
+

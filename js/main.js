@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Nội dung dropdown
       dropdown.innerHTML = `
-        <li><a href="/pages/profileMentor.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Hồ sơ</a></li>
+        <li><a href="/pages/profile.html" id="myProfileLink" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Hồ sơ</a></li>
         ${
           hasMentorRole
             ? `<li><a href="/pages/mentor/MentorDashboard.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Quản lý mentor</a></li>
@@ -114,6 +114,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         <li><a href="/pages/requestMentor.html"style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch hẹn</a></li>
         <li><a href="#" id="logoutBtn" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Đăng xuất</a></li>
       `;
+
+
 
       avatarContainer.appendChild(avatarImg);
       avatarContainer.appendChild(userName);

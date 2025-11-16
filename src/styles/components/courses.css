@@ -128,6 +128,11 @@
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
 }
 
+.size-6 {
+  width: 23px;
+  height: 23px;
+}
+
 .category-filter::after {
   content: "▼";
   position: absolute;
@@ -534,4 +539,14 @@
     height: 34px;
     font-size: 0.85rem;
   }
+}
+
+
+
+.course-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

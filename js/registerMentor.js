@@ -88,37 +88,42 @@ function submitForm() {
     return;
   }
 
-  // Giả sử userId lấy từ localStorage (hoặc thay bằng ID thật)
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
   const userId = userData.userId;
-  const token = localStorage.getItem("token"); // nếu API yêu cầu JWT
+  const token = localStorage.getItem("token");
 
-  // Lấy dữ liệu form
+  // Dữ liệu form JSON
   const requestData = {
     linkMeet: $("#linkMeet").val(),
-    avatar: uploadedAvatarUrl || "https://example.com/avar.jpg",
     companyName: $("#companyName").val(),
     position: $("#position").val(),
     field: $("#field").val(),
     softSkills: $("#softSkills").val(),
+    priceBooking: $("#priceBooking").val(), 
+    avatar: uploadedAvatarUrl || ""
   };
 
-  // Validate cơ bản
   if (!requestData.linkMeet || !requestData.companyName || !requestData.position) {
     alert("Vui lòng điền đầy đủ thông tin trước khi gửi!");
     return;
   }
 
-  console.log("Dữ liệu gửi đi:", requestData);
+  // Tạo FormData để gửi multipart/form-data
+  const formData = new FormData();
+  formData.append("data", new Blob([JSON.stringify(requestData)], { type: "application/json" }));
 
-  // ==========================
-  // Gọi API bằng AJAX
-  // ==========================
+  // Nếu có file avatar
+  const fileInput = document.getElementById("photoUpload");
+  if (fileInput && fileInput.files.length > 0) {
+    formData.append("avatarFile", fileInput.files[0]);
+  }
+
   $.ajax({
     url: `http://localhost:8080/api/v1/mentor/request/${userId}`,
     type: "POST",
-    data: JSON.stringify(requestData),
-    contentType: "application/json",
+    data: formData,
+    processData: false, // bắt buộc khi gửi FormData
+    contentType: false, // bắt buộc khi gửi FormData
     headers: token ? { Authorization: "Bearer " + token } : {},
     success: function (response) {
       console.log("Phản hồi từ server:", response);
@@ -131,3 +136,4 @@ function submitForm() {
     },
   });
 }
+

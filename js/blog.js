@@ -224,3 +224,75 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#closeBtn").on("click", () => $("#popupOverlay").hide());
   }
 });
+
+
+
+
+// Lấy các element
+const postBtn = document.getElementById("postBtn");
+const postText = document.getElementById("postText");
+const imageInput = document.getElementById("imageInput");
+const imagePreview = document.getElementById("imagePreview");
+
+// Hiển thị ảnh preview khi chọn
+imageInput.addEventListener("change", () => {
+  imagePreview.innerHTML = ""; // Xóa preview cũ
+  Array.from(imageInput.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.style.maxWidth = "100px";
+      img.style.margin = "5px";
+      imagePreview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+// Bật/tắt nút Đăng dựa trên nội dung textarea
+postText.addEventListener("input", () => {
+  postBtn.disabled = !postText.value.trim();
+});
+
+// Click vào nút Đăng
+postBtn.addEventListener("click", () => {
+  const content = postText.value.trim();
+  if (!content) return; // Không gửi nếu trống
+
+  const formData = new FormData();
+
+  // Thêm JSON cho phần 'data'
+  const blogData = { content: content }; // thêm các trường khác nếu cần
+  formData.append(
+    "data",
+    new Blob([JSON.stringify(blogData)], { type: "application/json" })
+  );
+
+  // Thêm file nếu có (chỉ gửi file đầu tiên, backend có thể thay bằng loop nếu hỗ trợ nhiều file)
+  if (imageInput.files.length > 0) {
+    formData.append("fileImg", imageInput.files[0]);
+  }
+
+  // Gọi API
+  fetch("http://localhost:8080/api/v1/blog", {
+    method: "POST",
+    body: formData,
+    // Không set content-type, fetch sẽ tự handle multipart/form-data
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("Lỗi khi đăng bài");
+      return res.json();
+    })
+    .then(data => {
+      alert("Đăng bài thành công!");
+      closePopup(); // đóng popup
+      postText.value = "";
+      imageInput.value = "";
+      imagePreview.innerHTML = "";
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Đăng bài thất bại!");
+    });
+});
