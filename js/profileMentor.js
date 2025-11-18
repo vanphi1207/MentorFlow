@@ -591,16 +591,24 @@ function submitBooking() {
     url: "http://localhost:8080/api/v1/bookings",
     method: "POST",
     contentType: "application/json",
-    headers: { "Authorization": "Bearer " + token },
+    headers: { "Authorization": "Bearer " + token,
+      "Accept": "application/json"
+     },
     data: JSON.stringify(bookingData),
     success: function() {
       alert("✅ Đặt lịch thành công!");
       closeBookingModal();
     },
     error: function(xhr) {
-      console.error("Lỗi khi gửi booking:", xhr);
-      alert("❌ Có lỗi xảy ra. Vui lòng thử lại.");
+    console.error("Lỗi khi gửi booking:", xhr);
+
+    // Nếu backend trả JSON có message, hiện message đó
+    if (xhr.responseJSON && xhr.responseJSON.message) {
+        alert(`❌ Lỗi: ${xhr.responseJSON.message}`);
+    } else {
+        alert("❌ Có lỗi xảy ra. Vui lòng thử lại.");
     }
+}
   });
 }
 

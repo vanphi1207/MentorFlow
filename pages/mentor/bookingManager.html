@@ -9,21 +9,21 @@
       href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <script src="/js/admin/dashboard.js"></script>
+    <script src="/js/mentor/bookingManager.js"></script>
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     <link rel="stylesheet" href="/src/styles/components/dashboard.css" />
     <link rel="stylesheet" href="/src/styles/components/mentor/slibar.css" />
+    <link rel="stylesheet" href="/src/styles/components/mentor/bookingManager.css">
     <script src="/js/mentor/slibar.js"></script>
     <script src="/js/admin/logout.js"></script>
   </head>
   <body>
     <div class="container">
-      <!-- ===== SIDEBAR ===== -->
       <aside class="sidebar">
         <div class="logo">
           <h2>MentorFlow</h2>
@@ -52,42 +52,50 @@
             </ul>
           </div>
           <a href="/pages/mentor/bookingManager.html" class="menu-item"
-            >booking</a>
+            >Booking</a>
         </ul>
 
         <div class="logout">
           <button>⏻ Đăng xuất</button>
-          <a href="/public/index.html" class="btn-home" title="Trang chủ">
-            <i class="fa-solid fa-house"></i>
-          </a>
         </div>
       </aside>
 
-      <!-- ===== MAIN CONTENT ===== -->
-      <main class="main">
-        <div class="content">
-          <h3>Tổng quan hệ thống</h3>
+     <main class="main">
+  <div class="content">
+    <h3>Quản lí Booking</h3>
 
-          <div class="cards">
-            <div class="card pink">
-              <span>👥 Học viên</span>
-              <p>1,250</p>
-            </div>
-            <div class="card blue">
-              <span>🧑‍🏫 Mentor</span>
-              <p>85</p>
-            </div>
-            <div class="card green">
-              <span>🎓 Khóa học</span>
-              <p>42</p>
-            </div>
-            <div class="card orange">
-              <span>💰 Doanh thu</span>
-              <p>1.23B ₫</p>
-            </div>
-          </div>
-        </div>
-      </main>
+    <!-- Tabs -->
+    <div class="tabs">
+  <button class="tab-btn active" data-status="all">Tất cả</button>
+  <button class="tab-btn" data-status="PENDING">🟨 Chờ xác nhận</button>
+  <button class="tab-btn" data-status="CONFIRMED">🟩 Đã xác nhận</button>
+  <button class="tab-btn" data-status="COMPLETED">✅ Hoàn thành</button>
+  <button class="tab-btn" data-status="CANCELLED">🟥 Đã hủy</button>
+</div>
+
+    <!-- Search -->
+    <div class="table-top">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm booking..." />
     </div>
+
+    <!-- Table -->
+    <table id="bookingTable">
+      <thead>
+        <tr>
+          <th>Tên người đặt</th>
+          <th>Email</th>
+          <th>Topic</th>
+          <th>Note</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="pagination" class="pagination"></div>
+  </div>
+</main>
+
   </body>
 </html>

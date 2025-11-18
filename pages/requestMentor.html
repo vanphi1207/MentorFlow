@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/src/styles/base.css" />
     <link rel="stylesheet" href="/src/styles/components/navbar.css" />
     <link rel="stylesheet" href="/src/styles/components/requestMentor.css" />
-    <link rel="stylesheet" href="/src/styles/components/footer.css">
+    <link rel="stylesheet" href="/src/styles/components/footer.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/main.js"></script>
     <title>Document</title>
@@ -40,14 +40,14 @@
         <div class="schedule-header__content">
           <h1>Lịch hẹn của tôi</h1>
           <p>Quản lý và theo dõi các phiên tư vấn với mentor</p>
-          <div class="schedule-header__stats">
-          
-          </div>
         </div>
         <div class="schedule-header__actions">
-          <a href="/pages/searchMentor.html" class="header-btn header-btn-primary">
+          <button class="header-btn header-btn-primary">
             <span>+</span> Đặt lịch mới
-          </a>
+          </button>
+          <button class="header-btn header-btn-secondary">
+            <span>📅</span> Xem lịch
+          </button>
         </div>
       </div>
     </div>
@@ -57,39 +57,32 @@
         <button class="tab active" data-tab="pending">Chờ xác nhận</button>
         <button class="tab" data-tab="upcoming">Sắp tới</button>
         <button class="tab" data-tab="past">Đã qua</button>
+        <button class="tab" data-tab="cancel">Từ chối</button>
       </div>
 
-      <!-- Pending Tab -->
       <div class="content-wrapper" data-content="pending" style="display: grid">
-        
-      </div>
+  <div class="left-column" id="booking-list-pending"></div>
+  <div class="right-panel" id="booking-details-pending"></div>
+</div>
 
-      <!-- Upcoming Tab -->
-      <div
-        class="content-wrapper"
-        data-content="upcoming"
-        style="display: none"
-      >
-        <div class="empty-state">
-          <div class="empty-state__icon">📅</div>
-          <div class="empty-state__title">Không có lịch hẹn sắp tới</div>
-          <div class="empty-state__description">
-            Hãy tìm kiếm mentor và đặt lịch hẹn để bắt đầu
-          </div>
-        </div>
-      </div>
-      <!-- Past Tab -->
-      <div class="content-wrapper" data-content="past" style="display: none">
-        <div class="empty-state">
-          <div class="empty-state__icon">✅</div>
-          <div class="empty-state__title">Chưa có lịch hẹn đã qua</div>
-          <div class="empty-state__description">
-            Những lịch hẹn hoàn thành sẽ xuất hiện tại đây
-          </div>
-        </div>
-      </div>
+<div class="content-wrapper" data-content="upcoming" style="display: none">
+  <div class="left-column" id="booking-list-upcoming"></div>
+  <div class="right-panel" id="booking-details-upcoming"></div>
+</div>
+
+<div class="content-wrapper" data-content="past" style="display: none">
+  <div class="left-column" id="booking-list-completed"></div>
+  <div class="right-panel" id="booking-details-past"></div>
+</div>
+
+<div class="content-wrapper" data-content="cancel" style="display: none">
+  <div class="left-column" id="booking-list-cancel"></div>
+  <div class="right-panel" id="booking-details-cancel"></div>
+</div>
+
+
+
     </div>
-
 
     <footer class="footer">
       <div class="footer__container">
@@ -161,7 +154,6 @@
         <p>Bản quyền 2025 thuộc về <strong>Huyhocgioi</strong></p>
       </div>
     </footer>
-
   </body>
 
   <script src="/js/requestMentor.js"></script>

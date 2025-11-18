@@ -66,32 +66,31 @@
 }
 
 /* ========== Bảng Mentor/User ========== */
-#mentorTable,
-#userTable {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+#bookingTable,
+#bookingTable tbody,
+#bookingTable tr,
+#bookingTable td {
+  overflow: visible !important;
+  position: relative;
 }
 
-#mentorTable th, #mentorTable td,
-#userTable th, #userTable td {
+#bookingTable th, #bookingTable td {
   padding: 12px 14px;
   border-bottom: 1px solid #eaeaea;
   vertical-align: middle;
+  text-align: center;
 }
 
-#mentorTable th, #userTable th {
+#bookingTable th {
   background-color: #f8f8f8;
   font-weight: 600;
   color: #333;
 }
 
-#mentorTable tr:hover, #userTable tr:hover {
+#bookingTable tr:hover {
   background: #fafafa;
 }
+
 
 /* ========== Trạng thái Mentor ========== */
 .status {
@@ -102,10 +101,26 @@
   display: inline-block;
   min-width: 80px;
 }
+.status-pending {
+  background: #f1c40f; /* vàng */
+}
 
-.status-approved { background: #27ae60; }   /* xanh lá */
-.status-pending  { background: #f1c40f; color: #000; } /* vàng */
-.status-rejected { background: #e74c3c; }   /* đỏ */
+.status-approved {
+  background: #27ae60; /* xanh lá */
+}
+
+.status-rejected {
+  background: #e74c3c; /* đỏ */
+}
+
+.status-completed {
+  background: #3498db; /* xanh dương */
+}
+
+.status-cancelled {
+  background: #7f8c8d; /* xám */
+}
+
 
 /* ========== Dropdown ========== */
 .dropdown {

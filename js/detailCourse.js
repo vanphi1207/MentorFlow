@@ -142,22 +142,14 @@ $(document).on("click", ".module-header", function () {
 // XỬ LÝ NÚT MUA NGAY
 // ==========================
 // Khi click "Mua Ngay" trên trang detailCourse
-$(".btn-primary").on("click", function () {
+$(document).on("click", ".btn-primary", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const courseId = urlParams.get("id");
     if (!courseId) return;
 
-    // Lấy cart từ sessionStorage, nếu chưa có thì tạo mới
-    let cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+    // Chỉ lưu course mới, thay vì giữ cart cũ
+    sessionStorage.setItem("cart", JSON.stringify([courseId]));
 
-    // Chỉ thêm nếu chưa tồn tại
-    if (!cart.includes(courseId)) {
-        cart.push(courseId);
-    }
-
-    // Lưu lại sessionStorage
-    sessionStorage.setItem("cart", JSON.stringify(cart));
-
-    // Chuyển hướng qua trang cart
+    // Chuyển sang trang cart
     window.location.href = "/pages/cart.html";
 });
