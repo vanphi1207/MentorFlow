@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả thanh toán</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .loading {
+            display: block;
+        }
+
+        .result {
+            display: none;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounceIn 0.6s;
+        }
+
+        .success-icon { color: #28a745; }
+        .error-icon { color: #dc3545; }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .success-title { color: #28a745; }
+        .error-title { color: #dc3545; }
+
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .amount {
+            font-size: 24px;
+            color: #28a745;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .error-message {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h2>Đang xử lý thanh toán...</h2>
+            <p style="color: #6c757d; margin-top: 10px;">Vui lòng không tắt trang này</p>
+        </div>
+
+        <!-- Result State -->
+        <div class="result" id="result">
+            <div class="icon" id="icon"></div>
+            <h1 id="title"></h1>
+            
+            <div class="info-box" id="infoBox"></div>
+            
+            <div id="message"></div>
+            
+            <div style="margin-top: 30px;">
+                <a href="/pages/myCourse.html" class="btn btn-primary" id="btnMyCourses" style="display: none;">
+                    Xem khóa học của tôi
+                </a>
+                <a href="/public/index.html" class="btn btn-secondary">
+                    Quay lại trang chủ
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Lấy query params từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Gọi API backend để xử lý thanh toán
+            const queryString = window.location.search;
+            
+            if (!queryString) {
+                showError("Không tìm thấy thông tin thanh toán");
+                return;
+            }
+
+            const token = localStorage.getItem("token");
+
+            $.ajax({
+                url: `http://localhost:8080/api/v1/payment/vnpay-return${queryString}`,
+                type: "GET",
+                headers: {
+                    Authorization: token ? `Bearer ${token}` : ""
+                },
+                success: function(response) {
+                    console.log("Payment response:", response);
+                    
+                    if (response.result) {
+                        displayResult(response.result);
+                    } else {
+                        showError("Không nhận được kết quả thanh toán");
+                    }
+                },
+                error: function(xhr) {
+                    console.error("Payment error:", xhr);
+                    const errorMsg = xhr.responseJSON?.message || "Đã có lỗi xảy ra khi xử lý thanh toán";
+                    showError(errorMsg);
+                }
+            });
+        });
+
+        function displayResult(payment) {
+            const isSuccess = payment.status === 'SUCCESS';
+            
+            $("#loading").hide();
+            $("#result").show();
+
+            // Icon và Title
+            if (isSuccess) {
+                $("#icon").html("✓").addClass("success-icon");
+                $("#title").html("Thanh toán thành công!").addClass("success-title");
+                $("#btnMyCourses").show();
+            } else {
+                $("#icon").html("✗").addClass("error-icon");
+                $("#title").html("Thanh toán thất bại!").addClass("error-title");
+            }
+
+            // Thông tin chi tiết
+            const infoHTML = `
+                <div class="info-row">
+                    <span class="info-label">Mã giao dịch:</span>
+                    <span class="info-value">${payment.transactionNo || 'N/A'}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Khóa học:</span>
+                    <span class="info-value">${payment.courseName || 'N/A'}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Số tiền:</span>
+                    <span class="info-value amount">${formatCurrency(payment.amount)}</span>
+                </div>
+                ${payment.bankCode ? `
+                <div class="info-row">
+                    <span class="info-label">Ngân hàng:</span>
+                    <span class="info-value">${payment.bankCode}</span>
+                </div>
+                ` : ''}
+                ${payment.cardType ? `
+                <div class="info-row">
+                    <span class="info-label">Loại thẻ:</span>
+                    <span class="info-value">${payment.cardType}</span>
+                </div>
+                ` : ''}
+                <div class="info-row">
+                    <span class="info-label">Trạng thái:</span>
+                    <span class="status-badge ${isSuccess ? 'status-success' : 'status-failed'}">
+                        ${payment.statusDisplay || payment.status}
+                    </span>
+                </div>
+            `;
+            
+            $("#infoBox").html(infoHTML);
+
+            // Message
+            if (isSuccess) {
+                $("#message").html(`
+                    <div class="success-message">
+                        Chúc mừng! Bạn có thể bắt đầu học ngay bây giờ!
+                    </div>
+                `);
+                
+                // Xóa khóa học khỏi cart sau khi thanh toán thành công
+                removeFromCart(payment.courseId);
+            } else {
+                $("#message").html(`
+                    <div class="error-message">
+                        Thanh toán không thành công. Vui lòng thử lại sau.
+                    </div>
+                `);
+            }
+        }
+
+        function showError(message) {
+            $("#loading").hide();
+            $("#result").show();
+            
+            $("#icon").html("✗").addClass("error-icon");
+            $("#title").html("Lỗi xử lý thanh toán").addClass("error-title");
+            
+            $("#infoBox").html(`
+                <div class="error-message">
+                    ${message}
+                </div>
+            `);
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(amount);
+        }
+
+        function removeFromCart(courseId) {
+            let cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+            cart = cart.filter(id => id !== courseId);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            console.log("Đã xóa khóa học khỏi giỏ hàng:", courseId);
+        }
+    </script>
+</body>
+</html>

@@ -56,3 +56,42 @@ $(document).ready(function () {
         */
     });
 });
+
+
+
+
+// Thanh toán
+$(document).on("click", ".btn-pay", function () {
+    const cartItem = $(this).closest(".cart-item");
+    const courseId = cartItem.data("id");
+    const amount = parseInt(cartItem.find(".cart-price").text().replace(/[^\d]/g, "")); // Lấy giá số
+
+    const token = localStorage.getItem("token");
+
+    const payload = {
+        courseId: courseId,
+        amount: amount,
+        orderInfo: "Thanh toán khóa học",
+        bankCode: "NCB"
+    };
+
+    $.ajax({
+        url: "http://localhost:8080/api/v1/payment/create",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        headers: { Authorization: token ? `Bearer ${token}` : "" },
+        success: function(response) {
+            // Backend trả về paymentUrl (URL VNPAY)
+            if (response.result && response.result.paymentUrl) {
+                window.location.href = response.result.paymentUrl; // chuyển sang trang VNPAY
+            } else {
+                alert("Không lấy được link thanh toán!");
+            }
+        },
+        error: function(xhr) {
+            console.error("Lỗi tạo thanh toán:", xhr);
+            alert("Lỗi tạo thanh toán");
+        }
+    });
+});
