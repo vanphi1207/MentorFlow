@@ -7,7 +7,7 @@
   background: #f9f9ff;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 .content {
@@ -61,9 +61,14 @@ td {
 tr:hover {
   background: #fafafa;
 }
+table, table tbody, table tr, table td {
+  overflow: visible !important;
+  position: relative;
+}
 
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
@@ -81,7 +86,7 @@ tr:hover {
   min-width: 120px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   border-radius: 8px;
-  z-index: 1;
+  z-index: 9999;
 }
 
 .dropdown-content a {

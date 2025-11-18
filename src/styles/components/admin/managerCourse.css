@@ -44,6 +44,11 @@ table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+table, table tbody, table tr, table td {
+  overflow: visible !important; /* dropdown không bị cắt */
+  position: relative;
+}
+
 thead {
   background: #f7f7f7;
 }
@@ -79,7 +84,7 @@ tr:hover {
   min-width: 120px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   border-radius: 8px;
-  z-index: 1;
+  z-index: 9999;
 }
 
 .dropdown-content a {

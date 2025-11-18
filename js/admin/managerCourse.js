@@ -123,16 +123,16 @@ $(document).ready(function () {
   // ==========================
   // Dropdown toggle
   // ==========================
-  $(document).on("click", ".dropbtn", function (e) {
-    e.stopPropagation();
-    const dropdown = $(this).siblings(".dropdown-content");
-    $(".dropdown-content").not(dropdown).hide();
-    dropdown.toggle();
-  });
+  $(document).on("click", ".dropbtn", function(e) {
+  e.stopPropagation();
+  const dropdown = $(this).siblings(".dropdown-content");
+  $(".dropdown-content").not(dropdown).hide(); // ẩn dropdown khác
+  dropdown.toggle();
+});
 
-  $(document).on("click", function () {
-    $(".dropdown-content").hide();
-  });
+$(document).on("click", function() {
+  $(".dropdown-content").hide(); // ẩn khi click ngoài
+});
 
   // ==========================
   // Delete course

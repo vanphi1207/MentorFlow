@@ -130,14 +130,14 @@ $(document).ready(function () {
   // ==========================
   // Dropdown click toggle
   // ==========================
-  $(document).on("click", ".dropbtn", function (e) {
+  $(document).on("click", ".dropbtn", function(e){
     e.stopPropagation();
     const dropdown = $(this).siblings(".dropdown-content");
     $(".dropdown-content").not(dropdown).hide();
     dropdown.toggle();
   });
 
-  $(document).on("click", function () {
+  $(document).on("click", function(){
     $(".dropdown-content").hide();
   });
 
