@@ -53,7 +53,15 @@ $(document).ready(function () {
       curriculumContainer.empty();
 
       if (course.modules && course.modules.length > 0) {
+
+        course.modules.sort((a, b) => a.nameModule.localeCompare(b.nameModule));
+
         course.modules.forEach((module, index) => {
+
+        if (module.lessons && module.lessons.length > 0) {
+              module.lessons.sort((a, b) => a.lessonTitle.localeCompare(b.lessonTitle));
+            }
+
           const lessonsHTML = module.lessons && module.lessons.length
             ? module.lessons
                 .map(
@@ -67,7 +75,8 @@ $(document).ready(function () {
             <div class="curriculum-item module-item">
               <div class="module-header">
                 <div>
-                  <strong>Module ${index + 1}:</strong> ${module.nameModule}
+                  <strong>${module.nameModule}</strong>
+
                   <span class="lesson-count">${module.lessons?.length || 0} bài học • ${module.timeModule || 0} phút</span>
                 </div>
                 <span class="toggle-icon">►</span>

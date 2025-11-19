@@ -55,26 +55,31 @@ $(document).ready(function () {
 
     // 🧩 Render giao diện
     function renderCourses(courses) {
-        let html = "";
+    let html = "";
 
-        courses.forEach(course => {
-            html += `
-                <div class="course-card" data-id="${course.courseId}">
-                    <img src="${course.thumbnailImg}" alt="${course.titleCourse}" class="course-image">
+    courses.forEach(course => {
+        html += `
+            <div class="course-card" data-id="${course.courseId}">
+                <img src="${course.thumbnailImg}" alt="${course.titleCourse}" class="course-image">
 
-                    <div class="course-info">
-                        <a href="/pages/updetailcourses.html?id=${course.courseId}" class="course-title-link">
-                            <h3>${course.titleCourse}</h3>
-                        </a>
-
-                        <p>Giảng viên: ${course.mentorName}</p>
-
-                        <div class="rating">★★★★★</div>
-                    </div>
+                <div class="course-info">
+                    <h3 class="course-title-link" data-id="${course.courseId}">${course.titleCourse}</h3>
+                    <p>Giảng viên: ${course.mentorName}</p>
+                    <div class="rating">★★★★★</div>
                 </div>
-            `;
-        });
+            </div>
+        `;
+    });
 
-        $("#courseList").html(html);
-    }
+    $("#courseList").html(html);
+
+    // Thêm sự kiện click để lưu courseId vào sessionStorage
+    $(".course-card").on("click", function () {
+        const courseId = $(this).data("id");
+        sessionStorage.setItem("selectedCourseId", courseId);
+
+        // Điều hướng sang trang học
+        window.location.href = "/pages/learningCourse.html";
+    });
+}
 });

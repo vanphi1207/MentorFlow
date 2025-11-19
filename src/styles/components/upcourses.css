@@ -91,10 +91,13 @@ body {
   gap: 25px;
 }
 
+
+
 .course-title-link {
   text-decoration: none;
   color: #222;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
 .course-title-link:hover h3 {

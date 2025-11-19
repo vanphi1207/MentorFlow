@@ -21,6 +21,10 @@
   font-size: 24px;
   margin-bottom: 20px;
 }
+.active-lesson {
+    background-color: #f0f8ff;
+    font-weight: bold;
+}
 
 .module {
   background: #f9f9fc;

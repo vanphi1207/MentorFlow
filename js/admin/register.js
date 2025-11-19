@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (response.ok && result.code === 1000) {
-        alert(`✅ Đăng ký thành công! UserID: ${result.result.userId}`);
+        alert(`✅ Đăng ký thành công!`);
         form.reset();
       } else {
         // Nếu backend trả về lỗi, hiển thị thông báo chi tiết

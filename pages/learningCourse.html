@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/src/styles/components/footer.css" />
   <link rel="stylesheet" href="/src/styles/components/updetailcourses.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/updetailcourses.js" defer></script>
 </head>
@@ -37,66 +38,23 @@
     </nav>
   </header>
 
-  <!-- Nội dung chính -->
   <main class="course-detail">
-    <!-- Video -->
-    <section class="video-section">
-      <div class="video-container">
-        <video controls>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          Trình duyệt của bạn không hỗ trợ video.
-        </video>
-      </div>
-    </section>
-
-    <!-- Danh sách module -->
-<section class="course-content">
-  <h2><i class="fa-solid fa-book-open"></i> Nội Dung Khóa Học</h2>
-
-  <!-- MODULE 1 -->
-  <div class="module">
-    <div class="module-header" onclick="toggleModule(this)">
-      <div class="module-title">
-        <strong>Module 1:</strong> HTML, CSS, JavaScript cơ bản - Nền tảng phát triển web
-      </div>
-      <div class="info">12 bài học • 4.8   giờ</div>
-      <i class="fa-solid fa-chevron-down"></i>
+  <!-- Video -->
+  <section class="video-section">
+    <div class="video-container">
+      <video id="mainVideo" controls>
+        <source src="" type="video/mp4" />
+        Trình duyệt của bạn không hỗ trợ video.
+      </video>
     </div>
+  </section>
 
-    <div class="lesson-list">
-      <div class="lesson"><i class="fa-solid fa-play"></i> Giới thiệu HTML (15:20)</div>
-      <div class="lesson"><i class="fa-solid fa-play"></i> CSS cơ bản (20:10)</div>
-      <div class="lesson"><i class="fa-solid fa-play"></i> JavaScript nhập môn (18:45)</div>
-    </div>
-  </div>
-
-  <!-- MODULE 2 -->
-  <div class="module">
-    <div class="module-header" onclick="toggleModule(this)">
-      <div class="module-title">
-        <strong>Module 2:</strong> React Hooks & Components - Xây dựng giao diện động
-      </div>
-      <div class="info">15 bài học • 5.5 giờ</div>
-      <i class="fa-solid fa-chevron-down"></i>
-    </div>
-
-    <div class="lesson-list">
-      <div class="lesson"><i class="fa-solid fa-play"></i> Giới thiệu React và JSX (18:30)</div>
-      <div class="lesson"><i class="fa-solid fa-play"></i> Components và Props (20:45)</div>
-      <div class="lesson"><i class="fa-solid fa-play"></i> State và useState Hook (24:10)</div>
-      <div class="lesson"><i class="fa-solid fa-play"></i> useEffect Hook và Side Effects (26:35)</div>
-    </div>
-  </div>
-</section>
-
-    <!-- Bình luận -->
-    <section class="comment-section">
-      <h2><i class="fa-solid fa-comments"></i> Đánh giá & Bình luận</h2>
-      <textarea id="commentInput" placeholder="Nhập bình luận của bạn..."></textarea>
-      <button id="submitComment">Gửi</button>
-      <div id="commentList"></div>
-    </section>
-  </main>
+  <!-- Danh sách module -->
+  <section class="course-content">
+    <h2>Nội Dung Khóa Học</h2>
+    <div id="modulesContainer"></div>
+  </section>
+</main>
 
   <!-- Footer -->
 <footer class="footer">

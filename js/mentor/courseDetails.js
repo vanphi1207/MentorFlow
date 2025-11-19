@@ -45,69 +45,81 @@ $(document).ready(function () {
     // =====================================================================
     //  RENDER MODULE + LESSON
     // =====================================================================
-    function renderModules(modules) {
-        $("#modulesList").empty();
+function renderModules(modules) {
+    $("#modulesList").empty();
 
-        modules.forEach((m) => {
-            let moduleHtml = `
-            <div class="module-box" data-id="${m.moduleId}">
-                <div class="module-header">
-                    <div>
-                      <h4>${m.nameModule}</h4>
-                      <p>${m.timeModule} giờ</p>
+    // Sắp xếp module theo thứ tự mong muốn (ví dụ theo moduleId)
+    modules.sort((a, b) => a.nameModule.localeCompare(b.nameModule));
+
+
+    modules.forEach((m, moduleIndex) => {
+
+        let moduleHtml = `
+        <div class="module-box" data-id="${m.moduleId}">
+            <div class="module-header">
+                <div>
+                  <h4>${m.nameModule}</h4>
+                  <p>${m.timeModule} giờ</p>
+                </div>
+
+                <div class="more-btn" onclick="toggleMenu(this)">⋮
+                    <div class="more-menu">
+                        <div class="edit-module" data-id="${m.moduleId}" 
+                                data-name="${m.nameModule}" 
+                                data-time="${m.timeModule}"
+                                data-desc="${m.description}">
+                            Sửa module
+                        </div>
+                        <div class="delete-module" data-id="${m.moduleId}">
+                            Xóa module
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <button class="btn-submit btn-add-lesson" data-id="${m.moduleId}">
+                Thêm lesson
+            </button>
+
+            <div class="lesson-list">
+        `;
+
+        // Sắp xếp lesson theo lessonId
+        m.lessons.sort((a, b) => a.lessonTitle.localeCompare(b.lessonTitle));
+
+
+        m.lessons.forEach((l, lessonIndex) => {
+
+            moduleHtml += `
+            <div class="lesson-box" data-id="${l.lessonId}">
+                <div style="display:flex; justify-content:space-between">
+                    <span> ${l.lessonTitle} (${l.timeLesson} giờ)</span>
 
                     <div class="more-btn" onclick="toggleMenu(this)">⋮
                         <div class="more-menu">
-                            <div class="edit-module" data-id="${m.moduleId}" 
-                                    data-name="${m.nameModule}" 
-                                    data-time="${m.timeModule}"
-                                    data-desc="${m.description}">
-                                Sửa module
+                            <div class="edit-lesson"
+                                  data-id="${l.lessonId}"
+                                  data-title="${l.lessonTitle}"
+                                  data-time="${l.timeLesson}">
+                                  Sửa lesson
                             </div>
-                            <div class="delete-module" data-id="${m.moduleId}">
-                                Xóa module
+                            <div class="delete-lesson" data-id="${l.lessonId}">
+                                Xóa lesson
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <button class="btn-submit btn-add-lesson" data-id="${m.moduleId}">
-                    Thêm lesson
-                </button>
-
-                <div class="lesson-list">
+            </div>
             `;
-
-            m.lessons.forEach((l) => {
-                moduleHtml += `
-                <div class="lesson-box" data-id="${l.lessonId}">
-                    <div style="display:flex; justify-content:space-between">
-                        <span>${l.lessonTitle} (${l.timeLesson} giờ)</span>
-
-                        <div class="more-btn" onclick="toggleMenu(this)">⋮
-                            <div class="more-menu">
-                                <div class="edit-lesson"
-                                      data-id="${l.lessonId}"
-                                      data-title="${l.lessonTitle}"
-                                      data-time="${l.timeLesson}">
-                                      Sửa lesson
-                                </div>
-                                <div class="delete-lesson" data-id="${l.lessonId}">
-                                    Xóa lesson
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `;
-            });
-
-            moduleHtml += `</div></div>`;
-
-            $("#modulesList").append(moduleHtml);
         });
-    }
+
+        moduleHtml += `</div></div>`;
+
+        $("#modulesList").append(moduleHtml);
+    });
+}
+
+
 
     // =====================================================================
 //  MENU 3 CHẤM, EDIT & DELETE MODULE / LESSON
@@ -296,57 +308,74 @@ $("#formAddLesson").submit(function (e) {
         });
     });
 
-    // =====================================================================
-    //  THÊM LESSON
-    // =====================================================================
-    let selectedModuleId = null;
 
-    $(document).on("click", ".btn-add-lesson", function () {
-        selectedModuleId = $(this).data("id"); // Lấy moduleId từ button
-        $("#popupAddLesson").removeClass("hidden");
-    });
-
-    $("#formAddLesson").submit(function (e) {
-        e.preventDefault();
-
-        if (!selectedModuleId) {
-            alert("Chưa chọn module!");
-            return;
+        function resetSubmitButton($btn, text = "Thêm") {
+            $btn.prop("disabled", false).text(text);
         }
 
-        const lessonData = {
-            moduleId: selectedModuleId,
-            lessonTitle: $("#lessonTitle").val().trim(),
-            timeLesson: Number($("#lessonTime").val())
-        };
 
-        const formData = new FormData();
-        formData.append("data", new Blob([JSON.stringify(lessonData)], { type: "application/json" }));
+    // =====================================================================
+//  THÊM LESSON
+// =====================================================================
+let selectedModuleId = null;
 
-        const videoFile = $("#lessonVideo")[0].files[0];
-        if (videoFile) formData.append("videoUrl", videoFile); // trùng với @RequestPart
+$(document).on("click", ".btn-add-lesson", function () {
+    selectedModuleId = $(this).data("id");
+    $("#popupAddLesson").removeClass("hidden");
+});
 
-        const $btnSubmit = $(this).find("button[type=submit]");
-        $btnSubmit.prop("disabled", true).text("Đang thêm...");
+// Hàm reset button sau khi submit
+function resetSubmitButton($btn, text = "Thêm") {
+    $btn.prop("disabled", false).text(text);
+}
 
-        $.ajax({
-            url: "http://localhost:8080/api/v1/lessons",
-            type: "POST",
-            processData: false,
-            contentType: false,
-            headers: { Authorization: `Bearer ${token}` },
-            data: formData,
-            success: function () {
-                closePopup("#popupAddLesson");
-                loadCourseDetails();
-                alert("Thêm lesson thành công!");
-            },
-            error: (xhr) => {
-                console.log("Error:", xhr.responseText);
-                alert("Thêm lesson thất bại. Kiểm tra dữ liệu và thử lại.");
-            },
-        });
+$("#formAddLesson").submit(function (e) {
+    e.preventDefault();
+
+    if (!selectedModuleId) {
+        alert("Chưa chọn module!");
+        return;
+    }
+
+    const lessonData = {
+        moduleId: selectedModuleId,
+        lessonTitle: $("#lessonTitle").val().trim(),
+        timeLesson: Number($("#lessonTime").val())
+    };
+
+    const formData = new FormData();
+    formData.append("data",
+        new Blob([JSON.stringify(lessonData)], { type: "application/json" })
+    );
+
+    const videoFile = $("#lessonVideo")[0].files[0];
+    if (videoFile) formData.append("videoUrl", videoFile);
+
+    const $btnSubmit = $(this).find("button[type=submit]");
+    $btnSubmit.prop("disabled", true).text("Đang tải...");
+
+    $.ajax({
+        url: "http://localhost:8080/api/v1/lessons",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        headers: { Authorization: `Bearer ${token}` },
+        data: formData,
+        success: function () {
+            alert("Thêm lesson thành công!");
+            closePopup("#popupAddLesson");
+            $("#formAddLesson")[0].reset(); // Reset input
+            resetSubmitButton($btnSubmit);  // Reset nút về Thêm
+            loadCourseDetails();            // Reload giao diện
+        },
+        error: function (xhr) {
+            console.log("Error:", xhr.responseText);
+            alert("Thêm lesson thất bại. Kiểm tra dữ liệu và thử lại.");
+            resetSubmitButton($btnSubmit);  // Reset nút về Thêm khi lỗi
+        }
     });
+});
+
 
     // =====================================================================
     //  HÀM ĐÓNG POPUP

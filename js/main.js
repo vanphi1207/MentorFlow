@@ -67,16 +67,51 @@ document.addEventListener("DOMContentLoaded", async () => {
       avatarContainer.style.display = "flex";
       avatarContainer.style.alignItems = "center";
 
-      if (userData.avatar) {
-        avatarImg.style.backgroundImage = `url(${userData.avatar})`;
-        avatarImg.style.backgroundSize = "cover";
-        avatarImg.style.backgroundPosition = "center";
-        avatarImg.textContent = "";
+      // Kiểm tra role là MENTOR
+      const hasMentorRole =
+        userData.roles &&
+        (Array.isArray(userData.roles)
+          ? userData.roles.some((r) => r.name === "MENTOR")
+          : userData.roles === "MENTOR");
+
+      // Nếu là MENTOR, call API mentor để lấy avatar
+      if (hasMentorRole) {
+        try {
+          const mentorRes = await fetch(
+            `http://localhost:8080/api/v1/mentor/user/${userData.userId}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          if (mentorRes.ok) {
+            const mentorData = await mentorRes.json();
+            if (mentorData.result && mentorData.result.avatar) {
+              avatarImg.style.backgroundImage = `url(${mentorData.result.avatar})`;
+              avatarImg.style.backgroundSize = "cover";
+              avatarImg.style.backgroundPosition = "center";
+              avatarImg.textContent = "";
+            } else {
+              const initials =
+                (userData.firstName[0] || "") + (userData.lastName[0] || "");
+              avatarImg.textContent = initials;
+            }
+          }
+        } catch (err) {
+          console.error("Lỗi khi lấy avatar mentor:", err);
+          const initials =
+            (userData.firstName[0] || "") + (userData.lastName[0] || "");
+          avatarImg.textContent = initials;
+        }
       } else {
-        const firstName = userData.firstName || "";
-        const lastName = userData.lastName || "";
-        const initials = (firstName[0] || "") + (lastName[0] || "");
-        avatarImg.textContent = initials;
+        // Không phải mentor → lấy avatar từ userData
+        if (userData.avatar) {
+          avatarImg.style.backgroundImage = `url(${userData.avatar})`;
+          avatarImg.style.backgroundSize = "cover";
+          avatarImg.style.backgroundPosition = "center";
+          avatarImg.textContent = "";
+        } else {
+          const initials =
+            (userData.firstName[0] || "") + (userData.lastName[0] || "");
+          avatarImg.textContent = initials;
+        }
       }
 
       // Tạo dropdown menu
@@ -95,13 +130,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       dropdown.style.borderRadius = "8px";
       dropdown.style.zIndex = "1000";
 
-      // Kiểm tra role là MENTOR
-      const hasMentorRole =
-        userData.roles &&
-        (Array.isArray(userData.roles)
-          ? userData.roles.some((r) => r.name === "MENTOR")
-          : userData.roles === "MENTOR");
-
       // Nội dung dropdown
       dropdown.innerHTML = `
         <li><a href="/pages/profile.html" id="myProfileLink" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Hồ sơ</a></li>
@@ -111,11 +139,9 @@ document.addEventListener("DOMContentLoaded", async () => {
        <li><a href="/pages/calendarBook.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch</a></li>`
             : ""
         }
-        <li><a href="/pages/requestMentor.html"style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch hẹn</a></li>
+        <li><a href="/pages/requestMentor.html" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Lịch hẹn</a></li>
         <li><a href="#" id="logoutBtn" style="display:block; padding:5px 15px; color:#333; text-decoration:none;">Đăng xuất</a></li>
       `;
-
-
 
       avatarContainer.appendChild(avatarImg);
       avatarContainer.appendChild(userName);
